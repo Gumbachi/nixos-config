@@ -29,7 +29,7 @@
 
       monitor = [
         "eDP-1, 1920x1080@60, 0x0, 1"
-        "DP-1, 1920x1080@240, 1920x0, 1, vrr, 1"
+        # "DP-1, 1920x1080@240, 1920x0, 1, vrr, 1"
       ];
 
       exec-once = [
@@ -37,9 +37,9 @@
         "hyprlock"
         "uwsm app -- overway"
         "${clipboard}"
-        "uwsm app -- steam -silent"
-        "[workspace 2 silent] uwsm app -- vesktop"
-        "[workspace 2 silent] uwsm app -- youtube-music"
+        # "uwsm app -- steam -silent"
+        # "[workspace 2 silent] uwsm app -- vesktop"
+        # "[workspace 2 silent] uwsm app -- youtube-music"
       ];
 
       general = {
@@ -101,6 +101,7 @@
       };
 
       input = {
+        kb_options = "caps:swapescape";
         accel_profile = "flat";
         touchpad = {
           natural_scroll = true;
