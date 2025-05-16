@@ -13,7 +13,10 @@
 
   networking = {
     hostName = "GOOMBAX2";
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      plugins = [ pkgs.networkmanager-openvpn ];
+    };
     firewall.enable = true;
   };
 
@@ -82,7 +85,7 @@
   users.users.jared = {
     isNormalUser = true;
     description = "Jared";
-    extraGroups = ["networkmanager" "wheel" "video"];
+    extraGroups = ["networkmanager" "wheel" "video" "adbusers"];
   };
 
   system.stateVersion = "23.11"; # Did you read the comment? yes

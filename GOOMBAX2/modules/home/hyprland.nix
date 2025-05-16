@@ -21,7 +21,7 @@
       menu = ''rofi -show drun -run-command "uwsm app -- {cmd}" '';
       editConfig = "${terminal} $EDITOR $CONFIG";
       screenshot = "grimblast copy area";
-      browser = "uwsm app -- zen-beta";
+      browser = "uwsm app -- floorp";
       clipboard = "uwsm app -- clipse -listen";
       systemMonitor = "${terminal} btop";
       steamGameRegex = "class:^(steam_app_.*)$";

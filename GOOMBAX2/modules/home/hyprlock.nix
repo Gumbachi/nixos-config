@@ -27,7 +27,7 @@ in
           monitor = "${monitor}";
           text = ''cmd[update:30000] echo "$(date +"%R")"'';
           color = "rgb(${textColor})";
-          font_size = 90;
+          font_size = 70;
           font_family = "${font}";
           position = "50, -30";
           halign = "left";
@@ -39,7 +39,7 @@ in
           monitor = "${monitor}";
           text = ''cmd[update:43200000] echo "$(date +"%A, %d %B %Y")"'';
           color = "rgb(${textColor})";
-          font_size = 25;
+          font_size = 20;
           font_family = "${font}";
           position = "50, -180";
           halign = "left";
@@ -52,7 +52,7 @@ in
           text = "${osConfig.networking.hostName}";
           text_align = "center";
           color = "rgb(${textColor})";
-          font_size = 60;
+          font_size = 30;
           font_family = "${font}";
           position = "0, 70"; # -80x for left align
           halign = "center";
@@ -64,7 +64,7 @@ in
       image = {
         monitor = "${monitor}";
         path = builtins.toString ../../../images/avatars/5mort.jpg;
-        size = 400;
+        size = 200;
         border_color = "rgb(${accentColor})";
         border_size = 4;
         position = "-500, 0";
@@ -76,7 +76,7 @@ in
       # INPUT FIELD
       input-field = {
         monitor = "${monitor}";
-        size = "500, 100";
+        size = "250, 50";
         outline_thickness = 4;
         dots_size = 0.25;
         dots_spacing = 0.25;

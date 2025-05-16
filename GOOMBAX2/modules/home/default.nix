@@ -18,7 +18,7 @@ in
     (GOOMBAX1 + /floorp.nix)
 
     # Custom for X2
-    ./hyprland.nix
+    # ./hyprland.nix
     ./hyprlock.nix
 
   ];

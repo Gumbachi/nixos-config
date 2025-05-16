@@ -4,12 +4,14 @@
     inputs.overway.packages.${system}.default
     inputs.astal.packages.${system}.default
 
-    inputs.zen-browser.packages.${system}.default # Browser
-
     youtube-music
     vlc # Video Player
 
+    networkmanagerapplet
+
     brightnessctl
+
+    jmtpfs
 
     # Make a nice little option for this
     libreoffice # Office Software
@@ -19,9 +21,11 @@
 
   programs = {
     nix-ld.enable = true;
-    thunar.enable = false;
+    thunar.enable = true;
     firefox.enable = false;
     thunderbird.enable = true;
+    adb.enable = true;
+    nm-applet.enable = true;
   };
 
   editors = { 
