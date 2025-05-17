@@ -1,11 +1,25 @@
-{ pkgs, config, lib, ...}: {
+{ inputs, pkgs, ...}: {
+
+  home-manager.users.jared.imports = [ ../home/niri.nix ];
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
   programs.niri = {
     enable = true;
+    package = pkgs.niri;
+  };
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    MOZ_ENABLE_WAYLAND = "1";
+    QT_QPA_PLATFORM = "wayland;xcb";
   };
 
   ### Hyprland: Necessary Programs ###
   environment.systemPackages = with pkgs; [
+
+    alacritty
+    fuzzel
+    kitty
 
     clipse # Clipboard Manager
     wl-clipboard # Clipboard backend

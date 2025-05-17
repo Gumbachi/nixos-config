@@ -1,8 +1,17 @@
 { pkgs, config, lib, ...}: {
 
+  home-manager.user.jared.imports = [ ../home/hyprland.nix ];
+
   programs.hyprland = {
     enable = true;
     withUWSM = true;
+  };
+
+  # Hyprland environment variables
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    MOZ_ENABLE_WAYLAND = "1";
+    QT_QPA_PLATFORM = "wayland;xcb";
   };
 
   ### Hyprland: Necessary Programs ###

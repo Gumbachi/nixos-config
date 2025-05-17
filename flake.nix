@@ -9,6 +9,7 @@
     overway.url = "github:Gumbachi/Overway";
     astal.url = "github:aylur/astal";
     hyprland.url = "github:hyprwm/Hyprland";
+    niri.url = "github:sodiboo/niri-flake";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nvf.url = "github:notashelf/nvf";
     home-manager = {
@@ -85,11 +86,7 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
-        # Main Config
-        ./GOOMBAX2/configuration.nix
-
-        # Hardware Config
-        inputs.nixos-hardware.nixosModules.dell-xps-15-9560
+        ./GOOMBAX2/configuration.nix # Main Config
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -98,14 +95,21 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "hmbak";
+            users.jared.imports = [ 
+              ./GOOMBAX2/home.nix
+              inputs.niri.homeModules.niri
+            ];
           };
-          home-manager.users.jared.imports = [ ./GOOMBAX2/home.nix ];
         }
+
+        # Hardware Config
+        inputs.nixos-hardware.nixosModules.dell-xps-15-9560
 
         # Third Party Modules
         inputs.stylix.nixosModules.stylix
         inputs.nvf.nixosModules.default
         inputs.nur.modules.nixos.default
+        inputs.niri.nixosModules.niri
       ];
     };
 
