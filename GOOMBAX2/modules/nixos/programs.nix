@@ -29,7 +29,7 @@
   };
 
   editors = { 
-    nvf = {
+    text.nvf = {
       enable = true;
       setDefault = true;
       languages = {

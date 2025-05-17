@@ -4,7 +4,7 @@
 
     input = {
       touchpad = {
-        accel_profile = "flat";
+        accel-profile = "flat";
         dwt = true; # disable while typing
       };
     };

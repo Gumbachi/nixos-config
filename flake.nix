@@ -95,10 +95,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "hmbak";
-            users.jared.imports = [ 
-              ./GOOMBAX2/home.nix
-              inputs.niri.homeModules.niri
-            ];
+            users.jared.imports = [ ./GOOMBAX2/home.nix ];
           };
         }
 

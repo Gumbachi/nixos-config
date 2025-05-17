@@ -22,7 +22,7 @@ in
 
     # Already imported by their nixos module counter parts
     # ./hyprland.nix
-    # ./niri.nix
+    ./niri.nix
 
   ];
 

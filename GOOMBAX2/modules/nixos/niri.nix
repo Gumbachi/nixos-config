@@ -1,6 +1,6 @@
 { inputs, pkgs, ...}: {
 
-  home-manager.users.jared.imports = [ ../home/niri.nix ];
+  # home-manager.users.jared.imports = [ ../home/niri.nix ];
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
   programs.niri = {
