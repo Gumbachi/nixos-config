@@ -7,12 +7,6 @@ in
   home.username = "jared";
   home.homeDirectory = "/home/jared";
 
-  programs.git = {
-    enable = true;
-    userName = "Gumbachi";
-    userEmail = "github@gumbachi.com";
-  };
-
   services.hyprpaper.enable = true;
   services.hyprpolkitagent.enable = true;
   programs.mpv.enable = true;

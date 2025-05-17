@@ -1,14 +1,9 @@
 { ... }: {
+
+  # System Hyprland config in GOOMBAX1/modules/nixos/hyprland.nix
   
   # Just for insurance to not brick the system
   programs.kitty.enable = true;
-
-  # Hyprland environment variables
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    MOZ_ENABLE_WAYLAND = "1";
-    QT_QPA_PLATFORM = "wayland;xcb";
-  };
   
   wayland.windowManager.hyprland = {
     enable = true;
@@ -18,9 +13,9 @@
       terminal = "uwsm app -- kitty";
       toggleDashboard = "astal -t overway -i overway";
       fileManager = "${terminal} yazi";
-      menu = ''rofi -show drun -run-command "uwsm app -- {cmd}" '';
+      menu = ''fuzzel --launch-prefix="uwsm app -- "'';
       editConfig = "${terminal} $EDITOR $CONFIG";
-      screenshot = "grimblast copy area";
+      screenshot = "uwsm app -- hyprshot -m region --clipboard-only";
       browser = "uwsm app -- floorp";
       clipboard = "uwsm app -- clipse -listen";
       systemMonitor = "${terminal} btop";
@@ -30,8 +25,8 @@
 
       monitor = [
         "DP-1, 3840x2160@240, 2880x400, 1.5"
-        "DP-2, 2560x1440@144, 1440x0, 1, transform, 1"
-        "DP-3, 2560x1440@144, 0x0, 1, transform, 1" 
+        "DP-2, 2560x1440@120, 1440x0, 1, transform, 1"
+        "DP-3, 2560x1440@120, 0x0, 1, transform, 1" 
       ];
 
       exec-once = [
@@ -62,7 +57,7 @@
         inactive_opacity = 1.0;
 
         shadow = {
-          enabled = false;
+          enabled = true;
           range = 4;
           render_power = 3;
         };
@@ -100,16 +95,15 @@
       misc = {
         force_default_wallpaper = 0; # disable anime wallpaper
         disable_hyprland_logo = true;
-        animate_manual_resizes = false;
         vrr = 1;
-        focus_on_activate = false;
+        focus_on_activate = true;
         enable_swallow = false;
         swallow_regex = "kitty";
       };
 
       cursor = {
         default_monitor = "DP-1";
-        no_warps = true;
+        # no_warps = true;
       };
 
       render = {
@@ -123,6 +117,7 @@
       bind = [
         "${mainMod}, Q, exec, ${terminal}"
         "${mainMod}, C, killactive,"
+        "${mainMod} SHIFT, C, exec, hyprpicker | wl-copy"
         "${mainMod} SHIFT, M, exec, pkill Hyprland,"
         "${mainMod}, E, exec, ${fileManager}"
         "${mainMod}, V, togglefloating,"

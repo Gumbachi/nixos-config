@@ -4,19 +4,36 @@ let
   cfg = config.editors;
 in {
   options.editors = {
-    libreoffice.enable = mkEnableOption "Enable LibreOffice for edting.";
-    nvf = {
-      enable = mkEnableOption "Enable nvim/nvf.";
-      setDefault = mkEnableOption "Set the EDITOR environment variable to nvim";
-      languages = mkOption {
-        type = types.attrs;
-        description = "The whole block for programs.nvf.settings.vim.languages";
-        example = "{ python.enable = true; }";
-        default = {
-          nix = {
-            enable = true;
-            lsp.server = "nixd";
-          };
+
+    libreoffice.enable = mkEnableOption "Enable LibreOffice for edting various filetypes.";
+
+    image = {
+      gimp.enable = mkEnableOption "Enable gimp for image editing.";
+      krita.enable = mkEnableOption "Enable Krita for image editing.";
+    };
+
+    video = {
+      handbrake.enable = mkEnableOption "Enable handbrake for GUI tool management.";
+      losslesscut.enable = mkEnableOption "Enable lossless cut for easily trimming videos.";
+    };
+
+    text = {
+      helix = {
+        enable = mkEnableOption "Enable helix text editor.";
+        setDefault = mkEnableOption "Set the EDITOR environment variable to helix.";
+      };
+      vscodium = {
+        enable = mkEnableOption "Enable vscodium text editor.";
+        setDefault = mkEnableOption "Set the EDITOR environment variable to codium.";
+      };
+      nvf = {
+        enable = mkEnableOption "Enable nvim/nvf.";
+        setDefault = mkEnableOption "Set the EDITOR environment variable to nvim.";
+        languages = mkOption {
+          type = types.attrs;
+          description = "The whole block for programs.nvf.settings.vim.languages";
+          example = "{ python.enable = true; }";
+          default = { };
         };
       };
     };
@@ -32,8 +49,35 @@ in {
       ];
     })
 
-    (mkIf cfg.nvf.enable {
-      environment.sessionVariables.EDITOR = mkIf cfg.nvf.setDefault "nvim";
+    (mkIf cfg.image.gimp.enable {
+      environment.systemPackages = [ pkgs.gimp3 ];
+    })
+
+    (mkIf cfg.image.krita.enable {
+      environment.systemPackages = [ pkgs.krita ];
+    })
+
+    (mkIf cfg.video.handbrake.enable {
+      environment.systemPackages = [ pkgs.handbrake ];
+    })
+
+    (mkIf cfg.video.losslesscut.enable {
+      environment.systemPackages = [ pkgs.losslesscut-bin ];
+    })
+
+    (mkIf cfg.text.vscodium.enable {
+      environment.systemPackages = [ pkgs.vscodium ];
+      environment.sessionVariables.EDITOR = mkIf cfg.text.vscodium.setDefault "codium";
+    })
+
+    (mkIf cfg.text.helix.enable {
+      environment.systemPackages = [ pkgs.helix ];
+      environment.sessionVariables.EDITOR = mkIf cfg.text.helix.setDefault "helix";
+      home-manager.sharedModules = [{ programs.helix.enable = true; }];
+    })
+
+    (mkIf cfg.text.nvf.enable {
+      environment.sessionVariables.EDITOR = mkIf cfg.text.nvf.setDefault "nvim";
 
       programs.nvf.enable = true;
 
@@ -44,25 +88,22 @@ in {
         wrap = false;
       };
 
-      # Managed By Stylix
-      # programs.nvf.settings.vim.theme = {
-      #   enable = true;
-      #   name = "catppuccin";
-      #   style = "mocha";
-      # };
-
       # Vim Settings
       programs.nvf.settings.vim = {
-        useSystemClipboard = true;
-
-        # Plugins
         statusline.lualine.enable = true;
         binds.whichKey.enable = true;
-        ui.colorizer.enable = true;
         visuals.rainbow-delimiters.enable = true;
         dashboard.dashboard-nvim.enable = true;
         telescope.enable = true;
         treesitter.enable = true;
+
+
+        ui.colorizer = {
+          enable = true;
+          setupOpts.filetypes = {
+            "*" = { }; # Enable on all file types
+          };
+        };
 
         autocomplete.nvim-cmp = {
           enable = true;
@@ -110,6 +151,11 @@ in {
         };
       };
 
+
+      programs.nvf.settings.vim.clipboard = {
+        enable = true;
+      };
+
       programs.nvf.settings.vim.lsp = {
         enable = true;
         inlayHints.enable = true;
@@ -122,10 +168,9 @@ in {
         {
           # Language Defaults
           enableTreesitter = false;
-          enableLSP = true;
           enableFormat = true;
         }
-        cfg.nvf.languages
+        cfg.text.nvf.languages
       ];
 
       programs.nvf.settings.vim.keymaps = [

@@ -6,6 +6,7 @@
     ./development.nix
     ./editors.nix
     ./gaming.nix
+    ./hardware.nix
     ./emulation.nix
     ./terminal.nix
     ./theme.nix

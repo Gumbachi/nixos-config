@@ -14,15 +14,25 @@ in {
         grep => ripgrep(rg)
         grep => fzf
         find => fd
+        df => dysk
+        more,less => most
+        man => batman
+        diff => batdiff
+        watch => batwatch
     '';
 
     # Tool replacements
     eza.enable = mkEnableOption "Enable eza replacement for ls.";
-    bat.enable = mkEnableOption "Enable bat replacement for cat.";
+    bat = {
+      enable = mkEnableOption "Enable bat replacement for cat.";
+      extras.enable = mkEnableOption "Enable bat extras (batman, batdiff, prettybat, batwatch)";
+    };
     ripgrep.enable = mkEnableOption "Enable ripgrep replacement for grep";
     fd.enable = mkEnableOption "Enable fd replacement for find";
     zoxide.enable = mkEnableOption "Enable zoxide replacement for cd.";
     fzf.enable = mkEnableOption "Enable fzf fuzzy finding.";
+    dysk.enable = mkEnableOption "Enable dysk for disk usage.";
+    most.enable = mkEnableOption "Enable most to replace more and less.";
 
     # Extra tools
     systemctl-tui.enable = mkEnableOption "Enable TUI for systemctl";
@@ -53,11 +63,33 @@ in {
 
     (mkIf cfg.dropInUpgrades.enable {
       terminal.eza.enable = true;
-      terminal.bat.enable = true;
       terminal.zoxide.enable = true;
       terminal.ripgrep.enable = true;
       terminal.fd.enable = true;
       terminal.fzf.enable = true;
+      terminal.dysk.enable = true;
+      terminal.most.enable = true;
+      terminal.bat = {
+        enable = true;
+        extras.enable = true;
+      };
+
+      # Fish Aliases
+      home-manager.sharedModules = [{
+        programs.fish.shellAliases = {
+          # ls = "eza" # This one is covered by the eza fish integration in home manager
+          cat = "bat";
+          # cd = "z"; # Disabled because z is easier than cd anyways
+          # grep = "rg"; # Similar as above ^^^^^^^^^^^^^^^^^^^^^^^^^
+          find = "fd";
+          df = "dysk -f 'mp <> /boot'";
+          more = "most";
+          less = "most";
+          man = "batman";
+          diff = "batdiff";
+          watch = "batwatch --color -x";
+        };
+      }];
     })
 
     # Drop In Replacements
@@ -73,8 +105,16 @@ in {
     })
 
     (mkIf cfg.bat.enable {
-      environment.systemPackages = [ pkgs.bat ];
-      home-manager.sharedModules = [{ programs.bat.enable = true; }];
+      programs.bat = {
+        enable = true;
+        extraPackages = with pkgs.bat-extras; [ batdiff batman batwatch prettybat ];
+      };
+      home-manager.sharedModules = [{ 
+        programs.bat = {
+          enable = true;
+          extraPackages = with pkgs.bat-extras; [ batdiff batman batwatch prettybat ];
+        };
+      }];
     })
 
     (mkIf cfg.ripgrep.enable {
@@ -95,6 +135,14 @@ in {
     (mkIf cfg.fzf.enable {
       environment.systemPackages = [pkgs.fzf];
       home-manager.sharedModules = [{ programs.fzf.enable = true; }];
+    })
+
+    (mkIf cfg.dysk.enable {
+      environment.systemPackages = [pkgs.dysk];
+    })
+
+    (mkIf cfg.dysk.enable {
+      environment.systemPackages = [pkgs.most];
     })
 
     # Style tools

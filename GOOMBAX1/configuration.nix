@@ -9,7 +9,13 @@
   # Set the system theme with stylix
   theme = {
     # wallpaper = ../images/wallpapers/monokai.png;
-    monokai.enable = true;
+    # monokai.enable = true;
+    # sunset.enable = true;
+    # catppuccin-latte.enable = true;
+    # woodland.enable = true;
+    steam.enable = true;
+    # gruvbox-light.enable = true;
+    # zenbones.enable = true;
     # catppuccin-mocha.enable = true;
   };
 
@@ -51,7 +57,17 @@
       enable32Bit = true;
       extraPackages = [ pkgs.rocmPackages.rocm-smi ];
     };
-    keyboard.zsa.enable = true; 
+
+    logitech.wireless = {
+      enable = true;
+      enableGraphical = true;
+    };
+
+    keyboard.zsa = {
+      enable = true; 
+      keymapp.enable = true;
+      kontroll.enable = true;
+    };
   };
 
   fonts = {
@@ -97,12 +113,11 @@
   users.users.jared = {
     isNormalUser = true;
     description = "Jared";
-    extraGroups = [ "networkmanager" "wheel" "video" "minecraft" "syncthing" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "syncthing" ];
   };
 
   documentation = {
-    man.enable = false;
-    cheat.enable = true;
+    man.enable = true;
     tldr.enable = true;
   };
 

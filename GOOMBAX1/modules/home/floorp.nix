@@ -12,10 +12,11 @@
         ];
       };
 
-      search = {
-        default = "ddg";
-        force = true;
-      };
+      # search = {
+      #   default = "ddg";
+      #   order = [ "ddg" "google" ];
+      #   force = false;
+      # };
 
       settings = {
         "extensions.autoDisableScopes" = 0; # Auto enable plugins
@@ -53,6 +54,7 @@
           {"url":"http://192.168.69.2:8989","label":"Sonarr"},
           {"url":"http://192.168.69.2:3080","label":"Adguard"},
           {"url":"https://porkbun.com","label":"Porkbun"},
+          {"url":"https://purelymail.com","label":"Mail"},
           {"url":"https://www.nexusmods.com/","label":"Nexus Mods"},
           {"url":"https://zoom.us/join","label":"Zoom"},
           {"url":"https://labsimapp.testout.com/v6_0_662/index.html/my-courses","label":"Testout"},
@@ -70,11 +72,39 @@
 
         "extensions.formautofill.creditCards.enabled" = false;
 
-        "services.sync.prefs.sync.floorp.browser.note.memos" = false;
-
+        "browser.uiCustomization.state" = ''{
+          "placements":{
+            "widget-overflow-fixed-list":[],
+            "unified-extensions-area":["firefoxcolor_mozilla_com-browser-action"],
+            "nav-bar":[
+              "back-button",
+              "forward-button",
+              "home-button",
+              "stop-reload-button",
+              "customizableui-special-spring1",
+              "customizableui-special-spring2",
+              "save-to-pocket-button",
+              "urlbar-container",
+              "downloads-button",
+              "_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action",
+              "addon_darkreader_org-browser-action",
+              "ublock0_raymondhill_net-browser-action",
+              "unified-extensions-button"
+            ],
+            "toolbar-menubar":["menubar-items"],
+            "TabsToolbar":["workspaces-toolbar-button","tabbrowser-tabs"],
+            "PersonalToolbar":["import-button","personal-bookmarks"],
+            "statusBar":["status-text"]
+          },
+          "seen":["developer-button","sidebar-reverse-position-toolbar","undo-closed-tab","profile-manager","workspaces-toolbar-button","firefoxcolor_mozilla_com-browser-action","_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action","ublock0_raymondhill_net-browser-action","addon_darkreader_org-browser-action"],
+          "dirtyAreaCache":["nav-bar","statusBar","PersonalToolbar","TabsToolbar","unified-extensions-area","toolbar-menubar"],
+          "currentVersion":20,
+          "newElementCount":10
+        }'';
       };
 
     };
   };
 
 }
+  

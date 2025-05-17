@@ -74,7 +74,7 @@
       { 
         --cust-ytmusic-play-nav-color: #${base01};
         --cust-ytmusic-dark-background: #${base00};
-        --cust-ytmusic-dark-foreground: #${base05};
+        --cust-ytmusic-dark-foreground: #${base01};
         
         --cust-ytmusic-light-text-1: #${base0D};
         --cust-ytmusic-light-2: #${base0D};

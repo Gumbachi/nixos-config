@@ -1,14 +1,14 @@
 {
 	"window-size": {
-		"width": 1412,
-		"height": 1257
+		"width": 2560,
+		"height": 1440
 	},
-	"window-maximized": false,
+	"window-maximized": true,
 	"window-position": {
-		"x": 3854,
-		"y": 14
+		"x": 0,
+		"y": 0
 	},
-	"url": "https://music.youtube.com/watch?v=xsW0LzbYMI8&list=LM&index=0",
+	"url": "https://music.youtube.com/watch?v=Dx807s45y1U&list=LM&index=0",
 	"options": {
 		"tray": true,
 		"appVisible": true,
@@ -186,7 +186,7 @@
 			"enabled": false
 		},
 		"synced-lyrics": {
-			"enabled": true,
+			"enabled": false,
 			"preciseTiming": true,
 			"showLyricsEvenIfInexact": true,
 			"showTimeCodes": false,
@@ -204,6 +204,9 @@
 		},
 		"unobtrusive-player": {
 			"enabled": true
+		},
+		"performance-improvement": {
+			"enabled": false
 		}
 	},
 	"__internal__": {

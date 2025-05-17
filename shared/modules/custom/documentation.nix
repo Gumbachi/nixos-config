@@ -15,7 +15,8 @@ in
 
     # TLDR
     (mkIf cfg.tldr.enable {
-      environment.systemPackages = [ pkgs.tldr ];
+      environment.systemPackages = [ pkgs.tealdeer ];
+      home-manager.sharedModules = [{ programs.tealdeer.enable = true; }];
     })
 
     # Cheat

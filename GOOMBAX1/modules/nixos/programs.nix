@@ -1,6 +1,19 @@
 { inputs, pkgs, ... }: {
 
-  # shared/modules/custom/terminal.nix
+  environment.systemPackages = with pkgs; [
+    inputs.overway.packages.${system}.default
+    inputs.astal.packages.${system}.default
+
+    youtube-music
+
+    element-desktop
+
+    # Make an option for video tools
+    vlc # Video Player
+
+    r2modman # Thunderstore mod Manager
+  ];
+
   terminal = {
     dropInUpgrades.enable = true; # eza, ripgrep, bat, etc..
     ricing.enable = true; # fastfetch, cava, pipes, cbonsai
@@ -9,7 +22,6 @@
     unrar.enable = true; # Rar archives
   };
 
-  # shared/modules/custom/gaming.nix
   gaming = {
     steam = {
       enable = true;
@@ -35,7 +47,6 @@
     };
     java.enable = true;
     thunar.enable = false;
-    firefox.enable = false;
     thunderbird.enable = true;
   };
 
@@ -45,8 +56,20 @@
   };
 
   editors = {
+
     libreoffice.enable = true;
-    nvf = {
+
+    image = {
+      gimp.enable = true;
+      krita.enable = true;
+    };
+
+    video = {
+      handbrake.enable = true;
+      losslesscut.enable = true;
+    };
+
+    text.nvf = {
       enable = true;
       setDefault = true;
       languages = {
@@ -64,26 +87,7 @@
         };
       };
     };
+
   };
 
-  environment.systemPackages = with pkgs; [
-
-    inputs.overway.packages.${system}.default
-    inputs.astal.packages.${system}.default
-
-    inputs.zen-browser.packages.${system}.default # Browser
-
-    gimp3-with-plugins
-
-    youtube-music
-
-    # Make an option for video tools
-    handbrake
-    losslesscut-bin
-    vlc # Video Player
-
-    keymapp # Moonlander Software
-
-    r2modman # Thunderstore mod Manager
-  ];
 }
