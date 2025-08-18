@@ -1,4 +1,4 @@
-{ ... }: {
+{ configPath, ... }: {
     
   wayland.windowManager.hyprland = {
     systemd.enable = false; # Disabled for UWSM compatibility
@@ -7,9 +7,9 @@
       terminal = "uwsm app -- kitty";
       toggleDashboard = "astal -t overway -i overway";
       fileManager = "${terminal} yazi";
-      menu = ''rofi -show drun -run-command "uwsm app -- {cmd}" '';
-      editConfig = "${terminal} $EDITOR $CONFIG";
-      screenshot = "grimblast copy area";
+      menu = ''walker'';
+      editConfig = "${terminal} $EDITOR ${configPath}";
+      screenshot = "uwsm app -- hyprshot -m region --clipboard-only";
       browser = "uwsm app -- floorp";
       clipboard = "uwsm app -- clipse -listen";
       systemMonitor = "${terminal} btop";
@@ -24,7 +24,6 @@
       exec-once = [
         "uwsm finalize"
         "hyprlock"
-        "uwsm app -- overway"
         "${clipboard}"
         # "uwsm app -- steam -silent"
         # "[workspace 2 silent] uwsm app -- vesktop"
@@ -41,7 +40,7 @@
       };
 
       decoration = {
-        rounding = 10;
+        rounding = 4;
         active_opacity = 1.0;
         inactive_opacity = 1.0;
 
@@ -90,7 +89,7 @@
       };
 
       input = {
-        kb_options = "caps:swapescape";
+        # kb_options = "caps:swapescape";
         accel_profile = "flat";
         touchpad = {
           natural_scroll = true;
@@ -104,7 +103,7 @@
       };
 
       bind = [
-        "${mainMod}, Q, exec, ${terminal}"
+        "${mainMod}, T, exec, ${terminal}"
         "${mainMod}, C, killactive,"
         "${mainMod} SHIFT, M, exec, pkill Hyprland,"
         "${mainMod}, E, exec, ${fileManager}"

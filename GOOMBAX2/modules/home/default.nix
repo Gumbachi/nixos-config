@@ -17,6 +17,7 @@ in
     (GOOMBAX1 + /helix.nix)
     (GOOMBAX1 + /yazi.nix)
     (GOOMBAX1 + /browsers/floorp.nix)
+    (GOOMBAX1 + /launchers/walker.nix)
 
     # Custom for X2
     ./hyprlock.nix

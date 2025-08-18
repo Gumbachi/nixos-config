@@ -9,6 +9,7 @@
     playerctl
 
     jmtpfs
+    hyprshot
 
     # Make a nice little option for this
     libreoffice # Office Software
@@ -26,6 +27,8 @@
 
   file-managers.yazi.enable = true;
 
+  launchers.walker.enable = true;
+  
   browsers.floorp.enable = true;
 
   shells = {

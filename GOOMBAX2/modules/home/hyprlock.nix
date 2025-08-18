@@ -8,7 +8,6 @@ in
 {
 
   programs.hyprlock = {
-    enable = true;
     settings = {
       # GENERAL
       general = {
