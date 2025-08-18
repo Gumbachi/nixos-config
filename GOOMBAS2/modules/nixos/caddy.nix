@@ -1,36 +1,31 @@
-{...}: {
+{ config, lib, ... }:
+let
+  cfg = config.services.caddy;
+in
+{
+
+  networking.firewall.allowedTCPPorts = lib.mkIf cfg.enable [ 80 443 ];
+
   services.caddy = {
-    enable = true;
     virtualHosts = {
+
+      # ! README !
+      #
+      # Most caddy hosts configuration is found in the services respective module
+      # in hostname/modules/nixos/
+      
+      # Base Domain - For profile page eventually
       "gumbachi.com".extraConfig = ''
-        respond "Hi there. Nothing in here yet"
+        respond "Howdy"
       '';
 
-      "watch.gumbachi.com".extraConfig = ''
-        reverse_proxy localhost:8096
+      # Simple file server for image hosting mostly
+      "files.gumbachi.com".extraConfig = ''
+        root * /mnt/main/config/caddy/srv
+        file_server browse
       '';
 
-      "request.gumbachi.com".extraConfig = ''
-        reverse_proxy localhost:5055
-      '';
-
-      "photos.gumbachi.com".extraConfig = ''
-        reverse_proxy localhost:2283
-      '';
-
-      "sync.gumbachi.com".extraConfig = ''
-        reverse_proxy localhost:8384
-      '';
-
-      "home.gumbachi.com".extraConfig = ''
-        reverse_proxy 192.168.69.2:8123
-      '';
-
-      "alias.gumbachi.com".extraConfig = ''
-        reverse_proxy localhost:8000
-      '';
     };
   };
 
-  networking.firewall.allowedTCPPorts = [80 443];
 }

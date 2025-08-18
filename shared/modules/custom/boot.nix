@@ -1,8 +1,6 @@
 { config, lib, ... }:
-
-with lib;
-
 let
+  inherit (lib) mkEnableOption mkIf mkMerge;
   cfg = config.boot;
 in
 {

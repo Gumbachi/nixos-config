@@ -1,15 +1,18 @@
-{...}: {
-  services.jellyfin = {
-    enable = true;
-    openFirewall = false;
-    user = "jared";
-    configDir = "/home/jared/B/Config/Jellyfin";
+{ config, lib, ... }:
+let
+  cfg = config.services.jellyfin;
+in
+{
+
+  # Reverse Proxy
+  services.caddy.virtualHosts."watch.gumbachi.com" = lib.mkIf cfg.enable {
+    extraConfig = ''reverse_proxy localhost:8096'';
+    serverAliases = [ "jellyfin.gumbachi.com" ];
   };
 
-  services.jellyseerr = {
-    enable = true;
-    openFirewall = false;
-    # Below line causes jellyseerr to crash for some reason
-    # configDir = "/home/jared/B/Config/Jellyseerr/";
+  services.jellyfin = {
+    group = "media";
+    configDir = "/mnt/main/config/jellyfin";
   };
+ 
 }

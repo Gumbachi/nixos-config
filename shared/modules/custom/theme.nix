@@ -1,13 +1,13 @@
 { pkgs, config, lib, ... }:
 let
-  inherit (lib) mkIf mkEnableOption mkOption;
+  inherit (lib) mkEnableOption mkOption;
   cfg = config.theme;
 in
 {
 
   imports = [ 
     ../../styles/patch.nix # Nix file for patching css
-    ../../themes # Import theme modifications 
+    ../themes # Import theme modifications for the options below 
   ];
 
   options.theme = {
@@ -29,6 +29,8 @@ in
     # Default theme settings: applicable to all themes
     stylix.autoEnable = true;
     stylix.image = cfg.wallpaper;
+
+    stylix.targets.gnome.enable = false;
 
     stylix.fonts = {
       serif = {
@@ -70,6 +72,11 @@ in
       stylix.targets.cava.rainbow.enable = true;
 
       stylix.targets.floorp = {
+        colorTheme.enable = true;
+        profileNames = [ "default" ];
+      };
+
+      stylix.targets.librewolf = {
         colorTheme.enable = true;
         profileNames = [ "default" ];
       };

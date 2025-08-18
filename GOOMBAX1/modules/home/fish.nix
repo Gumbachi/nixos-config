@@ -1,5 +1,6 @@
-{ pkgs, config, ... }: {
+{ pkgs, configPath, ... }: {
 
+  # TODO: Conditional import this
   home.packages = with pkgs.fishPlugins; [
     transient-fish
     sponge
@@ -9,11 +10,10 @@
   home.shell.enableFishIntegration = true;
 
   programs.fish = {
-    enable = true;
     shellAliases = {
-      edit = "$EDITOR $CONFIG";
+      edit = "$EDITOR ${configPath}";
       rebuild = "nh os switch";
-      rebuild-boot = "sudo nixos-rebuild boot";
+      rebuild-boot = "nh os boot";
 
       sshs1 = "ssh jared@192.168.69.1";
       sshs2 = "ssh jared@192.168.69.2";

@@ -1,32 +1,34 @@
-# My NixOS Config
+# NixOS Config
 
-NixOS Config for all of my machines
+NixOS Config for all of my Nix machines. The following directions are from a
+fresh machine.
 
-## Pre-Flake-Install
+## Create Auto-Mounts
 
-1. `nix-shell -p git vim fish --run fish`
+1. Mount important drives in desired location\
+   `sudo mount /dev/sdX /mnt/ext`
+2. Regenerate hardware config with newly mounted drives\
+   `sudo nixos-generate-config`
 
-   > In the following commands, replace HOST with the correct host e.g. GOOMBAX1
+## Move Config to Home Directory
 
-2. `sudo mv /etc/nixos/hardware-configuration.nix ~/NixOS-Config/HOST/hardware-configuration.nix`
-3. Configure Extra Drives
-   1. Check drives with `sudo blkid -o list`
+1. Backup current config if you want\
+   `sudo mv /etc/nixos /etc/nixos.bak`
+2. Link /etc/nixos to config location in home\
+   `sudo ln -s ~/nixos-config/ /etc/nixos`
 
-   > Copy the UUID and remember the fs_type
+## Download Flake and Install
 
-   2. Add the following to configuration.nix
+1. Enter a shell with basic programs\
+   `nix-shell -p git vim fish --run fish`
 
-      ```nix
-      # ~/NixOS-Config/HOST/configuration.nix
+2. Clone the repo\
+   ``
+3. Move hardware configuration to proper host\
+   `sudo mv /etc/nixos/hardware-configuration.nix ~/nixos-config/<host>/hardware-configuration.nix`
 
-      fileSystems.<name> = { # Replace <name> with the desired mount point e.g "~/Drives/A" 
-        device = "/dev/disk/by-uuid/<UUID>"; # Replace <UUID> with the UUID Copied from earlier
-        fsType = <FS_TYPE>; # Replace <FS_TYPE> with the fs_type from earlier (Usually "ext4" or "exfat")
-        neededForBoot = false; # Should the computer still boot if this disk isnt present?
-      };
-      ```
-   3. Repeat for extra drives
-4. `sudo nixos-rebuild boot --flake ~/NixOS-Config#HOST`
+4. Rebuild system and reboot
+   `sudo nixos-rebuild boot --flake ~/NixOS-Config#<host>`
 5. `reboot`
 
 ## Post-Flake-Install

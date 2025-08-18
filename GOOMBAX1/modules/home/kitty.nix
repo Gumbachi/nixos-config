@@ -1,7 +1,6 @@
 { ... }: {
 
   programs.kitty = {
-    enable = true;
     settings = {
 
       # FONT SETTINGS

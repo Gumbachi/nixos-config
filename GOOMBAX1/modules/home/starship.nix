@@ -1,10 +1,6 @@
 { pkgs, ... }: {
 
-  # home.packages = [pkgs.starship];
-
   programs.starship = {
-    enable = true;
-    # enableFishIntegration = true;
     # enableInteractive = false;
     settings = {
       add_newline = true;

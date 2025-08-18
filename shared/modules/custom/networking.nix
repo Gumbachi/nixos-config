@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
-
-with lib;
-
 let
+  inherit (lib) mkEnableOption mkIf mkMerge;
   cfg = config.networking;
 in
 {
@@ -11,7 +9,7 @@ in
     toolbox.enable = mkEnableOption "Enable common programs that allow for debug/dianostics.";
   };
 
-  config = lib.mkMerge [
+  config = mkMerge [
 
     (mkIf cfg.toolbox.enable {
       programs.traceroute.enable = true;

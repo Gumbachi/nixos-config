@@ -1,96 +1,75 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
-  modulePath = ./modules/nixos;
-  sharedModulePath = ../shared/modules;
-in {
+{ ... }: {
+
   imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    ./hardware-configuration.nix # Hardware config
 
-    # System Specific
-    (modulePath + /networking.nix)
-    (modulePath + /boot.nix)
-    (modulePath + /programs.nix)
-    (modulePath + /services.nix)
-    (modulePath + /env.nix)
+    # System Software
+    ./programs.nix
+    ./services.nix
 
-    # Server stuff
-    (modulePath + /caddy.nix) # Reverse Proxy Server
-    (modulePath + /adguardhome.nix) # Adblocking
-    (modulePath + /jellyfin.nix) # Media Streaming / Requesting
-
-    # Dedicated Services
-    (modulePath + /minecraft.nix)
-    # (modulePath + /mullvad.nix)
-    # (modulePath + /deluge.nix)
-
-    # Shared - The same across systems
-    (sharedModulePath + /nvf.nix)
-    (sharedModulePath + /fish.nix)
-    (sharedModulePath + /starship.nix)
-    (sharedModulePath + /yazi.nix)
-    (sharedModulePath + /docker.nix)
+    # Config Modules
+    ../shared/modules/custom # Custom nix options. Does not install anything
+    ./modules # System specific config
   ];
 
-  boot.initrd.luks.mitigateDMAAttacks = false;
+  theme.catppuccin-mocha.enable = true;
 
-  users.defaultUserShell = pkgs.fish;
+  networking = {
+    hostName = "GOOMBAS2";
+    networkmanager.enable = true;
+    firewall.enable = true;
+    enableIPv6 = false;
+  };
 
-  services.getty.autologinUser = "jared";
+  environment.sessionVariables.CONFIG = "/home/jared/nixos-config";
 
-  catppuccin.enable = true;
+  boot = {
+    initrd.luks.mitigateDMAAttacks = true; # This is for firewire. enable when no longer needed
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    kernelParams = [ "video=DP-1:1024x1280@60,rotate=90" ];
+  };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["nvidia"]; # You need this
   hardware = {
     graphics.enable = true;
-    nvidia-container-toolkit.enable = true;
     nvidia = {
-      modesetting.enable = true;
-      powerManagement.finegrained = false;
+      modesetting.enable = false;
       open = false;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
 
-  time.timeZone = "America/New_York";
 
-  # Select internationalisation properties.
+  time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+  # # Backup FS
+  # fileSystems."/mnt/backup" = {
+  #   device = "/dev/disk/by-uuid/928B-0238";
+  #   fsType = "exfat";
+  #   options = ["users" "nofail"];
+  # };
+
+
+  # Access groups
+  users.groups = {
+    media = {};
+    backup = {};
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’. I will.
   users.users.jared = {
     isNormalUser = true;
     description = "Jared";
-    extraGroups = ["networkmanager" "wheel" "video" "minecraft" "docker"];
+    extraGroups = ["networkmanager" "wheel" "video" "minecraft" "docker" "media" "backup" ];
   };
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    auto-optimise-store = true;
+    experimental-features = ["nix-command" "flakes"];
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  documentation.man.enable = false;
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   system.stateVersion = "24.05"; # Did you read the comment? Yep
 }

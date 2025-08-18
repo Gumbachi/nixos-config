@@ -24,10 +24,11 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/home/jared/B" =
-    { device = "/dev/disk/by-uuid/61c04bdb-2343-42a6-af9c-ecb46c6ae567";
-      fsType = "ext4";
+  fileSystems."/mnt/main" =
+    { device = "/dev/disk/by-uuid/e597d037-9a36-49b0-a974-db80fd65fb9f";
+      fsType = "btrfs";
     };
+
 
   swapDevices = [ ];
 
@@ -36,16 +37,15 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.br-335b253b5c78.useDHCP = lib.mkDefault true;
-  # networking.interfaces.br-f41726cf13de.useDHCP = lib.mkDefault true;
+  # networking.interfaces.br-215c228ea7d8.useDHCP = lib.mkDefault true;
+  # networking.interfaces.br-6173dae09652.useDHCP = lib.mkDefault true;
+  # networking.interfaces.br-e606d3c434de.useDHCP = lib.mkDefault true;
   # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.veth8d6f033.useDHCP = lib.mkDefault true;
-  # networking.interfaces.vethfb706b3.useDHCP = lib.mkDefault true;
+  # networking.interfaces.veth23eae7d.useDHCP = lib.mkDefault true;
+  # networking.interfaces.vethc6d5d54.useDHCP = lib.mkDefault true;
+  # networking.interfaces.vethe1d9509.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  boot.swraid.enable = true;
-
-
 }

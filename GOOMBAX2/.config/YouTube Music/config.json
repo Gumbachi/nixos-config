@@ -29,7 +29,7 @@
 		"overrideUserAgent": false,
 		"usePodcastParticipantAsArtist": false,
 		"themes": [
-			"/home/jared/NixOS-Config/GOOMBAX2/.config/YouTube Music/mocha.css"
+			"/home/jared/nixos-config/GOOMBAX2/.config/YouTube Music/mocha.css"
 		]
 	},
 	"plugins": {
