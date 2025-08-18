@@ -20,11 +20,9 @@ in
     (GOOMBAX1 + /launchers/walker.nix)
 
     # Custom for X2
-    ./hyprlock.nix
-
-    # Already imported by their nixos module counter parts
     ./hyprland.nix
-    # ./niri.nix
+    ./hyprlock.nix
+    ./btop.nix
 
   ];
 

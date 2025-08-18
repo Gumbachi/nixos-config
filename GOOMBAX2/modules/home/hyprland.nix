@@ -12,6 +12,7 @@
       screenshot = "uwsm app -- hyprshot -m region --clipboard-only";
       browser = "uwsm app -- floorp";
       clipboard = "uwsm app -- clipse -listen";
+      gameLauncher = "uwsm app -- steam";
       systemMonitor = "${terminal} btop";
       steamGameRegex = "class:^(steam_app_.*)$";
     in { 
@@ -31,8 +32,8 @@
       ];
 
       general = {
-        gaps_in = 5;
-        gaps_out = 10;
+        gaps_in = 0;
+        gaps_out = 0;
         border_size = 4; 
         resize_on_border = false; # Click and drag on borders to resize
         allow_tearing = true;
@@ -40,7 +41,7 @@
       };
 
       decoration = {
-        rounding = 4;
+        rounding = 0;
         active_opacity = 1.0;
         inactive_opacity = 1.0;
 
@@ -119,6 +120,7 @@
         ", PRINT, exec, ${screenshot}"
         "${mainMod}, M, exec, ${systemMonitor}"
         "${mainMod}, D, exec, ${toggleDashboard}"
+        "${mainMod}, G, exec, ${gameLauncher}"
 
         "${mainMod}, H, movefocus, l"
         "${mainMod}, L, movefocus, r"
