@@ -1,15 +1,12 @@
-{ inputs, pkgs, ... }: {
+{ pkgs, ... }: {
 
   environment.systemPackages = with pkgs; [
-    inputs.overway.packages.${system}.default
-    inputs.astal.packages.${system}.default
 
     youtube-music
     vlc # Video Player
 
-    networkmanagerapplet
-
     brightnessctl
+    playerctl
 
     jmtpfs
 
@@ -21,34 +18,36 @@
 
   programs = {
     nix-ld.enable = true;
-    thunar.enable = true;
     firefox.enable = false;
     thunderbird.enable = true;
-    adb.enable = true;
-    nm-applet.enable = true;
+    adb.enable = false;
+    nm-applet.enable = false;
   };
 
-  editors = { 
-    text.nvf = {
-      enable = true;
-      setDefault = true;
-      languages = {
-        nix = {
-          enable = true;
-          format.enable = false;
-          lsp.server = "nixd";
-        };
-        markdown.enable = true;
-      };
-    };
+  file-managers.yazi.enable = true;
+
+  browsers.floorp.enable = true;
+
+  shells = {
+    fish.enable = true;
+    default = pkgs.fish;
   };
 
-  terminal = {
-    dropInUpgrades.enable = true; # eza, ripgrep, bat, etc..
-    systemctl-tui.enable = true;
-    btop.enable = true;
+  editors.text.helix = {
+    enable = true;
+    setDefault = true;
+  };
+
+  cli-tools = {
+    upgrades.enable = true; # eza, ripgrep, bat, etc..
+    starship.enable = true;
     unar.enable = true; # Zip archives
     unrar.enable = true; # Rar archives
+  };
+
+  diagnostics = {
+    btop.enable = true;
+    systemctl-tui.enable = true;
   };
 
   gaming = {

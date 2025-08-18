@@ -27,21 +27,21 @@
 
     nvf.url = "github:notashelf/nvf";
 
-    walker.url = "github:abenz1267/walker";
+    walker.url = "github:abenz1267/walker/0.13.26";
 
     caelestia.url = "github:caelestia-dots/shell";
   };
 
-  outputs = { nixpkgs, home-manager, ... } @ inputs: {
+  outputs = { nixpkgs, home-manager, ... } @ inputs: let
+    user = "jared";
+    configPath = "/home/${user}/nixos-config";
+  in {
     # Host Name = <GOOMBA><X/S/L><Number>
     # GOOMBA = Name
     # X/S = Desktop/Laptop, Server
     # Number = ID
 
-    nixosConfigurations.GOOMBAX1 = let 
-      user = "jared";
-      configPath = "/home/${user}/nixos-config";
-    in nixpkgs.lib.nixosSystem {
+    nixosConfigurations.GOOMBAX1 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { 
         inherit inputs;
@@ -82,10 +82,7 @@
       ];
     };
 
-    nixosConfigurations.GOOMBAS2 = let 
-      user = "jared";
-      configPath = "/home/${user}/nixos-config";
-    in nixpkgs.lib.nixosSystem {
+    nixosConfigurations.GOOMBAS2 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { 
         inherit inputs;
@@ -123,7 +120,7 @@
 
     nixosConfigurations.GOOMBAX2 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs user; };
       modules = [
         ./GOOMBAX2/configuration.nix # Main Config
 
@@ -134,6 +131,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "hmbak";
+            extraSpecialArgs = { inherit inputs user configPath; };
             users.jared.imports = [ ./GOOMBAX2/home.nix ];
           };
         }

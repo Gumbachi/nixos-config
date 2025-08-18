@@ -1,10 +1,6 @@
 { ... }: {
-  
-  # Just for insurance to not brick the system
-  programs.kitty.enable = true;
-  
+    
   wayland.windowManager.hyprland = {
-    enable = true;
     systemd.enable = false; # Disabled for UWSM compatibility
     settings = let
       mainMod = "SUPER";
@@ -21,8 +17,8 @@
     in { 
 
       monitor = [
-        "eDP-1, 1920x1080@60, 0x0, 1"
-        # "DP-1, 1920x1080@240, 1920x0, 1, vrr, 1"
+        "eDP-1, 1920x1080@60, 1920x0, 1"
+        "DP-1, 1920x1080@240, 0x0, 1, vrr, 1"
       ];
 
       exec-once = [

@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  userConfig = "/home/jared/NixOS-Config/GOOMBAX2/.config";
+  userConfig = "/home/jared/nixos-config/GOOMBAX2/.config";
 in
 {
 
@@ -15,11 +15,12 @@ in
 
   programs.nh = {
     enable = true;
-    flake = "$CONFIG";
+    flake = "/home/jared/nixos-config";
   };
 
+  programs.hyprlock.enable = true;
   services.hyprpaper.enable = true;
-  programs.qutebrowser.enable = true;
+  programs.qutebrowser.enable = false;
   services.hyprpolkitagent.enable = true;
 
   home.file = {

@@ -12,7 +12,7 @@
     ./modules # System specific config
   ];
 
-  theme.catppuccin-mocha.enable = true;
+  theme.monokai.enable = true;
 
   networking = {
     hostName = "GOOMBAS2";

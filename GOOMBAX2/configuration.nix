@@ -2,21 +2,24 @@
 
   imports = [
     ./hardware-configuration.nix # Mandatory hardware config
+
+    ./programs.nix
+    ./services.nix
+
     ../shared/modules/custom # Custom Nix Options
     ./modules # Modules declaring the system layout
   ];
 
   theme = {
     wallpaper = ../images/wallpapers/bisbiswas09.jpg;
-    catppuccin-mocha.enable = true; 
+    monokai.enable = true; 
   };
+
+  window-managers.hyprland.enable = true;
 
   networking = {
     hostName = "GOOMBAX2";
-    networkmanager = {
-      enable = true;
-      plugins = [ pkgs.networkmanager-openvpn ];
-    };
+    networkmanager.enable = true;
     firewall.enable = true;
   };
 
@@ -52,10 +55,6 @@
   };
 
   environment.sessionVariables.CONFIG = "/home/jared/NixOS-Config";
-
-  # Base shell Config
-  users.defaultUserShell = pkgs.fish;
-  programs.fish.enable = true;
 
   # Sound configuration
   services.pulseaudio.enable = lib.mkForce false;

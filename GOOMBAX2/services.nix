@@ -2,11 +2,11 @@
 
   services = {
 
-    fwupd.enable = true;
+    fwupd.enable = false;
 
     blueman.enable = true;
 
-    playerctld.enable = true;
+    playerctld.enable = false;
 
     printing.enable = true;
 
