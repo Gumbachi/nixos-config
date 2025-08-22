@@ -29,11 +29,11 @@ in
       home-manager.sharedModules = [{      
         home.file = {
           ".local/share/icons/Bibata-Modern-Ice/".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Ice/";
-          ".icons/Hypr-Bibata-Modern-Ice/".source = let
-            url = "https://github.com/rtgiskard/bibata_cursor/releases/download/v1.0.0/Bibata-Modern-Ice.hypr.tar.zst";
-            hash = "sha256-Ji5gqIBrAtFO3S9fCrY/LXPaq5gCY4CkxZJ1uAcjj70=";
-            name = "Bibata-Modern-Ice";
-          in "${fetchCursor url hash name}/share/icons/${name}";
+          # ".icons/Hypr-Bibata-Modern-Ice/".source = let
+          #   url = "https://github.com/rtgiskard/bibata_cursor/releases/download/v1.0.0/Bibata-Modern-Ice.hypr.tar.zst";
+          #   hash = "sha256-Ji5gqIBrAtFO3S9fCrY/LXPaq5gCY4CkxZJ1uAcjj70=";
+          #   name = "Bibata-Modern-Ice";
+          # in "${fetchCursor url hash name}/share/icons/${name}";
         };
       }];
     })

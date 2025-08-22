@@ -429,6 +429,20 @@ in
               icon = "si-retroarch";
             }];
           }
+          {
+            "TorrentLeech" = [{
+              abbr = "TL";
+              href = "https://torrentleech.org/";
+              description = "torrents";
+            }];
+          }
+          {
+            "MAM" = [{
+              abbr = "MA";
+              href = "https://www.myanonamouse.net/";
+              description = "books";
+            }];
+          }
 
         ];
       }

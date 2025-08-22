@@ -43,10 +43,7 @@
 
     nixosConfigurations.GOOMBAX1 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { 
-        inherit inputs;
-        inherit user;
-      };
+      specialArgs = { inherit inputs user; };
       modules = [
         ./GOOMBAX1/configuration.nix # Main Config
 
@@ -56,18 +53,13 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "hmbak";
-            extraSpecialArgs = { 
-              inherit inputs; 
-              inherit configPath;
-            };
+            extraSpecialArgs = { inherit inputs configPath; };
           };
           home-manager.users.${user}.imports = [ ./GOOMBAX1/home.nix ];
         }
 
         # Overlays
-        { nixpkgs.overlays = [ 
-          inputs.niri.overlays.niri 
-        ];}
+        { nixpkgs.overlays = [ inputs.niri.overlays.niri ]; }
 
         # Hardware Support
         inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
@@ -84,10 +76,7 @@
 
     nixosConfigurations.GOOMBAS2 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { 
-        inherit inputs;
-        inherit user;
-      };
+      specialArgs = { inherit inputs user; };
       modules = [
         ./GOOMBAS2/configuration.nix # Main Config
 
@@ -97,11 +86,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "hmbak";
-            extraSpecialArgs = { 
-              inherit inputs;
-              inherit user; 
-              inherit configPath;
-            };
+            extraSpecialArgs = { inherit inputs user configPath; };
           };
           home-manager.users.${user}.imports = [ ./GOOMBAS2/home.nix ];
         }
@@ -109,6 +94,7 @@
         # Hardware Support
         inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
         inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+        inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
 
         # Third Party
         inputs.nvf.nixosModules.default # Neovim

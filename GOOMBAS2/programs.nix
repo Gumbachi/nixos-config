@@ -66,7 +66,7 @@
     lm-sensors.enable = true;
   };
 
-  editors.text.nvf = {
+  editors.text.helix = {
     enable = true;
     setDefault = true;
   };
