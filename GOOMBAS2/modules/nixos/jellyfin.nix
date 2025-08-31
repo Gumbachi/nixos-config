@@ -13,6 +13,7 @@ in
   services.jellyfin = {
     group = "media";
     configDir = "/mnt/main/config/jellyfin";
+    openFirewall = true;
   };
  
 }

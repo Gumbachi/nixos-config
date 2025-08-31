@@ -1,7 +1,7 @@
 { lib, config, ... }:
 let
   cfg = config.services.adguardhome;
-  port = "3080";
+  port = config.variables.adguardhome.port;
 in
 {
 
@@ -11,15 +11,12 @@ in
     allowedUDPPorts = [ 53 5443 ];
   };
 
-  # Reverse Proxy
-  services.caddy.virtualHosts."adguard.gumbachi.com" = lib.mkIf cfg.enable {
-    extraConfig = ''reverse_proxy localhost:${port}'';
-  };
+  # Reverse Proxy in Caddy.nix
 
   services.adguardhome = {
-    port = 3080;
+    port = port;
     settings = {
-      http.address = "0.0.0.0:${port}"; 
+      http.address = "0.0.0.0:${toString port}"; 
       users = [
         {
           name = "Gumbachi";

@@ -6,6 +6,7 @@
     # System Software
     ./programs.nix
     ./services.nix
+    ./variables.nix
 
     # Config Modules
     ../shared/modules/custom # Custom nix options. Does not install anything

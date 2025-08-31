@@ -5,7 +5,7 @@
     power-profiles-daemon.enable = true;
     printing.enable = false;
     openssh.enable = true;
-    greetd.enable = true;
+    greetd.enable = false;
 
     # Outward Services
     caddy.enable = true; # Auto HTTPS and Reverse Proxy

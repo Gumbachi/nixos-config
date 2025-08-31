@@ -1,18 +1,25 @@
 { config, lib, ... }:
 let
   cfg = config.services.caddy;
+  ports = {
+    adguardhome = config.variables.adguardhome.port;
+  };
 in
 {
 
   networking.firewall.allowedTCPPorts = lib.mkIf cfg.enable [ 80 443 ];
 
   services.caddy = {
+    email = "caddy@gumbachi.com";
     virtualHosts = {
 
       # ! README !
       #
       # Most caddy hosts configuration is found in the services respective module
       # in hostname/modules/nixos/
+      "adguard.gumbachi.com" = lib.mkIf config.services.adguardhome.enable {
+        extraConfig = ''reverse_proxy localhost:${toString ports.adguardhome}'';
+      };
       
       # Base Domain - For profile page eventually
       "gumbachi.com".extraConfig = ''
