@@ -42,14 +42,6 @@ in
           style = "row";
           columns = 4;
         };
-        Media = {
-          style = "row";
-          columns = 3;
-        };
-        Other = {
-          style = "row";
-          columns = 3;
-        };
       };
         
     };
