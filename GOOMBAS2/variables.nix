@@ -8,7 +8,7 @@ in
     adguardhome.port = mkOption { default = 3080; };
     homepage.port = mkOption { default = 8082; };
     immich.port = mkOption { default = 2283; };
-    jellyfin.port = mkOption { deafult = 8096; };
+    jellyfin.port = mkOption { default = 8096; };
     jellyseerr.port = mkOption { default = 5055; };
     syncthing.port = mkOption { default = 8384; };
 

@@ -29,10 +29,6 @@ in
   age.secrets.sonarr.file = ../../secrets/sonarr.age;
   services.sonarr.environmentFiles = [ config.age.secrets.sonarr.path ];
 
-  age.secrets.prowlarr.file = ../../secrets/prowlarr.age;
-  services.prowlarr.environmentFiles = [ config.age.secrets.prowlarr.path ];
-
-
   # Main Config
   services.prowlarr = {
     # dataDir = "/mnt/main/config/prowlarr";

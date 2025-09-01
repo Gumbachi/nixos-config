@@ -11,15 +11,6 @@ in
     # e.g. allowedHosts = "homepage.gumbachi.com,dashboard.gumbachi.com, ..."
   };
 
-  # Secrets
-  # services.homepage-dashboard.environmentFile = config.age.secrets.dashboard.path; 
-  # age.secrets.dashboard = {
-  #   file = ../../secrets/dashboard.age;
-  #   owner = "root";
-  #   group = "users";
-  #   mode = "400";
-  # };
-
   # Main Configuration
   services.homepage-dashboard = {
     listenPort = port;
@@ -85,156 +76,9 @@ in
 
     # Services - https://gethomepage.dev/configs/services/
     services = [
-
-      # # Media Group
-      # { 
-      #   "Media" = [
-      #     {
-      #       "Jellyfin" = {
-      #         icon = "jellyfin.png";
-      #         description = "Better than Plex";
-      #         href = "https://watch.gumbachi.com";
-      #         siteMonitor = "https://watch.gumbachi.com";
-      #         widget = {
-      #           type = "jellyfin";
-      #           url = "http://localhost:8096";
-      #           key = "{{HOMEPAGE_VAR_JELLYFIN_KEY}}";
-      #           enableBlocks = false;
-      #           showEpisodeNumber = true;
-      #         };
-      #       };
-      #     }
-      #
-      #     {
-      #       "Jellyseerr" = {
-      #         icon = "jellyseerr.png";
-      #         description = "Better than Overseerr";
-      #         href = "https://request.gumbachi.com";
-      #         siteMonitor = "https://request.gumbachi.com";
-      #         widget = {
-      #           type = "jellyseerr";
-      #           url = "http://localhost:5055";
-      #           key = "{{HOMEPAGE_VAR_JELLYSEERR_KEY}}";
-      #         };
-      #       };
-      #     }
-      #
-      #     { 
-      #       "Radarr" = {
-      #         icon = "radarr.png";
-      #         description = "Movies";
-      #         href = "https://radarr.gumbachi.com";
-      #         siteMonitor = "https://radarr.gumbachi.com";
-      #         widget = {
-      #           type = "radarr";
-      #           url = "http://localhost:7878";
-      #           key = "{{HOMEPAGE_VAR_RADARR_KEY}}";
-      #           fields = [ "wanted" "queued" "movies" ];
-      #           enableQueue = true;
-      #         };
-      #       };
-      #     }
-      #
-      #     {
-      #       "Sonarr" = {
-      #         icon = "sonarr.png";
-      #         description = "Shows";
-      #         href = "https://sonarr.gumbachi.com";
-      #         siteMonitor = "https://sonarr.gumbachi.com";
-      #         widget = {
-      #           type = "sonarr";
-      #           url = "http://localhost:8989";
-      #           key = "{{HOMEPAGE_VAR_SONARR_KEY}}";
-      #         };
-      #       };
-      #     }
-      #
-      #
-      #     {
-      #       "Deluge VPN" = {
-      #         icon = "deluge.png";
-      #         description = "Bittorrent";
-      #         href = "https://sail.gumbachi.com";
-      #         siteMonitor = "https://sail.gumbachi.com";
-      #         widget = {
-      #           type = "deluge";
-      #           url = "http://localhost:8112";
-      #           password = "{{HOMEPAGE_VAR_DELUGE_PASSWORD}}";
-      #           enableLeechProgress = true;
-      #           fields = [ "leech" "seed" "download" "upload" ];
-      #         };
-      #       };
-      #     }
-      #
-      #     {
-      #       "Prowlarr" = {
-      #         icon = "prowlarr.png";
-      #         description = "Indexer Management";
-      #         href = "https://prowlarr.gumbachi.com";
-      #         siteMonitor = "https://prowlarr.gumbachi.com";
-      #         widget = {
-      #           type = "prowlarr";
-      #           url = "http://localhost:9696";
-      #           key = "{{HOMEPAGE_VAR_PROWLARR_KEY}}";
-      #           fields = [ "numberOfGrabs" "numberOfQueries" ];
-      #         };
-      #       };
-      #     }
-      #
-      #   ];
-      # }
-
-      # # Network Group
-      # {
-      #   "Other" = [
-      #
-      #     {
-      #       "Adguard" = {
-      #         icon = "adguard-home.png";
-      #         description = "DNS ad-blocking";
-      #         href = "https://adguard.gumbachi.com";
-      #         siteMonitor = "https://adguard.gumbachi.com";
-      #         widget = {
-      #           type = "adguard";
-      #           url = "http://localhost:3080";
-      #           username = "{{HOMEPAGE_VAR_ADGUARD_USERNAME}}";
-      #           password = "{{HOMEPAGE_VAR_ADGUARD_PASSWORD}}";
-      #           fields = [ "queries" "blocked" "latency" ];
-      #         };
-      #       };
-      #     }
-      #
-      #     {
-      #       "Immich" = {
-      #         icon = "immich.png";
-      #         description = "Cloud Photos";
-      #         href = "https://photos.gumbachi.com";
-      #         siteMonitor = "https://photos.gumbachi.com";
-      #         widget = {
-      #           type = "immich";
-      #           version = 2;
-      #           url = "http://localhost:2283";
-      #           key = "{{HOMEPAGE_VAR_IMMICH_KEY}}";
-      #           fields = [ "photos" "videos" "storage" ];
-      #         };
-      #       };
-      #     }
-      #   ];
-      # }
-
       # Uptime Checks
       {
         "Sites" = [
-
-          {
-            "Jellyseerr" = {
-              icon = "jellyseerr.png";
-              description = "Better than Overseerr";
-              href = "https://request.gumbachi.com";
-              siteMonitor = "http://localhost:5055";
-            };
-          }
-
           {
             "Jellyfin" = {
               icon = "jellyfin.png";
@@ -244,14 +88,6 @@ in
             };
           }
 
-          # {
-          #   "Deluge VPN" = {
-          #     icon = "deluge.png";
-          #     description = "Bittorrent";
-          #     href = "https://sail.gumbachi.com";
-          #     siteMonitor = "http://localhost:8112";
-          #   };
-          # }
           {
             "Qbit VPN" = {
               icon = "qbittorrent.png";
@@ -315,11 +151,11 @@ in
             };
           }
           {
-            "Deluge Open" = {
+            "Deluge" = {
               icon = "deluge.png";
               description = "Bittorrent";
               href = "https://open-deluge.gumbachi.com";
-              siteMonitor = "http://localhost:8111";
+              siteMonitor = "http://localhost:8112";
             };
           }
 
