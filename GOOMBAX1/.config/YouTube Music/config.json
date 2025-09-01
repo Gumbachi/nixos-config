@@ -1,14 +1,14 @@
 {
 	"window-size": {
-		"width": 2560,
-		"height": 1440
+		"width": 720,
+		"height": 1280
 	},
 	"window-maximized": true,
 	"window-position": {
 		"x": 0,
 		"y": 0
 	},
-	"url": "https://music.youtube.com/watch?v=qMxfhhrl-gU&list=LM&index=0",
+	"url": "https://music.youtube.com/watch?v=5JhZdu4O2w0&list=LM&index=0",
 	"options": {
 		"tray": true,
 		"appVisible": true,
@@ -49,7 +49,7 @@
 				"volumeUp": "",
 				"volumeDown": ""
 			},
-			"savedVolume": 40
+			"savedVolume": 35
 		},
 		"discord": {
 			"listenAlong": true,
@@ -186,15 +186,12 @@
 			"enabled": false
 		},
 		"synced-lyrics": {
-			"enabled": false,
+			"enabled": true,
 			"preciseTiming": true,
 			"showLyricsEvenIfInexact": true,
 			"showTimeCodes": false,
 			"defaultTextString": "———",
 			"lineEffect": "fancy"
-		},
-		"lyrics-genius": {
-			"enabled": true
 		},
 		"equalizer": {
 			"enabled": false
@@ -211,7 +208,7 @@
 	},
 	"__internal__": {
 		"migrations": {
-			"version": "3.9.0"
+			"version": "3.10.0"
 		}
 	}
 }

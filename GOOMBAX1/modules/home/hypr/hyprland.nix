@@ -33,7 +33,6 @@
         "[workspace 1 silent] ${systemMonitor}"
         "[workspace 2 silent] uwsm app -- vesktop"
         "[workspace special:magic silent] ${browser}" # preload the browser so its quicker to launch
-        "uwsm app -- overway"
       ];
 
       general = {

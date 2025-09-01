@@ -2,14 +2,13 @@
 
   environment.systemPackages = with pkgs; [
     inputs.overway.packages.${system}.default
-    inputs.agenix.packages.${system}.default
-
-    inputs.caelestia.packages.${system}.default
 
     youtube-music
     quickshell
+    poptracker
 
     playerctl
+    archipelago
 
     wl-clipboard # Clipboard backend
     hyprpicker # Color Picker
@@ -87,7 +86,7 @@
     devenv.enable = true;
     direnv.enable = true;
     direnv.silent = true;
-    android.enable = true;
+    android.enable = false;
     just.enable = true;
   };
 

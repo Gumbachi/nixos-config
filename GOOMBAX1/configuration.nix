@@ -12,7 +12,7 @@
 
   # Set the system theme with stylix
   theme = {
-    wallpaper = ../images/wallpapers/swan.jpg;
+    wallpaper = ../images/wallpapers/mountain.jpg;
     monokai.enable = true;
     # sunset.enable = true;
   };
@@ -68,7 +68,7 @@
 
     logitech.wireless = {
       enable = true;
-      enableGraphical = false;
+      enableGraphical = true;
     };
 
     keyboard.zsa = {
