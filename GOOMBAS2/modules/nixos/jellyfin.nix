@@ -1,13 +1,13 @@
 { config, lib, ... }:
 let
   cfg = config.services.jellyfin;
+  port = config.variables.jellyfin.port;
 in
 {
 
   # Reverse Proxy
   services.caddy.virtualHosts."watch.gumbachi.com" = lib.mkIf cfg.enable {
-    extraConfig = ''reverse_proxy localhost:8096'';
-    serverAliases = [ "jellyfin.gumbachi.com" ];
+    extraConfig = ''reverse_proxy localhost:${toString port}'';
   };
 
   services.jellyfin = {

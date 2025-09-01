@@ -11,11 +11,10 @@ in
     # Reverse Proxy
     services.caddy.virtualHosts."sail.gumbachi.com" = {
       extraConfig = ''reverse_proxy localhost:8112'';
-      serverAliases = [ "deluge.gumbachi.com" ];
     };
 
     # Secrets
-    age.secrets.deluge-vpn.file = ../../../secrets/deluge-vpn.age;
+    age.secrets.deluge-vpn.file = ../../secrets/deluge-vpn.age;
 
     virtualisation.oci-containers.containers.deluge-vpn = {
       image = "docker.io/binhex/arch-delugevpn:latest";

@@ -1,7 +1,7 @@
 { config, lib, ... }:
 let
   cfg = config.services.qbit-vpn;
-  port = 8115;
+  port = config.variables.qbit-vpn.port;
 in
 {
 
@@ -15,13 +15,15 @@ in
     };
 
     # Secrets
-    age.secrets.qbit-vpn.file = ../../../secrets/qbit-vpn.age;
+    age.secrets.qbit-vpn.file = ../../secrets/qbit-vpn.age;
+    virtualisation.oci-containers.containers.qbit-vpn.environmentFiles = [
+      config.age.secrets.qbit-vpn.path
+    ]; # Secrets
 
     virtualisation.oci-containers.containers.qbit-vpn = {
       image = "docker.io/binhex/arch-qbittorrentvpn:latest";
       privileged = true;
       capabilities.NET_ADMIN = true;
-      environmentFiles = [ config.age.secrets.qbit-vpn.path ]; # Secrets
       environment = {
         TZ = "America/New_York";
         VPN_ENABLED = "yes";
@@ -39,14 +41,14 @@ in
         DELUGE_ENABLE_WEBUI_PASSWORD = "yes";
         VPN_INPUT_PORTS = "1234"; 
         VPN_OUTPUT_PORTS = "5678"; 
-        WEBUI_PORT = "8668";
+        WEBUI_PORT = "${toString port}";
         DEBUG = "false";
         PUID = "1000";
         PGID = "986"; # Media Group
         UMASK = "000";
       };
       ports = [
-        "8668:8668" 
+        "${toString port}:${toString port}" 
         # "8118:8118" # Privoxy
         # "9118:9118" # Socks
         "58946:58946" 

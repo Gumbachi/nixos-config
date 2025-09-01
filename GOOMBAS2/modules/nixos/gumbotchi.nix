@@ -4,9 +4,7 @@ let
 in
 {
 
-  options.services = {
-    gumbotchi.enable = lib.mkEnableOption "Enable gumbotchi as a service";
-  };
+  options.services.gumbotchi.enable = lib.mkEnableOption "Enable gumbotchi as a service";
 
   config = lib.mkIf cfg.enable {
 

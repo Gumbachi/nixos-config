@@ -1,12 +1,11 @@
 { config, lib, ... }:
 let
-  inherit (lib) mkIf;
   cfg = config.services;
   ports = {
-    bazarr = 6767;
-    prowlarr = 9696;
-    radarr = 7878;
-    sonarr = 8989;
+    bazarr = config.variables.bazarr.port;
+    prowlarr = config.variables.prowlarr.port;
+    radarr = config.variables.radarr.port;
+    sonarr = config.variables.sonarr.port;
   };
 in
 {
@@ -14,62 +13,64 @@ in
   # Reverse Proxy
   services.caddy.virtualHosts = {
     "prowlarr.gumbachi.com".extraConfig = 
-      mkIf cfg.prowlarr.enable ''reverse_proxy localhost:${toString ports.prowlarr}'';
+      lib.mkIf cfg.prowlarr.enable ''reverse_proxy localhost:${toString ports.prowlarr}'';
     "sonarr.gumbachi.com".extraConfig = 
-      mkIf cfg.sonarr.enable ''reverse_proxy localhost:${toString ports.sonarr}'';
+      lib.mkIf cfg.sonarr.enable ''reverse_proxy localhost:${toString ports.sonarr}'';
     "bazarr.gumbachi.com".extraConfig = 
-      mkIf cfg.bazarr.enable ''reverse_proxy localhost:${toString ports.bazarr}'';
+      lib.mkIf cfg.bazarr.enable ''reverse_proxy localhost:${toString ports.bazarr}'';
     "radarr.gumbachi.com".extraConfig = 
-      mkIf cfg.radarr.enable ''reverse_proxy localhost:${toString ports.radarr}'';
+      lib.mkIf cfg.radarr.enable ''reverse_proxy localhost:${toString ports.radarr}'';
   };
 
-  # API Keys
-  age.secrets = {
-    radarr.file = ../../secrets/radarr.age;
-    sonarr.file = ../../secrets/sonarr.age;
-    prowlarr.file = ../../secrets/prowlarr.age;
+  # Secrets
+  age.secrets.radarr.file = ../../secrets/radarr.age;
+  services.radarr.environmentFiles = [ config.age.secrets.radarr.path ];
+
+  age.secrets.sonarr.file = ../../secrets/sonarr.age;
+  services.sonarr.environmentFiles = [ config.age.secrets.sonarr.path ];
+
+  age.secrets.prowlarr.file = ../../secrets/prowlarr.age;
+  services.prowlarr.environmentFiles = [ config.age.secrets.prowlarr.path ];
+
+
+  # Main Config
+  services.prowlarr = {
+    # dataDir = "/mnt/main/config/prowlarr";
+    openFirewall = true;
+    settings.server.port = ports.prowlarr;
+    # settings.auth = {
+    #   authenticationmethod = "Forms";
+    #   authenticationrequired = "Enabled";
+    # };
+    # This settings gets the DB to lock too often just hold off until nixified
   };
 
-  services = {
-    prowlarr = {
-      # dataDir = "/mnt/main/config/prowlarr";
-      environmentFiles = [ config.age.secrets.prowlarr.path ];
-      settings.server.port = ports.prowlarr;
-      # settings.auth = {
-      #   authenticationmethod = "Forms";
-      #   authenticationrequired = "Enabled";
-      # };
-      # This settings gets the DB to lock too often just hold off until nixified
+  services.radarr = {
+    openFirewall = true;
+    settings.server.port = ports.radarr;
+    group = "media";
+    dataDir = "/mnt/main/config/radarr";
+    settings.auth = {
+      authenticationmethod = "Forms";
+      authenticationrequired = "Enabled";
     };
+  };
 
-    radarr = {
-      group = "media";
-      dataDir = "/mnt/main/config/radarr";
-      environmentFiles = [ config.age.secrets.radarr.path ];
-      settings.server.port = ports.radarr;
-      settings.auth = {
-        authenticationmethod = "Forms";
-        authenticationrequired = "Enabled";
-      };
+  services.sonarr = {
+    openFirewall = true;
+    settings.server.port = ports.sonarr;
+    group = "media";
+    dataDir = "/mnt/main/config/sonarr";
+    settings.auth = {
+      authenticationmethod = "Forms";
+      authenticationrequired = "Enabled";
     };
+  };
 
-    sonarr = {
-      group = "media";
-      dataDir = "/mnt/main/config/sonarr";
-      environmentFiles = [ config.age.secrets.sonarr.path ];
-      settings.server.port = ports.sonarr;
-      settings.auth = {
-        authenticationmethod = "Forms";
-        authenticationrequired = "Enabled";
-      };
-    };
-
-    bazarr = {
-      listenPort = ports.bazarr; # Bazarr option gotta be different for some reason
-      group = "media";
-      dataDir = "/mnt/main/config/bazarr";
-    };
-
+  services.bazarr = {
+    listenPort = ports.bazarr; # Bazarr option gotta be different for some reason
+    group = "media";
+    dataDir = "/mnt/main/config/bazarr";
   };
 
 }

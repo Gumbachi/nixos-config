@@ -1,34 +1,36 @@
 { config, lib, ... }:
 let
   cfg = config.services.homepage-dashboard;
-  port = 8082;
+  port = config.variables.homepage.port;
 in
 {
   # Reverse proxy
   services.caddy.virtualHosts."homepage.gumbachi.com" = lib.mkIf cfg.enable {
     extraConfig = ''reverse_proxy localhost:${toString port}'';
-    serverAliases = [ "dashboard.gumbachi.com" ];
+    # if you add a server alias make sure to add to allowed hosts
+    # e.g. allowedHosts = "homepage.gumbachi.com,dashboard.gumbachi.com, ..."
   };
 
   # Secrets
-  age.secrets.dashboard = {
-    file = ../../secrets/dashboard.age;
-    owner = "root";
-    group = "users";
-    mode = "400";
-  };
+  # services.homepage-dashboard.environmentFile = config.age.secrets.dashboard.path; 
+  # age.secrets.dashboard = {
+  #   file = ../../secrets/dashboard.age;
+  #   owner = "root";
+  #   group = "users";
+  #   mode = "400";
+  # };
 
+  # Main Configuration
   services.homepage-dashboard = {
     listenPort = port;
     openFirewall = true;
-    allowedHosts = "homepage.gumbachi.com,dashboard.gumbachi.com";
-    environmentFile = config.age.secrets.dashboard.path;
+    allowedHosts = "homepage.gumbachi.com";
 
     # Settings - https://gethomepage.dev/configs/settings/
     settings = {
       title = "Home";
       description = "GOOMBAS2 Dashboard";
-      # theme = "dark";
+      theme = "dark";
       useEqualHeights = true;
       hideVersion = true;
       target = "_self"; # Open in place of homepage

@@ -11,10 +11,15 @@ in
     allowedUDPPorts = [ 53 5443 ];
   };
 
-  # Reverse Proxy in Caddy.nix
+  # Reverse Proxy
+  services.caddy.virtualHosts."adguard.gumbachi.com" = lib.mkIf cfg.enable {
+    extraConfig = ''reverse_proxy localhost:${toString port}'';
+  };
 
+  # Main Configuration
   services.adguardhome = {
     port = port;
+    openFirewall = true;
     settings = {
       http.address = "0.0.0.0:${toString port}"; 
       users = [

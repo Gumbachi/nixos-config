@@ -12,9 +12,9 @@
     ./ssh.nix
 
     # Torrent Clients
-    ./torrent-clients/deluge.nix
-    ./torrent-clients/deluge-vpn.nix
-    ./torrent-clients/qbit-vpn.nix
+    ./deluge.nix
+    ./deluge-vpn.nix
+    ./qbit-vpn.nix
 
     # Homelab services
     ./adguardhome.nix
@@ -24,11 +24,9 @@
     ./immich.nix
     ./jellyfin.nix
     ./jellyseerr.nix
-    ./matrix.nix
     ./minecraft.nix
     ./servarr.nix
     ./syncthing.nix
-    ./uptime-kuma.nix
     ./vibrant.nix
 
   ];
