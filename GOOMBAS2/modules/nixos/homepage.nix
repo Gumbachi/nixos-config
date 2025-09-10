@@ -30,7 +30,7 @@ in
       cardBlur = "xl";
       favicon = "https://files.gumbachi.com/icons/home.png";
       background = {
-        image = "https://files.gumbachi.com/wallpapers/nix-gray.png";
+        image = "https://files.gumbachi.com/wallpapers/monokai.png";
         blur = "md";
       };
       layout = {

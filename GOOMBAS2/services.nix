@@ -23,7 +23,7 @@
 
     # Containerized
     gumbotchi.enable = false; # The goat
-    vibrant.enable = false; # Color bot
+    vibrant.enable = true; # Color bot
     qbit-vpn.enable = true; # Qbit under a vpn in a container
 
   };

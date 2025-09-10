@@ -27,11 +27,10 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    kernelParams = [ "video=DP-1:1024x1280@60,rotate=90" ];
   };
 
   hardware = {
-    # graphics.enable = true;
+    graphics.enable = true;
     nvidia.open = false;
   };
 
