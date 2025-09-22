@@ -1,56 +1,55 @@
 # NixOS Config
 
 NixOS Config for all of my Nix machines. The following directions are from a
-fresh machine.
+fresh machine that wants to replicate GOOMBAX1.
 
-## Create Auto-Mounts
+## Install essential programs and clone repo
+
+1. Install important programs in a shell\
+   `nix-shell -p git fish helix --run fish`
+
+2. Clone the repo\
+   `cd /home/jared/ && git clone github.com/gumbachi/nixos-config`
+
+## Create auto-mounts
 
 1. Mount important drives in desired location\
    `sudo mount /dev/sdX /mnt/ext`
 2. Regenerate hardware config with newly mounted drives\
    `sudo nixos-generate-config`
 
-## Move Config to Home Directory
+## Move hardware-config to cloned config
 
-1. Backup current config if you want\
-   `sudo mv /etc/nixos /etc/nixos.bak`
-2. Link /etc/nixos to config location in home\
-   `sudo ln -s ~/nixos-config/ /etc/nixos`
+1. Move hardware configuration to proper host\
+   `sudo mv /etc/nixos/hardware-configuration.nix ~/nixos-config/GOOMBAX1/hardware-configuration.nix`
 
-## Download Flake and Install
+## Finish installation
 
-1. Enter a shell with basic programs\
-   `nix-shell -p git vim fish --run fish`
-
-2. Clone the repo\
-   ``
-3. Move hardware configuration to proper host\
-   `sudo mv /etc/nixos/hardware-configuration.nix ~/nixos-config/<host>/hardware-configuration.nix`
-
-4. Rebuild system and reboot
-   `sudo nixos-rebuild boot --flake ~/NixOS-Config#<host>`
-5. `reboot`
+1. Rebuild system from flake and reboot\
+   `sudo nixos-rebuild boot --flake ~/nixos-config#GOOMBAX1`
+2. `reboot`
 
 ## Post-Flake-Install
 
-1. Sound Devices may need to be configured
+1. Configure Sound Devices
+   - Disable unused devices in `pavucontrol`
 
-   > Use pavucontrol
-
-2. Some apps that probably need to be manually configured
-
+2. Sign in and configure services
+   - Bitwarden
    - YouTube Music
    - Vesktop
-     - Disable Automatic Gain Control and Echo Cancellation
+      - Disable Automatic Gain Control in Voice & Video
    - Steam
-     - Enable proton in compatibility
-     - Allow background shader processing
-     - Add external storage locations
+      - Set Compatibility to GE-Proton in Compatibility
+      - Set UI Scale and Color in Accessibility
+      - Allow background shaders in Downloads
+      - Set Library as opening page in Interface
+      - Select external drive to restore games
 
 3. Set up Git SSH and change origin
 
    1. `ssh-keygen -t ed25519 -a 100 -C "github"`
    2. `cat ~/.ssh/id_ed25519.pub`
    3. Copy output and add to Github SSH Tokens
-   4. `cd ~/NixOS-Config` and
-      `git remote set-url origin git@github.com:Gumbachi/NixOS-Config.git`
+   4. `cd ~/nixos-config` and
+      `git remote set-url origin git@github.com:Gumbachi/nixos-config.git`
