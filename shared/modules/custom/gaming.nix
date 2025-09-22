@@ -55,7 +55,7 @@ in {
 
     # Steam-TUI
     (mkIf cfg.steam-tui.enable { 
-      environment.systemPackages = [ pkgs.steam-tui ];
+      environment.systemPackages = [ pkgs.steam-tui pkgs.steamcmd ];
     })
 
     # Heroic

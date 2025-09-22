@@ -27,7 +27,7 @@
 
     nvf.url = "github:notashelf/nvf";
 
-    walker.url = "github:abenz1267/walker/0.13.26";
+    walker.url = "github:abenz1267/walker";
 
     caelestia.url = "github:caelestia-dots/shell";
   };
@@ -63,6 +63,7 @@
 
         # Hardware Support
         inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+        inputs.nixos-hardware.nixosModules.common-gpu-amd
 
         # Third Party
         inputs.stylix.nixosModules.stylix

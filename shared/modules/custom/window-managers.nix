@@ -44,7 +44,10 @@ in {
       # Home Manager
       home-manager.sharedModules = [{
         programs.kitty.enable = true;
-        wayland.windowManager.hyprland.enable = true;
+        wayland.windowManager.hyprland = {
+          enable = true;
+          systemd.enable = false; # Disabled for UWSM compatibility
+        };
       }];
 
     })

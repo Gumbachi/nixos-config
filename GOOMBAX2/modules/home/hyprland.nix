@@ -10,7 +10,7 @@
       menu = ''walker'';
       editConfig = "${terminal} $EDITOR ${configPath}";
       screenshot = "uwsm app -- hyprshot -m region --clipboard-only";
-      browser = "uwsm app -- floorp";
+      browser = "uwsm app -- librewolf";
       clipboard = "uwsm app -- clipse -listen";
       gameLauncher = "uwsm app -- steam";
       systemMonitor = "${terminal} btop";

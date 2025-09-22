@@ -1,4 +1,4 @@
-{ ... }: {
+{ configPath, ... }: {
 
   # System Hyprland config in GOOMBAX1/modules/nixos/hyprland.nix
     
@@ -10,22 +10,23 @@
       toggleDashboard = "astal -i overway -t overway";
       fileManager = "${terminal} yazi";
       menu = ''walker'';
-      editor = "${terminal} $EDITOR";
+      confedit = "${terminal} $EDITOR ${configPath}";
       screenshot = "uwsm app -- hyprshot -m region --clipboard-only";
-      browser = "uwsm app -- floorp";
+      browser = "uwsm app -- chromium";
       systemMonitor = "${terminal} btop";
       gameLauncher = "uwsm app -- steam";
       steamGameRegex = "class:^(steam_app_.*)$";
     in { 
 
       monitor = [
-        "DP-1, 3840x2160@240, 2880x400, 1.5"
+        "DP-1, 3840x2160@240, 2880x400, 1.5, bitdepth, 10"
         "DP-2, 2560x1440@120, 1440x0, 1, transform, 1"
         "DP-3, 2560x1440@120, 0x0, 1, transform, 1" 
       ];
 
       exec-once = [
         "uwsm finalize"
+        "systemctl start --user elephant" # Remove when patched in a few days
         "hyprlock"
         "${gameLauncher} -silent" 
         "[workspace 1 silent] ${terminal} cava"
@@ -118,7 +119,7 @@
         "${mainMod}, R, exec, ${menu}"
         "${mainMod}, P, pseudo, # dwindle"
         "${mainMod}, Y, togglesplit, # dwindle"
-        "${mainMod}, N, exec, ${editor}"
+        "${mainMod}, N, exec, ${confedit}"
         "${mainMod} SHIFT, F, fullscreen, 1"
         "${mainMod}, F, fullscreen, 0"
         "${mainMod}, B, exec, ${browser}"
@@ -184,7 +185,6 @@
         "2, monitor:DP-2, default:true, persistent:true"
         "3, monitor:DP-1, default:true, persistent:true"
         "4, monitor:DP-1, decorate:false, border:false"
-        "5, monitor:DP-1"
       ];
 
       windowrule = [

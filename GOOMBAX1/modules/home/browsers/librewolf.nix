@@ -1,14 +1,12 @@
 { ... }: {
 
-  programs.librewolf = {
-    profiles.default.extensions.force = true;
-    settings = {
-      "sidebar.verticalTabs" = true;
-      "browser.toolbars.bookmarks.visibility" = "never";
+  programs.librewolf.profiles.default.extensions.force = true;
+    # settings = {
+    #   "sidebar.verticalTabs" = true;
+    #   "browser.toolbars.bookmarks.visibility" = "never";
 
-      "browser.newtabpage.activity-stream.showSearch" = false;
-    };
-  };
+    #   "browser.newtabpage.activity-stream.showSearch" = false;
+    # };
 
 }
 

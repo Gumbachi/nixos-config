@@ -1,14 +1,12 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 let
-  inherit (lib) mkEnableOption mkOption mkIf;
+  inherit (lib) mkPackageOption mkOption;
   inherit (lib.types) str listOf;
-  module = "default-apps";
+  module = "defaults";
   cfg = config.${module};
 in {
 
   options.${module} = {
-
-    enable = mkEnableOption "Enable settings default apps via this module";
 
     browser = mkOption {
       type = listOf str;
@@ -16,33 +14,45 @@ in {
       example = [ "firefox.desktop" "chromium.desktop" ];
       default = [];
     };
+
     editor = mkOption {
       type = listOf str;
       description = "Set the default text editor";
       example = [ "nvim.desktop" ];
       default = [];
     };
+
     video = mkOption {
       type = listOf str;
       description = "Set the default video player";
       example = [ "mpv.desktop" ];
       default = [];
     };
+
     audio = mkOption {
       type = listOf str;
       description = "Set the default audio player";
       example = [ "mpv.desktop" ];
       default = [];
     };
+
     image = mkOption {
       type = listOf str;
       description = "Set the default image viewer";
       example = [ "imv.desktop" ];
       default = [];
     };
+
+    shell = mkPackageOption pkgs "bash" {};
   };
 
-  config = mkIf cfg.enable {
+  config = {
+
+    # Shell
+    users.defaultUserShell = cfg.shell;
+    
+    
+    
     home-manager.sharedModules = [{
           
       xdg.mimeApps = let
