@@ -53,3 +53,8 @@ fresh machine that wants to replicate GOOMBAX1.
    3. Copy output and add to Github SSH Tokens
    4. `cd ~/nixos-config` and
       `git remote set-url origin git@github.com:Gumbachi/nixos-config.git`
+
+## Backups to make
+
+1. SSH keys located in ~/.ssh
+2. Data not backed up to github or ext
