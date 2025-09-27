@@ -10,6 +10,7 @@
     playerctl
     # archipelago
     # poptracker
+    vscode
 
     wl-clipboard # Clipboard backend
     hyprpicker # Color Picker

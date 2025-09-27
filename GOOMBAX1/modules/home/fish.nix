@@ -15,12 +15,12 @@
       rebuild = "nh os switch";
       rebuild-boot = "nh os boot";
 
-      sshs1 = "ssh jared@192.168.69.1";
       sshs2 = "ssh jared@192.168.69.2";
     };
 
     shellAbbrs = {
       nixgc = "sudo nix-collect-garbage -d";
+      nclocal = "nc 127.0.0.1 5000";
     };
 
     shellInit = ''set fish_greeting'';

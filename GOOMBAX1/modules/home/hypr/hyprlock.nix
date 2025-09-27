@@ -61,7 +61,7 @@ in
       # USER AVATAR
       image = {
         monitor = "${monitor}";
-        path = builtins.toString ../../../../images/avatars/5mort.jpg;
+        path = builtins.toString ../../../../images/avatars/alligator.jpg;
         size = 400;
         border_color = "rgb(${accentColor})";
         border_size = 4;
