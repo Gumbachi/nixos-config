@@ -3,18 +3,18 @@
   # System Hyprland config in GOOMBAX1/modules/nixos/hyprland.nix
     
   wayland.windowManager.hyprland = {
-    systemd.enable = false; # Disabled for UWSM compatibility
+    # systemd.enable = false; # Disabled for UWSM compatibility
     settings = let
       mainMod = "SUPER";
-      terminal = "uwsm app -- kitty";
+      terminal = "kitty";
       toggleDashboard = "astal -i overway -t overway";
       fileManager = "${terminal} yazi";
       menu = ''walker'';
       confedit = "${terminal} $EDITOR ${configPath}";
-      screenshot = "uwsm app -- hyprshot -m region --clipboard-only";
-      browser = "uwsm app -- chromium";
+      screenshot = "hyprshot -m region --clipboard-only";
+      browser = "librewolf";
       systemMonitor = "${terminal} btop";
-      gameLauncher = "uwsm app -- steam";
+      gameLauncher = "steam";
       steamGameRegex = "class:^(steam_app_.*)$";
     in { 
 
@@ -25,14 +25,15 @@
       ];
 
       exec-once = [
-        "uwsm finalize"
-        "systemctl start --user elephant" # Remove when patched in a few days
+        "dbus-update-activation-environment --systemd --all"
         "hyprlock"
-        "${gameLauncher} -silent" 
+        "systemctl start --user elephant" # Remove when patched in a few days
+        "systemctl start --user hyprpaper"
+        "${gameLauncher} -silent"
         "[workspace 1 silent] ${terminal} cava"
-        "[workspace 2 silent] uwsm app -- youtube-music"
+        "[workspace 2 silent] youtube-music"
         "[workspace 1 silent] ${systemMonitor}"
-        "[workspace 2 silent] uwsm app -- vesktop"
+        "[workspace 2 silent] vesktop"
         "[workspace special:magic silent] ${browser}" # preload the browser so its quicker to launch
       ];
 

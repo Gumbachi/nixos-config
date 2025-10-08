@@ -15,11 +15,8 @@ in {
     # Hyprland
     (mkIf cfg.hyprland.enable { 
 
-      # NixOS
-      programs.hyprland = {
-        enable = true;
-        withUWSM = true;
-      };
+      # NixOS Config Options
+      programs.hyprland.enable = true;
 
       environment.sessionVariables = {
         NIXOS_OZONE_WL = "1";
@@ -27,15 +24,17 @@ in {
         QT_QPA_PLATFORM = "wayland;xcb";
       };
 
+
       # Greetd: Autostart Hyprland on boot
       services.greetd = let
         session = {
-          command = "uwsm start hyprland-uwsm.desktop > /dev/null";
+          command = "Hyprland > /dev/null";
           user = "jared";
         };
       in {
         enable = true;
         settings = {
+          terminal.vt = 1;
           initial_session = session;
           default_session = session;
         };
@@ -46,7 +45,7 @@ in {
         programs.kitty.enable = true;
         wayland.windowManager.hyprland = {
           enable = true;
-          systemd.enable = false; # Disabled for UWSM compatibility
+          systemd.enable = lib.mkForce false; # Disabled for UWSM compatibility
         };
       }];
 

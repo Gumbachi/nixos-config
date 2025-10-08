@@ -1,6 +1,16 @@
 { ... }: {
 
-  programs.librewolf.profiles.default.extensions.force = true;
+  programs.librewolf = {
+    profiles.default = {
+      extensions.force = true;
+      id = 0;
+      isDefault = true;
+    };
+    profiles.jared = {
+      extensions.force = true;
+      id = 1;
+    };
+  };
     # settings = {
     #   "sidebar.verticalTabs" = true;
     #   "browser.toolbars.bookmarks.visibility" = "never";

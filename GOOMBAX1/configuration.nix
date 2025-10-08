@@ -12,7 +12,7 @@
 
   # Set the system theme with stylix
   theme = {
-    wallpaper = ../images/wallpapers/bisbiswas05.jpg;
+    wallpaper = ../images/wallpapers/bisbiswas11.jpg;
     monokai.enable = true;
   };
 
@@ -37,8 +37,8 @@
   environment.sessionVariables.CONFIG = "/home/jared/nixos-config";
 
   defaults = {
-    browser = [ "librewolf.desktop" "chromium.desktop" ];
-    editor = [ "nvim.desktop" ];
+    browser = [ "chromium.desktop" "librewolf.desktop" ];
+    editor = [ "helix.desktop" ];
     audio = [ "mpv.desktop" ];
     video = [ "mpv.desktop" ];
     image = [ "qimgv.desktop" ];

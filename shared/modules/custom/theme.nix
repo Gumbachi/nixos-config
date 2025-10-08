@@ -78,7 +78,7 @@ in
 
       stylix.targets.librewolf = {
         colorTheme.enable = true;
-        profileNames = [ "default" ];
+        profileNames = [ "jared" "default" ];
       };
 
     }];
