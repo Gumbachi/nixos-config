@@ -1,6 +1,6 @@
-{ pkgs, lib, config, ...}: 
+{ pkgs, lib, config, ...}:
 let
-  inherit (lib) types mkIf mkMerge mkEnableOption mkOption; 
+  inherit (lib) types mkIf mkMerge mkEnableOption mkOption;
   cfg = config.emulation;
 in
 {
@@ -38,7 +38,6 @@ in
         pkgs.retroarch.withCores (cores: with cores; [
           melonds
           mgba
-          citra
         ])
       )];
     })
