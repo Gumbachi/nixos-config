@@ -2,6 +2,7 @@
 let
   cfg = config.services.homepage-dashboard;
   port = config.variables.homepage.port;
+  vars = config.variables;
 in
 {
   # Reverse proxy
@@ -15,7 +16,7 @@ in
   services.homepage-dashboard = {
     listenPort = port;
     openFirewall = true;
-    allowedHosts = "homepage.gumbachi.com";
+    allowedHosts = "homepage.gumbachi.com,192.168.69.2:${toString port}";
 
     # Settings - https://gethomepage.dev/configs/settings/
     settings = {
@@ -25,14 +26,11 @@ in
       useEqualHeights = true;
       hideVersion = true;
       target = "_self"; # Open in place of homepage
-      fullWidth = true;
+      # fullWidth = true;
       statusStyle = "dot";
       cardBlur = "xl";
       favicon = "https://files.gumbachi.com/icons/home.png";
-      background = {
-        image = "https://files.gumbachi.com/wallpapers/monokai.png";
-        blur = "md";
-      };
+      background.image = "https://files.gumbachi.com/wallpapers/aurora.png";
       layout = {
         Sites = {
           style = "row";
@@ -60,7 +58,7 @@ in
         resources = {
           cpu = true;
           memory = true;
-          disk = "/mnt/main";
+          # disk = "/mnt/main";
           network = true;
         };
       }
@@ -85,7 +83,7 @@ in
               icon = "qbittorrent.png";
               description = "Bittorrent";
               href = "https://qbit-vpn.gumbachi.com";
-              siteMonitor = "http://localhost:8668";
+              siteMonitor = "http://localhost:${toString vars.qbit-vpn.port}";
             };
           }
 
@@ -175,110 +173,104 @@ in
     ];
 
     # Bookmarks - https://gethomepage.dev/configs/bookmarks/
-    bookmarks = [
+    bookmarks = [{
+      "Bookmarks" = [
+        {
+          "NixOS Search" = [{
+            abbr = "NX";
+            href = "https://search.nixos.org/options?channel=unstable";
+            icon = "nixos.png";
+          }];
+        }
+        {
+          "Home Manager" = [{
+            abbr = "HM";
+            href = "https://home-manager-options.extranix.com/?query=&release=master";
+            description = "extranix.com";
+            icon = "nixos.png";
+          }];
+        }
+        {
+          "GitHub" = [{
+            abbr = "GH";
+            href = "https://github.com/";
+            icon = "github-light.png";
+          }];
+        }
+        {
+          "Codeberg" = [{
+            abbr = "CB";
+            href = "https://codeberg.org";
+            icon = "codeberg.png";
+          }];
+        }
+        {
+          "YouTube" = [{
+            abbr = "YT";
+            href = "https://youtube.com";
+            icon = "youtube.png";
+          }];
+        }
+        {
+          "Reddit" = [{
+            abbr = "RD";
+            href = "https://reddit.com";
+            icon = "reddit.png";
+          }];
+        }
+        {
+          "SteamDB" = [{
+            abbr = "SD";
+            href = "https://steamdb.info";
+            icon = "steam.png";
+          }];
+        }
+        {
+          "ProtonDB" = [{
+            abbr = "PD";
+            href = "https://protondb.com";
+            icon = "steam.png";
+          }];
+        }
+        {
+          "PurelyMail" = [{
+            abbr = "PM";
+            href = "https://purelymail.com";
+            icon = "purelymail.png";
+          }];
+        }
+        {
+          "Porkbun" = [{
+            abbr = "PB";
+            href = "https://porkbun.com";
+            icon = "porkbun.png";
+          }];
+        }
 
-      {
-        "Bookmarks" = [
-          {
-            "NixOS Search" = [{
-              abbr = "NX";
-              href = "https://search.nixos.org/options?channel=unstable";
-              icon = "nixos.png";
-            }];
-          }
-          {
-            "Home Manager" = [{
-              abbr = "HM";
-              href = "https://home-manager-options.extranix.com/?query=&release=master";
-              description = "extranix.com";
-              icon = "nixos.png";
-            }];
-          }
-          {
-            "GitHub" = [{
-              abbr = "GH";
-              href = "https://github.com/";
-              icon = "github-light.png";
-            }];
-          }
-          {
-            "Codeberg" = [{
-              abbr = "CB";
-              href = "https://codeberg.org";
-              icon = "codeberg.png";
-            }];
-          }
-          {
-            "YouTube" = [{
-              abbr = "YT";
-              href = "https://youtube.com";
-              icon = "youtube.png";
-            }];
-          }
-          {
-            "Reddit" = [{
-              abbr = "RD";
-              href = "https://reddit.com";
-              icon = "reddit.png";
-            }];
-          }
-          {
-            "SteamDB" = [{
-              abbr = "SD";
-              href = "https://steamdb.info";
-              icon = "steam.png";
-            }];
-          }
-          {
-            "ProtonDB" = [{
-              abbr = "PD";
-              href = "https://protondb.com";
-              icon = "steam.png";
-            }];
-          }
-          {
-            "PurelyMail" = [{
-              abbr = "PM";
-              href = "https://purelymail.com";
-              icon = "purelymail.png";
-            }];
-          }
-          {
-            "Porkbun" = [{
-              abbr = "PB";
-              href = "https://porkbun.com";
-              icon = "porkbun.png";
-            }];
-          }
+        {
+          "Achievements" = [{
+            abbr = "RA";
+            href = "https://retroachievements.org/";
+            description = "retroachievements";
+            icon = "si-retroarch";
+          }];
+        }
+        {
+          "TorrentLeech" = [{
+            abbr = "TL";
+            href = "https://torrentleech.org/";
+            description = "torrents";
+          }];
+        }
+        {
+          "MAM" = [{
+            abbr = "MA";
+            href = "https://www.myanonamouse.net/";
+            description = "books";
+          }];
+        }
 
-          {
-            "Achievements" = [{
-              abbr = "RA";
-              href = "https://retroachievements.org/";
-              description = "retroachievements";
-              icon = "si-retroarch";
-            }];
-          }
-          {
-            "TorrentLeech" = [{
-              abbr = "TL";
-              href = "https://torrentleech.org/";
-              description = "torrents";
-            }];
-          }
-          {
-            "MAM" = [{
-              abbr = "MA";
-              href = "https://www.myanonamouse.net/";
-              description = "books";
-            }];
-          }
-
-        ];
-      }
-
+      ];}
     ];
-
   };
-
 }

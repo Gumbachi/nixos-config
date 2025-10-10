@@ -7,6 +7,7 @@ in
   options.variables = {
     adguardhome.port = mkOption { default = 3080; };
     homepage.port = mkOption { default = 8082; };
+    homer.port = mkOption { default = 8197; };
     immich.port = mkOption { default = 2283; };
     jellyfin.port = mkOption { default = 8096; };
     jellyseerr.port = mkOption { default = 5055; };
@@ -17,7 +18,7 @@ in
     prowlarr.port = mkOption { default = 9696; };
     bazarr.port = mkOption { default = 6767; };
 
-    qbit-vpn.port = mkOption { default = 8668; };
+    qbit-vpn.port = mkOption { default = 8670; };
     deluge.port = mkOption { default = 8112; };
   };
 

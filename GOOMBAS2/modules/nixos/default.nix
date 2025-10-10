@@ -21,6 +21,7 @@
     ./caddy.nix
     ./gumbotchi.nix
     ./homepage.nix
+    ./homer.nix
     ./immich.nix
     ./jellyfin.nix
     ./jellyseerr.nix

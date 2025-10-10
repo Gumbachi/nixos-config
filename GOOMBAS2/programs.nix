@@ -29,10 +29,7 @@
    
   terminals.kitty.enable = true;
 
-  shells = {
-    default = pkgs.fish;
-    fish.enable = true;
-  };
+  shells.fish.enable = true;
 
   file-managers.yazi.enable = true;
 

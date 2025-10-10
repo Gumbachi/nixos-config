@@ -67,7 +67,7 @@ in
       
       # Main Desktop
       devices.GOOMBAX1 = {
-        id = "A3EODPJ-UEDWGN5-ULBOGU3-YK2Q6IK-RLURJQV-5KGCCQ4-3IZPKPS-NAAPLQV";
+        id = "VFR4AWB-OIPVPEQ-74A3CZQ-DWKDSUA-H6IOQNJ-ZPP2NYZ-3MDAHKW-SGC5EAF";
         autoAcceptFolders = false;
       };
       

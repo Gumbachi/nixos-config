@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
 
   imports = [
     ./hardware-configuration.nix # Hardware config
@@ -34,6 +34,9 @@
     nvidia.open = false;
   };
 
+  defaults = {
+    shell = pkgs.fish;
+  };
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";

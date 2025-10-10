@@ -11,7 +11,7 @@ in
 
     # Reverse Proxy
     services.caddy.virtualHosts."qbit-vpn.gumbachi.com" = {
-      extraConfig = ''reverse_proxy localhost:8668'';
+      extraConfig = "reverse_proxy localhost:${toString port}";
     };
 
     # Secrets
@@ -42,7 +42,7 @@ in
         VPN_INPUT_PORTS = "1234"; 
         VPN_OUTPUT_PORTS = "5678"; 
         WEBUI_PORT = "${toString port}";
-        DEBUG = "false";
+        DEBUG = "true";
         PUID = "1000";
         PGID = "986"; # Media Group
         UMASK = "000";
