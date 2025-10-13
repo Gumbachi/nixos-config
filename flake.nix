@@ -1,7 +1,7 @@
 {
   description = "Gumbachi NixOS Config";
   inputs = {
-    
+
     # Default
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -19,7 +19,7 @@
     nur.inputs.nixpkgs.follows = "nixpkgs";
 
     # Applications
-    overway.url = "github:Gumbachi/overway/gtk4-rewrite";
+    overway.url = "github:Gumbachi/overway/quickshell";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
@@ -63,7 +63,6 @@
 
         # Hardware Support
         inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
-        inputs.nixos-hardware.nixosModules.common-gpu-amd
 
         # Third Party
         inputs.stylix.nixosModules.stylix

@@ -1,5 +1,5 @@
 { ... }: {
-  
+
   imports = [
 
     # Browsers
@@ -10,7 +10,6 @@
     # Launchers
     ./launchers/fuzzel.nix
     ./launchers/rofi.nix
-    ./launchers/walker.nix
 
     # Hypr Ecosystem
     ./hypr/hyprland.nix

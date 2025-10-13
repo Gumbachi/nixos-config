@@ -2,8 +2,6 @@
 
   # System Programs
   environment.systemPackages = with pkgs; [
-    inputs.overway.packages.${system}.default
-
     youtube-music
     quickshell
 
@@ -91,9 +89,9 @@
   emulation = {
     gba.mgba.enable = false;
     switch.ryubing.enable = false;
-    retroarch.enable = true;
+    retroarch.enable = false;
   };
-  
+
   file-managers = {
     yazi.enable = true;
     thunar.enable = false;
@@ -110,8 +108,8 @@
   };
 
   launchers = {
-    fuzzel.enable = false;
-    walker.enable = true;
+    fuzzel.enable = true;
+    walker.enable = false;
   };
 
   terminals.kitty.enable = true;

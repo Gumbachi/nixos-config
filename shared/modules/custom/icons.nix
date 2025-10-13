@@ -11,9 +11,13 @@ in
   };
 
   config = mkMerge [
-    
+
     (mkIf cfg.papirus.enable {
-      home-manager.sharedModules = [{      
+      home-manager.sharedModules = [{
+        gtk.iconTheme = {
+          name = "Papirus";
+          package = pkgs.papirus-icon-theme;
+        };
         home.file.".local/share/icons/Papirus/".source = "${pkgs.papirus-icon-theme}/share/icons/Papirus/";
       }];
     })

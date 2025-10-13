@@ -1,5 +1,5 @@
 { ... }: {
- 
+
   # Syncthing
   networking.firewall.allowedTCPPorts = [ 8384 ];
 
@@ -8,9 +8,10 @@
     configDir = "/home/jared/.config/syncthing";
     user = "jared";
     group = "users";
-    openDefaultPorts = true;      
+    openDefaultPorts = true;
     guiAddress = "0.0.0.0:8384";
     overrideDevices = true;
+    overrideFolders = true;
     settings = {
       devices.GOOMBAS2.id = "2VD6JZS-NF7AWWM-XZYU6Z2-TAZLQ3J-LEUUDBO-SSLYVXW-LA5JTEH-AO766A4";
       devices.GOOMBAM1.id = "VTVTPAN-QXGZNSD-FLSI4UR-LIJY6O2-SJOLELJ-6EBOEHV-6MYCVWE-OQEG7Q7";
@@ -40,11 +41,6 @@
         devices = [ "GOOMBAS2" "GOOMBAM1" ];
       };
 
-      folders."/home/jared/sync/emulation/library" = {
-        id = "emulation-library";
-        label = "Emulation Library";
-        devices = [ "GOOMBAS2" ];
-      };
     };
   };
 

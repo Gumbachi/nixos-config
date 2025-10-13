@@ -1,7 +1,7 @@
 { user, pkgs, lib, ... }: {
 
   imports = [
-      
+
     ./programs.nix
     ./services.nix
 
@@ -26,6 +26,11 @@
     kernelPackages = pkgs.linuxPackages_zen;
     loader.systemd-boot.enable = true;
     plymouth.enable = true;
+    kernelParams = [
+      "video=DP-1:3840x2160@240"
+      "video=DP-2:2560x1440@120"
+      "video=DP-1:2560x1440@120"
+    ];
   };
 
   networking = {
@@ -46,6 +51,10 @@
   };
 
   hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
 
     logitech.wireless = {
       enable = true;
@@ -53,7 +62,7 @@
     };
 
     keyboard.zsa = {
-      enable = true; 
+      enable = true;
       disableJoystick = false;
       keymapp.enable = true;
       kontroll.enable = false;
@@ -61,7 +70,7 @@
   };
 
   fonts = {
-    enableDefaultPackages = true; 
+    enableDefaultPackages = true;
     packages = with pkgs; [
       nerd-fonts.blex-mono
       nerd-fonts.fira-code

@@ -6,6 +6,7 @@
       line-number = "absolute";
       lsp.display-messages = true;
       clipboard-provider = "wayland";
+      scrolloff = 8;
       # rainbow-brackets = true;
       trim-final-newlines = true;
       trim-trailing-whitespace = true;

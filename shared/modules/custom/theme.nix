@@ -5,9 +5,9 @@ let
 in
 {
 
-  imports = [ 
+  imports = [
     ../../styles/patch.nix # Nix file for patching css
-    ../themes # Import theme modifications for the options below 
+    ../themes # Import theme modifications for the options below
   ];
 
   options.theme = {
@@ -26,6 +26,7 @@ in
   };
 
   config = {
+    icons.papirus.enable = true;
     # Default theme settings: applicable to all themes
     stylix.autoEnable = true;
     stylix.image = cfg.wallpaper;
