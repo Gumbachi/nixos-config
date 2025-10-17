@@ -33,6 +33,13 @@ in
 
     stylix.targets.gnome.enable = false;
 
+    stylix.icons = {
+      enable = true;
+      dark = "Papirus";
+      light = "Papirus";
+      package = pkgs.papirus-icon-theme;
+    };
+
     stylix.fonts = {
       serif = {
         package = pkgs.inter;

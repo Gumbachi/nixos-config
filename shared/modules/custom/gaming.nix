@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  inherit (lib) mkIf mkMerge mkEnableOption;
+  inherit (lib) mkIf mkMerge mkEnableOption mkPackageOption;
   module = "gaming";
   cfg = config.${module};
 in {
@@ -15,7 +15,7 @@ in {
     # Steam
     steam = {
       enable = mkEnableOption "Install Steam.";
-      forceDesktopScaling = mkEnableOption "Set an environment variable to force desktop scaling to 1.5x";
+      package = mkPackageOption pkgs "steam" {};
     };
 
     steam-tui.enable = mkEnableOption "Install steam-tui.";
@@ -38,7 +38,7 @@ in {
     # ProtonUP
     protonup.enable = mkEnableOption "Install proton version manager.";
 
-    # Proton Plus manager 
+    # Proton Plus manager
     protonplus.enable = mkEnableOption "Install proton plus prefix manager.";
   };
 
@@ -47,14 +47,12 @@ in {
     # Steam
     (mkIf cfg.steam.enable {
       programs.steam.enable = true;
-      programs.steam.extraCompatPackages = with pkgs; [ proton-ge-bin ];      
-      environment.sessionVariables = mkIf cfg.steam.forceDesktopScaling {
-        STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
-      };
+      programs.steam.package = cfg.steam.package;
+      programs.steam.extraCompatPackages = with pkgs; [ proton-ge-bin ];
     })
 
     # Steam-TUI
-    (mkIf cfg.steam-tui.enable { 
+    (mkIf cfg.steam-tui.enable {
       environment.systemPackages = [ pkgs.steam-tui pkgs.steamcmd ];
     })
 
@@ -64,14 +62,14 @@ in {
     })
 
     # Lutris
-    (mkIf cfg.lutris.enable { 
+    (mkIf cfg.lutris.enable {
       home-manager.sharedModules = [{
         programs.lutris.enable = true;
       }];
     })
 
     # Mangohud
-    (mkIf cfg.mangohud.enable { 
+    (mkIf cfg.mangohud.enable {
       environment.systemPackages = [pkgs.mangohud];
       home-manager.sharedModules = [{
         programs.mangohud.enable = true;
@@ -88,7 +86,7 @@ in {
     })
 
     # Gamemode
-    (mkIf cfg.gamemode.enable { 
+    (mkIf cfg.gamemode.enable {
       programs.gamemode.enable = true;
     })
 

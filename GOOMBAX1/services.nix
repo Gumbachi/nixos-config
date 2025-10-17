@@ -21,6 +21,9 @@
 
     power-profiles-daemon.enable = true;
 
+    # Bluetooth if needed
+    blueman.enable = false;
+
     # Helps speed up boot
     journald.extraConfig = ''
       Storage=volatile

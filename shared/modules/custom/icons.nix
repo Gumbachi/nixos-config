@@ -18,7 +18,7 @@ in
           name = "Papirus";
           package = pkgs.papirus-icon-theme;
         };
-        home.file.".local/share/icons/Papirus/".source = "${pkgs.papirus-icon-theme}/share/icons/Papirus/";
+        home.file.".icons/Papirus".source = "${pkgs.papirus-icon-theme}/share/icons/Papirus/";
       }];
     })
 

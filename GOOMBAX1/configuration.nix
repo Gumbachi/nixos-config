@@ -67,6 +67,11 @@
       keymapp.enable = true;
       kontroll.enable = false;
     };
+
+    bluetooth = {
+      enable = false;
+      powerOnBoot = true;
+    };
   };
 
   fonts = {

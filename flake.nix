@@ -29,7 +29,9 @@
 
     walker.url = "github:abenz1267/walker";
 
-    caelestia.url = "github:caelestia-dots/shell";
+    millennium.url = "github:SteamClientHomebrew/Millennium";
+    millennium.inputs.nixpkgs.follows = "nixpkgs";
+
   };
 
   outputs = { nixpkgs, home-manager, ... } @ inputs: let
@@ -59,7 +61,10 @@
         }
 
         # Overlays
-        { nixpkgs.overlays = [ inputs.niri.overlays.niri ]; }
+        { nixpkgs.overlays = [
+          inputs.niri.overlays.niri
+          inputs.millennium.overlays.default
+        ]; }
 
         # Hardware Support
         inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
