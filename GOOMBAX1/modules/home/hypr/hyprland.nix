@@ -1,34 +1,34 @@
 { configPath, ... }: {
 
   # System Hyprland config in GOOMBAX1/modules/nixos/hyprland.nix
-    
+
   wayland.windowManager.hyprland = {
     # systemd.enable = false; # Disabled for UWSM compatibility
     settings = let
       mainMod = "SUPER";
       terminal = "kitty";
-      toggleDashboard = "astal -i overway -t overway";
       fileManager = "${terminal} yazi";
-      menu = ''walker'';
+      launcher = "fuzzel";
       confedit = "${terminal} $EDITOR ${configPath}";
       screenshot = "hyprshot -m region --clipboard-only";
       browser = "librewolf";
       systemMonitor = "${terminal} btop";
       gameLauncher = "steam";
       steamGameRegex = "class:^(steam_app_.*)$";
-    in { 
+      launchOverlay = "qs -p ~/code/overway";
+      toggleOverlay = "qs -p ~/code/overway ipc call overway toggleWindow";
+    in {
 
       monitor = [
         "DP-1, 3840x2160@240, 2880x400, 1.5, bitdepth, 10"
         "DP-2, 2560x1440@120, 1440x0, 1, transform, 1"
-        "DP-3, 2560x1440@120, 0x0, 1, transform, 1" 
+        "DP-3, 2560x1440@120, 0x0, 1, transform, 1"
       ];
 
       exec-once = [
-        "dbus-update-activation-environment --systemd --all"
         "hyprlock"
-        "systemctl start --user elephant" # Remove when patched in a few days
-        "systemctl start --user hyprpaper"
+        "${launchOverlay}"
+        "${toggleOverlay}"
         "${gameLauncher} -silent"
         "[workspace 1 silent] ${terminal} cava"
         "[workspace 2 silent] youtube-music"
@@ -40,7 +40,7 @@
       general = {
         gaps_in = 5;
         gaps_out = 10;
-        border_size = 4; 
+        border_size = 4;
         resize_on_border = false; # Click and drag on borders to resize
         allow_tearing = false;
         layout = "dwindle";
@@ -68,7 +68,7 @@
       animations = {
         enabled = true;
         bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-        animation = [      
+        animation = [
           "windows, 1, 7, myBezier"
           "windowsOut, 1, 7, default, popin 80%"
           "border, 1, 10, default"
@@ -117,7 +117,7 @@
         "${mainMod} SHIFT, M, exec, pkill Hyprland,"
         "${mainMod}, E, exec, ${fileManager}"
         "${mainMod}, V, togglefloating,"
-        "${mainMod}, R, exec, ${menu}"
+        "${mainMod}, R, exec, ${launcher}"
         "${mainMod}, P, pseudo, # dwindle"
         "${mainMod}, Y, togglesplit, # dwindle"
         "${mainMod}, N, exec, ${confedit}"
@@ -126,7 +126,7 @@
         "${mainMod}, B, exec, ${browser}"
         ", PRINT, exec, ${screenshot}"
         "${mainMod}, M, exec, ${systemMonitor}"
-        "${mainMod}, D, exec, ${toggleDashboard}"
+        "${mainMod}, D, exec, ${toggleOverlay}"
         "${mainMod}, G, exec, ${gameLauncher}"
 
         "${mainMod}, H, movefocus, l"
@@ -134,10 +134,10 @@
         "${mainMod}, K, movefocus, u"
         "${mainMod}, L, movefocus, r"
         "${mainMod} SHIFT, H, movewindow, l"
-        "${mainMod} SHIFT, J, movewindow, d" 
+        "${mainMod} SHIFT, J, movewindow, d"
         "${mainMod} SHIFT, K, movewindow, u"
         "${mainMod} SHIFT, L, movewindow, r"
- 
+
         "${mainMod}, 1, workspace, 1"
         "${mainMod}, 2, workspace, 2"
         "${mainMod}, 3, workspace, 3"
@@ -162,9 +162,9 @@
 
         "${mainMod}, S, togglespecialworkspace, magic"
         "${mainMod} SHIFT, S, movetoworkspace, special:magic"
-      ]; 
+      ];
 
-      bindm = [        
+      bindm = [
         "${mainMod}, mouse:272, movewindow"
         "${mainMod}, mouse:273, resizewindow"
       ];
@@ -176,8 +176,8 @@
 
       bindl = [
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", XF86AudioPlay, exec, playerctl play-pause" 
-        ", XF86AudioNext, exec, playerctl next" 
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioNext, exec, playerctl next"
         ", XF86AudioPrev, exec, playerctl previous"
       ];
 
@@ -209,9 +209,9 @@
 
         # Jetbrains Fixes
         "suppressevent fullscreen, class:^(jetbrains-studio)$"
-  
+
         "workspace 4, ${steamGameRegex}"
-        "fullscreen, ${steamGameRegex}" 
+        "fullscreen, ${steamGameRegex}"
         "idleinhibit always, ${steamGameRegex}"
 
         # Steam Game Overrides

@@ -11,9 +11,9 @@ in {
   };
 
   config = mkMerge [
- 
+
     # Hyprland
-    (mkIf cfg.hyprland.enable { 
+    (mkIf cfg.hyprland.enable {
 
       # NixOS Config Options
       programs.hyprland.enable = true;
@@ -21,7 +21,7 @@ in {
       environment.sessionVariables = {
         NIXOS_OZONE_WL = "1";
         MOZ_ENABLE_WAYLAND = "1";
-        QT_QPA_PLATFORM = "wayland;xcb";
+        QT_QPA_PLATFORM = "wayland";
       };
 
 
@@ -45,14 +45,14 @@ in {
         programs.kitty.enable = true;
         wayland.windowManager.hyprland = {
           enable = true;
-          systemd.enable = lib.mkForce false; # Disabled for UWSM compatibility
+          systemd.enable = true;
         };
       }];
 
     })
 
     # Niri
-    (mkIf cfg.niri.enable { 
+    (mkIf cfg.niri.enable {
 
       programs.niri.enable = true;
       programs.niri.package = pkgs.niri;
