@@ -29,7 +29,7 @@
 
     walker.url = "github:abenz1267/walker";
 
-    millennium.url = "github:SteamClientHomebrew/Millennium";
+    millennium.url = "git+https://github.com/DrymarchonShaun/Millennium.git?ref=nix-add-git-dep&shallow=1";
     millennium.inputs.nixpkgs.follows = "nixpkgs";
 
   };

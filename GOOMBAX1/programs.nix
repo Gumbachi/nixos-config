@@ -98,10 +98,7 @@
   };
 
   gaming = {
-    steam = {
-      enable = true;
-      package = pkgs.steam-millennium;
-    };
+    steam.enable = true;
     mangohud.enable = true;
     protonplus.enable = false;
     minecraft.enable = true;
