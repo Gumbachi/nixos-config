@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  
+
   programs.helix = {
     settings.editor = {
       line-number = "absolute";
@@ -26,12 +26,12 @@
         character = "╎";
       };
     };
-            
+
     extraPackages = with pkgs; [
       nixd
       taplo
       yaml-language-server
     ];
-    
+
   };
 }
