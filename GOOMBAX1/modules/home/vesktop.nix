@@ -9,6 +9,9 @@
       splashTheming = true;
       tray = true;
       hardwareAcceleration = true;
+      hardwareVideoAcceleration = true;
+      arRPC = true;
+      staticTitle = true;
     };
     vencord.settings = {
       autoUpdate = false;

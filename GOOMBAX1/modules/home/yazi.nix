@@ -29,8 +29,10 @@
           { name = "downloads"; text = "󰮏"; }
           { name = "Downloads"; text = "󰮏"; }
           { name = "documents"; text = "󰧮"; }
+          { name = "misc"; text = "󰎂"; }
+          { name = "iso"; text = "󰗮"; }
         ];
-      }; 
+      };
     };
     settings = {
       yazi = {

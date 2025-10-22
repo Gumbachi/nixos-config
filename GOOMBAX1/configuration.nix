@@ -12,7 +12,7 @@
 
   # Set the system theme with stylix
   theme = {
-    wallpaper = ../images/wallpapers/bisbiswas11.jpg;
+    wallpaper = ../images/wallpapers/saturated-forest.jpg;
     monokai.enable = true;
   };
 

@@ -16,7 +16,7 @@
       gameLauncher = "steam";
       steamGameRegex = "class:^(steam_app_.*)$";
       launchOverlay = "qs -p ~/code/overway";
-      toggleOverlay = "qs -p ~/code/overway ipc call overway toggleWindow";
+      toggleOverlay = "qs -p ~/code/overway ipc call overway toggle";
     in {
 
       monitor = [

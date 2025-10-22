@@ -30,14 +30,12 @@ in
     # Default theme settings: applicable to all themes
     stylix.autoEnable = true;
     stylix.image = cfg.wallpaper;
-
-    stylix.targets.gnome.enable = false;
+    stylix.overlays.enable = true;
 
     stylix.icons = {
-      enable = true;
-      dark = "Papirus";
-      light = "Papirus";
-      package = pkgs.papirus-icon-theme;
+      enable = false;
+      dark = "Papirus-Dark";
+      light = "Papirus-Light";
     };
 
     stylix.fonts = {

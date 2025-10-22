@@ -11,7 +11,7 @@ in
     stylix = {
       enable = true;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/monokai.yaml";
-      polarity = "dark"; 
+      polarity = "dark";
     };
 
     # Set a default wallpaper
@@ -20,14 +20,19 @@ in
 
     # Set home manager configurations
     home-manager.sharedModules = [{
-      
+
       # Theme code blocks in vencord
-      programs.vesktop.vencord.settings.plugins.ShikiCodeblocks.theme = "${shikiThemes}/monokai.json";        
+      programs.vesktop.vencord.settings.plugins.ShikiCodeblocks.theme = "${shikiThemes}/monokai.json";
 
       # Set XCursor
       home.pointerCursor = {
         package = pkgs.bibata-cursors;
         name = "Bibata-Modern-Ice";
+      };
+
+      gtk.iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
       };
 
       # Set Hyprcursor theme

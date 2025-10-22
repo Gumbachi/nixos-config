@@ -4,9 +4,7 @@
   environment.systemPackages = with pkgs; [
     youtube-music
     quickshell
-
     playerctl
-
     wl-clipboard # Clipboard backend
     hyprpicker # Color Picker
     pavucontrol # Sound Settings
@@ -124,7 +122,6 @@
   };
 
   shells = {
-    default = pkgs.fish;
     fish.enable = true;
     nushell.enable = false;
   };
@@ -139,9 +136,9 @@
   };
 
   virtualisation = {
-    virt-manager.enable = false;
+    virt-manager.enable = true;
     docker = {
-      enable = true;
+      enable = false;
       addUserToGroup = true;
     };
     libvirtd = {

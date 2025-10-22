@@ -14,11 +14,9 @@ in
 
     (mkIf cfg.papirus.enable {
       home-manager.sharedModules = [{
-        gtk.iconTheme = {
-          name = "Papirus";
-          package = pkgs.papirus-icon-theme;
-        };
         home.file.".icons/Papirus".source = "${pkgs.papirus-icon-theme}/share/icons/Papirus/";
+        home.file.".icons/Papirus-Dark".source = "${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark/";
+        home.file.".icons/Papirus-Light".source = "${pkgs.papirus-icon-theme}/share/icons/Papirus-Light/";
       }];
     })
 
