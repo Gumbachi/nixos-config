@@ -22,7 +22,7 @@ in
     home-manager.sharedModules = [{
 
       # Theme code blocks in vencord
-      programs.vesktop.vencord.settings.plugins.ShikiCodeblocks.theme = "${shikiThemes}/vesper.json";
+      # programs.vesktop.vencord.settings.plugins.ShikiCodeblocks.theme = "${shikiThemes}/vesper.json";
 
       # Set XCursor
       home.pointerCursor = {

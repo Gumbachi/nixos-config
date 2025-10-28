@@ -16,7 +16,7 @@
     # Gnome Virtual File System - needed for AGS images
     gvfs.enable = true;
 
-    syncthing.enable = true;
+    syncthing.enable = false;
     sunshine.enable = false;
 
     power-profiles-daemon.enable = true;
