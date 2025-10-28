@@ -27,10 +27,10 @@
           { name = "nixos-config"; text = "󱄅"; }
           { name = "sync"; text = "󰓦"; }
           { name = "downloads"; text = "󰮏"; }
-          { name = "Downloads"; text = "󰮏"; }
           { name = "documents"; text = "󰧮"; }
           { name = "misc"; text = "󰎂"; }
           { name = "iso"; text = "󰗮"; }
+          { name = "screenshots"; text = "󰋩"; }
         ];
       };
     };

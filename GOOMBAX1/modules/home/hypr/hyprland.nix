@@ -11,6 +11,7 @@
       launcher = "fuzzel";
       confedit = "${terminal} $EDITOR ${configPath}";
       screenshot = "hyprshot -m region --clipboard-only";
+      screenshotSave = "hyprshot -m region -o $HOME/screenshots/";
       browser = "librewolf";
       systemMonitor = "${terminal} btop";
       gameLauncher = "steam";
@@ -125,6 +126,7 @@
         "${mainMod}, F, fullscreen, 0"
         "${mainMod}, B, exec, ${browser}"
         ", PRINT, exec, ${screenshot}"
+        "SHIFT, PRINT, exec, ${screenshotSave}"
         "${mainMod}, M, exec, ${systemMonitor}"
         "${mainMod}, D, exec, ${toggleOverlay}"
         "${mainMod}, G, exec, ${gameLauncher}"

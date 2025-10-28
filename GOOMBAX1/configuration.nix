@@ -12,8 +12,8 @@
 
   # Set the system theme with stylix
   theme = {
-    wallpaper = ../images/wallpapers/saturated-forest.jpg;
-    monokai.enable = true;
+    wallpaper = ../images/wallpapers/bisbiswas06.jpg;
+    outrun.enable = true;
   };
 
   window-managers = {

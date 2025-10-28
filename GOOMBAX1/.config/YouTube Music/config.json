@@ -8,13 +8,13 @@
 		"x": 0,
 		"y": 0
 	},
-	"url": "https://music.youtube.com/watch?v=FHPjpSom2FI&list=RDAMPLOLAK5uy_n9ECP0JS-ybCk7VDJDDMfAAAZEsCASLto&index=0",
+	"url": "https://music.youtube.com/watch?v=Or3wZISvcxw&list=LM&index=0",
 	"options": {
 		"tray": true,
 		"appVisible": true,
 		"autoUpdates": false,
 		"alwaysOnTop": false,
-		"hideMenu": true,
+		"hideMenu": false,
 		"hideMenuWarned": true,
 		"startAtLogin": false,
 		"disableHardwareAcceleration": false,
@@ -49,7 +49,7 @@
 				"volumeUp": "",
 				"volumeDown": ""
 			},
-			"savedVolume": 35
+			"savedVolume": 45
 		},
 		"discord": {
 			"listenAlong": true,
@@ -177,10 +177,10 @@
 			"useNativePiP": true
 		},
 		"shortcuts": {
-			"enabled": false
+			"enabled": true
 		},
 		"blur-nav-bar": {
-			"enabled": true
+			"enabled": false
 		},
 		"no-google-login": {
 			"enabled": false
@@ -200,7 +200,7 @@
 			"enabled": false
 		},
 		"unobtrusive-player": {
-			"enabled": true
+			"enabled": false
 		},
 		"performance-improvement": {
 			"enabled": true

@@ -29,12 +29,12 @@
       };
     };
 
-    languages = {
-      language-server.qmlls = {
-        command = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
-        args = [ "-E" ];
-      };
-    };
+    # languages = {
+    #   language-server.qmlls = {
+    #     command = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
+    #     args = [ "-E" ];
+    #   };
+    # };
 
     extraPackages = with pkgs; [
       marksman
@@ -42,7 +42,6 @@
       vscode-css-languageserver
       vscode-json-languageserver
       taplo
-      kdePackages.qtdeclarative
     ];
 
 
