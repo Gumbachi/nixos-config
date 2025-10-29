@@ -21,7 +21,7 @@ in
     port = port;
     openFirewall = true;
     settings = {
-      http.address = "0.0.0.0:${toString port}"; 
+      http.address = "0.0.0.0:${toString port}";
       users = [
         {
           name = "Gumbachi";
@@ -58,6 +58,12 @@ in
       user_rules = [
         "'@@||s.youtube.com^'"
         "||mtalk.google.com^$important"
+        "snu.lge.com^$important"
+        "su.lge.com^$important"
+        "su-ssl.lge.com^$important"
+        "snu-dev.lge.com^$important"
+        "su-dev.lge.com^$important"
+        "nsu.lge.com^$important"
       ];
       filters = [
         {
