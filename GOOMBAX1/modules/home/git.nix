@@ -2,15 +2,10 @@
 
   programs.git = {
     enable = true;
-    userName = "Gumbachi";
-    userEmail = "github@gumbachi.com";
-    extraConfig = {
+    settings = {
+      user.name = "Gumbachi";
+      user.email = "github@gumbachi.com";
       merge.ff = true;
     };
   };
-
-  programs.gitui = {
-    enable = true;
-  };
-
 }
