@@ -32,7 +32,7 @@
         "${toggleOverlay}"
         "${gameLauncher} -silent"
         "[workspace 1 silent] ${terminal} cava"
-        "[workspace 2 silent] youtube-music"
+        "[workspace 2 silent] sleep 2 && youtube-music" # The sleep is to let network stuff init before launch
         "[workspace 1 silent] ${systemMonitor}"
         "[workspace 2 silent] vesktop"
         "[workspace special:magic silent] ${browser}" # preload the browser so its quicker to launch

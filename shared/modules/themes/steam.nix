@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 let
   inherit (lib) mkIf mkEnableOption;
-  module = builtins.baseNameOf ./.;
+  module = lib.strings.removeSuffix ".nix" (builtins.baseNameOf __curPos.file);
   cfg = config.theme.${module};
   # shikiThemes = "https://raw.githubusercontent.com/shikijs/textmate-grammars-themes/refs/heads/main/packages/tm-themes/themes";
 in
