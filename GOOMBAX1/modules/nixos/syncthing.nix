@@ -1,10 +1,12 @@
-{ ... }: {
+{ ... }: let
+  syncDir = "/home/jared/sync";
+in {
 
   # Syncthing
   networking.firewall.allowedTCPPorts = [ 8384 ];
 
   services.syncthing = {
-    dataDir = "/home/jared/sync";
+    dataDir = syncDir;
     configDir = "/home/jared/.config/syncthing";
     user = "jared";
     group = "users";
@@ -12,36 +14,56 @@
     guiAddress = "0.0.0.0:8384";
     overrideDevices = true;
     overrideFolders = true;
-    settings = {
-      devices.GOOMBAS2.id = "2VD6JZS-NF7AWWM-XZYU6Z2-TAZLQ3J-LEUUDBO-SSLYVXW-LA5JTEH-AO766A4";
-      devices.GOOMBAM1.id = "VTVTPAN-QXGZNSD-FLSI4UR-LIJY6O2-SJOLELJ-6EBOEHV-6MYCVWE-OQEG7Q7";
-      devices.Go7.id = "GKNIIKZ-6P7TNMQ-X4FDQPI-75UH4O4-J664KC2-MVU3SVQ-BFYQL5V-4WC4WAF";
-
-      folders."/home/jared/sync/notes" = {
-        id = "notes";
-        label = "Notes";
-        devices = [ "GOOMBAS2" "GOOMBAM1" "Go7" ];
-      };
-
-      folders."/home/jared/sync/shared" = {
-        id = "shared";
-        label = "Shared Files";
-        devices = [ "GOOMBAS2" "GOOMBAM1" "Go7" ];
-      };
-
-      folders."/home/jared/sync/torrents" = {
-        id = "torrents";
-        label = "Torrents";
-        devices = [ "GOOMBAS2" ];
-      };
-
-      folders."/home/jared/sync/emulation/saves" = {
-        id = "emulation-saves";
-        label = "Emulation Saves";
-        devices = [ "GOOMBAS2" "GOOMBAM1" ];
-      };
-
+    settings.options = {
+      urAccepted = -1;
+      localAnnounceEnabled = true;
     };
+  };
+
+  services.syncthing.settings.devices = {
+    "GOOMBAS2".id = "TGECLOP-VIUGTKQ-AQ2P4H6-DOS2LPH-BKQBQQY-LIK7LZQ-5XVWPEH-Z2NL4QZ";
+    "Pixel 8".id = "VTVTPAN-QXGZNSD-FLSI4UR-LIJY6O2-SJOLELJ-6EBOEHV-6MYCVWE-OQEG7Q7";
+  };
+
+
+  services.syncthing.settings.folders = {
+
+    "${syncDir}/notes" = {
+      label = "Notes";
+      id = "notes";
+      devices = [ "GOOMBAS2" "Pixel 8" ];
+    };
+
+    "${syncDir}/misc" = {
+      label = "Misc. Shared Files";
+      id = "misc";
+      devices = [ "GOOMBAS2" "Pixel 8" ];
+    };
+
+    "${syncDir}/emulation/saves" = {
+      label = "Emulation Saves";
+      id = "emulation-saves";
+      devices = [ "GOOMBAS2" "Pixel 8" ];
+    };
+
+    "${syncDir}/pictures/avatars" = {
+      label = "Avatars";
+      id = "pictures-avatars";
+      devices = [ "GOOMBAS2" "Pixel 8" ];
+    };
+
+    "${syncDir}/pictures/emotes" = {
+      label = "Emotes";
+      id = "pictures-emotes";
+      devices = [ "GOOMBAS2" "Pixel 8" ];
+    };
+
+    "${syncDir}/pictures/wallpapers" = {
+      label = "Wallpapers";
+      id = "pictures-wallpapers";
+      devices = [ "GOOMBAS2" "Pixel 8" ];
+    };
+
   };
 
 }

@@ -133,6 +133,10 @@
       enableVirtualCamera = true;
     };
     java.enable = true;
+    localsend = {
+      enable = true;
+      openFirewall = true;
+    };
   };
 
   virtualisation = {
