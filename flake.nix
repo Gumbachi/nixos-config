@@ -19,7 +19,7 @@
     nur.inputs.nixpkgs.follows = "nixpkgs";
 
     # Applications
-    overway.url = "github:Gumbachi/overway/quickshell";
+    overway.url = "github:Gumbachi/overway";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
@@ -28,9 +28,6 @@
     nvf.url = "github:notashelf/nvf";
 
     walker.url = "github:abenz1267/walker";
-
-    millennium.url = "git+https://github.com/DrymarchonShaun/Millennium.git?ref=nix-add-git-dep&shallow=1";
-    millennium.inputs.nixpkgs.follows = "nixpkgs";
 
   };
 
@@ -63,7 +60,6 @@
         # Overlays
         { nixpkgs.overlays = [
           inputs.niri.overlays.niri
-          inputs.millennium.overlays.default
         ]; }
 
         # Hardware Support

@@ -34,14 +34,14 @@ in {
   services.homepage-dashboard.settings.layout = [
     {
       Bookmarks = {
+        columns = 4;
         style = "row";
-        columns = 8;
       };
     }
     {
       Services = {
-        style = "row";
         columns = 4;
+        style = "row";
       };
     }
   ];
