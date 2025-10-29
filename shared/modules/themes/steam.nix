@@ -1,10 +1,14 @@
 { pkgs, lib, config, ... }:
 let
-  inherit (lib) mkIf mkDefault;
-  cfg = config.theme.steam;
+  inherit (lib) mkIf mkEnableOption;
+  module = builtins.baseNameOf ./.;
+  cfg = config.theme.${module};
   # shikiThemes = "https://raw.githubusercontent.com/shikijs/textmate-grammars-themes/refs/heads/main/packages/tm-themes/themes";
 in
 {
+
+  options.theme.${module}.enable = mkEnableOption "Enable the ${module} theme";
+
   config = mkIf cfg.enable {
 
     # Set Stylix theme
@@ -39,7 +43,7 @@ in
 
         base0F = "#1A9FFF"; # flamingo
       };
-      polarity = "dark"; 
+      polarity = "dark";
     };
 
     # Set a default wallpaper
@@ -49,14 +53,19 @@ in
 
     # Set home manager configurations
     home-manager.sharedModules = [{
-      
+
       # Theme code blocks in vencord
-      # programs.vesktop.vencord.settings.plugins.ShikiCodeblocks.theme = "${shikiThemes}/monokai.json";        
+      # programs.vesktop.vencord.settings.plugins.ShikiCodeblocks.theme = "${shikiThemes}/monokai.json";
 
       # Set XCursor
       home.pointerCursor = {
         package = pkgs.bibata-cursors;
         name = "Bibata-Modern-Ice";
+      };
+
+      gtk.iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
       };
 
       # Set Hyprcursor theme

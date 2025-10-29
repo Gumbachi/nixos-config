@@ -1,16 +1,20 @@
 { pkgs, lib, config, ... }:
 let
-  inherit (lib) mkIf mkDefault;
-  cfg = config.theme.monokai;
+  inherit (lib) mkIf mkDefault mkEnableOption;
+  module = builtins.baseNameOf ./.;
+  cfg = config.theme.${module};
   shikiThemes = "https://raw.githubusercontent.com/shikijs/textmate-grammars-themes/refs/heads/main/packages/tm-themes/themes";
 in
 {
+
+  options.theme.${module}.enable = mkEnableOption "Enable the ${module} theme.";
+
   config = mkIf cfg.enable {
 
     # Set Stylix theme
     stylix = {
       enable = true;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/monokai.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/${module}.yaml";
       polarity = "dark";
     };
 

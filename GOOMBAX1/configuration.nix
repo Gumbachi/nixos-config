@@ -13,7 +13,7 @@
   # Set the system theme with stylix
   theme = {
     wallpaper = ../images/wallpapers/bisbiswas06.jpg;
-    outrun.enable = true;
+    synth-midnight-dark.enable = true;
   };
 
   window-managers = {
