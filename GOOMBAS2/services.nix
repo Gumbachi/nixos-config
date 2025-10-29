@@ -16,7 +16,7 @@
     jellyfin.enable = true; # WebUI for serving movies and shows
     jellyseerr.enable = false; # WebUI for requesting movies and shows
     deluge.enable = true; # Deluge Bittorrent Manager
-    syncthing.enable = false; # Sync files across devices
+    syncthing.enable = true; # Sync files across devices
     prowlarr.enable = true; # Indexer manager
     radarr.enable = true; # Movie manager
     sonarr.enable = true; # Show Manager

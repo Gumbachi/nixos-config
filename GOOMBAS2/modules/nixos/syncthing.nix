@@ -9,76 +9,71 @@ in
   networking.firewall.allowedTCPPorts = lib.mkIf cfg.enable [ port ];
 
   services.caddy.virtualHosts."sync.gumbachi.com" = lib.mkIf cfg.enable {
-    # Cant use localhost since multiple syncthing hosts on same network 
+    # Cant use localhost since multiple syncthing hosts on same network
     extraConfig = ''reverse_proxy 192.168.69.2:${toString port}'';
   };
 
+  # Basic settings
   services.syncthing = {
     user = "jared"; # makes the most sense to run as me
     group = "users";
     openDefaultPorts = true;
-    dataDir = "${storage}";
+    dataDir = "${storage}/sync";
     configDir = "${storage}/config/syncthing";
-    overrideDevices = true;     # overrides any devices added or deleted through the WebUI
-    overrideFolders = true;     # overrides any folders added or deleted through the WebUI
+    overrideDevices = true; # overrides any devices added or deleted through the WebUI
+    overrideFolders = true; # overrides any folders added or deleted through the WebUI
     guiAddress = "0.0.0.0:${toString port}";
-    settings = {
+    settings.options = {
+      urAccepted = -1;
+      localAnnounceEnabled = true;
+    };
+  };
 
-      # Notes - Knowledge Base
-      folders."${storage}/sync/notes" = {
-        label = "Notes";
-        id = "notes";
-        devices = [ "GOOMBAM1" "GOOMBAX1" "Go7" ];
-      };
+  # Devices
+  services.syncthing.settings.devices = {
+    "GOOMBAX1".id = "VFR4AWB-OIPVPEQ-74A3CZQ-DWKDSUA-H6IOQNJ-ZPP2NYZ-3MDAHKW-SGC5EAF";
+    "Pixel 8".id = "VTVTPAN-QXGZNSD-FLSI4UR-LIJY6O2-SJOLELJ-6EBOEHV-6MYCVWE-OQEG7Q7";
+    "Go 7".id = "GKNIIKZ-6P7TNMQ-X4FDQPI-75UH4O4-J664KC2-MVU3SVQ-BFYQL5V-4WC4WAF";
+  };
 
-      # General Shared Files
-      folders."${storage}/sync/shared" = {
-        label = "Shared Files";
-        id = "shared";
-        devices = [ "GOOMBAM1" "GOOMBAX1" "Go7" ];
-      };
+  # Folders
+  services.syncthing.settings.folders = {
 
-      # Torrents
-      folders."${storage}/sync/torrents" = {
-        label = "Torrents";
-        id = "torrents";
-        devices = [ "GOOMBAX1" ];
-      };
+    "${storage}/sync/notes" = {
+      label = "Notes";
+      id = "notes";
+      devices = [ "GOOMBAX1" "Pixel 8" ];
+    };
 
-      # Books
-      folders."${storage}/media/books" = {
-        label = "Books";
-        id = "books";
-        devices = [ "Go7" ];
-      };
+    "${storage}/sync/misc" = {
+      label = "Misc. Shared Files";
+      id = "misc";
+      devices = [ "GOOMBAX1" "Pixel 8" ];
+    };
 
-      # Emulator Saves
-      folders."${storage}/sync/emulation/saves" = {
-        label = "Emulation Saves";
-        id = "emulation-saves";
-        devices = [ "GOOMBAX1" "GOOMBAM1" ];
-      };
+    "${storage}/sync/emulation/saves" = {
+      label = "Emulation Saves";
+      id = "emulation-saves";
+      devices = [ "GOOMBAX1" "Pixel 8" ];
+    };
 
-      # Phone
-      devices.GOOMBAM1 = {
-        id = "VTVTPAN-QXGZNSD-FLSI4UR-LIJY6O2-SJOLELJ-6EBOEHV-6MYCVWE-OQEG7Q7";
-        autoAcceptFolders = false;
-      };
-      
-      # Main Desktop
-      devices.GOOMBAX1 = {
-        id = "VFR4AWB-OIPVPEQ-74A3CZQ-DWKDSUA-H6IOQNJ-ZPP2NYZ-3MDAHKW-SGC5EAF";
-        autoAcceptFolders = false;
-      };
-      
-      # E-Reader
-      devices.Go7 = {
-        id = "GKNIIKZ-6P7TNMQ-X4FDQPI-75UH4O4-J664KC2-MVU3SVQ-BFYQL5V-4WC4WAF";
-        autoAcceptFolders = false;
-      };
+    "${storage}/sync/pictures/avatars" = {
+      label = "Avatars";
+      id = "pictures-avatars";
+      devices = [ "GOOMBAX1" "Pixel 8" ];
+    };
 
+    "${storage}/sync/pictures/emotes" = {
+      label = "Emotes";
+      id = "pictures-emotes";
+      devices = [ "GOOMBAX1" "Pixel 8" ];
+    };
+
+    "${storage}/sync/pictures/wallpapers" = {
+      label = "Wallpapers";
+      id = "pictures-wallpapers";
+      devices = [ "GOOMBAX1" "Pixel 8" ];
     };
 
   };
-
 }
