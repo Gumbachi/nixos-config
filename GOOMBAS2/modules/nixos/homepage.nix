@@ -136,7 +136,7 @@ in {
         }];
       }
       {
-        "MAM" = [{
+        "Anonamouse" = [{
           href = "https://www.myanonamouse.net/";
           icon = "nzbget";
           description = "";
@@ -206,7 +206,7 @@ in {
         };
       }
       {
-        "Syncthing" = {
+        "Syncthing - GOOMBAS2" = {
           icon = "syncthing.png";
           description = "File Sync";
           href = "https://sync.gumbachi.com";
