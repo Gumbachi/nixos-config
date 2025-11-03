@@ -1,30 +1,11 @@
-{ ... }: {
-
-  imports = [
-    ./boot.nix
-    ./browsers.nix
-    ./cli-tools.nix
-    ./cursors.nix
-    ./default-apps.nix
-    ./development.nix
-    ./diagnostics.nix
-    ./documentation.nix
-    ./editors.nix
-    ./email.nix
-    ./emulation.nix
-    ./file-managers.nix
-    ./gaming.nix
-    ./hardware.nix
-    ./icons.nix
-    ./launchers.nix
-    ./networking.nix
-    ./shells.nix
-    ./social.nix
-    ./terminals.nix
-    ./theme.nix
-    ./viewers.nix
-    ./virtualisation.nix
-    ./window-managers.nix
-  ];
-
+{ lib, ... }: let
+  inherit (builtins) filter map toString;
+  inherit (lib.filesystem) listFilesRecursive;
+  inherit (lib.strings) hasSuffix;
+in
+{
+  # Automatically recursively import files found in current directory
+  imports = filter (hasSuffix ".nix") (
+    map toString (filter (p: p != ./default.nix) (listFilesRecursive ./.))
+  );
 }

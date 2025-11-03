@@ -16,16 +16,8 @@ in {
       {
         programs.rofi.enable = cfg.rofi.enable;
         programs.fuzzel.enable = cfg.fuzzel.enable;
-      }
-
-      (mkIf cfg.walker.enable {
-        imports = [
-          inputs.walker.homeManagerModules.default
-          ../../../GOOMBAX1/modules/home/launchers/walker.nix
-        ];
         programs.walker.enable = cfg.walker.enable;
-      })
-
+      }
     ];
   };
 

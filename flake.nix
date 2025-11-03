@@ -29,6 +29,8 @@
 
     walker.url = "github:abenz1267/walker";
 
+    nixos-cli.url = "github:nix-community/nixos-cli";
+
   };
 
   outputs = { nixpkgs, home-manager, ... } @ inputs: let
@@ -54,7 +56,10 @@
             backupFileExtension = "hmbak";
             extraSpecialArgs = { inherit inputs configPath; };
           };
-          home-manager.users.${user}.imports = [ ./GOOMBAX1/home.nix ];
+          home-manager.users.${user}.imports = [
+            ./GOOMBAX1/home.nix
+            inputs.walker.homeManagerModules.default
+          ];
         }
 
         # Overlays
@@ -70,7 +75,7 @@
         inputs.nvf.nixosModules.default
         inputs.nur.modules.nixos.default
         inputs.niri.nixosModules.niri
-
+        inputs.nixos-cli.nixosModules.nixos-cli
       ];
     };
 

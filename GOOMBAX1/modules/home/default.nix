@@ -1,36 +1,11 @@
-{ ... }: {
-
-  imports = [
-
-    # Browsers
-    ./browsers/chromium.nix
-    ./browsers/floorp.nix
-    ./browsers/librewolf.nix
-
-    # Launchers
-    ./launchers/fuzzel.nix
-    ./launchers/rofi.nix
-
-    # Hypr Ecosystem
-    ./hypr/hyprland.nix
-    ./hypr/hypridle.nix
-    ./hypr/hyprlock.nix
-    ./hypr/hyprsunset.nix
-
-    # Other
-    ./btop.nix
-    ./desktop-entries.nix
-    ./fish.nix
-    ./git.nix
-    ./helix.nix
-    ./kitty.nix
-    ./lutris.nix
-    ./mangohud.nix
-    ./niri.nix
-    ./starship.nix
-    ./vesktop.nix
-    ./wlsunset.nix
-    ./yazi.nix
-  ];
-
+{ lib, ... }: let
+  inherit (builtins) filter map toString;
+  inherit (lib.filesystem) listFilesRecursive;
+  inherit (lib.strings) hasSuffix;
+in
+{
+  # Automatically recursively import files found in current directory
+  imports = filter (hasSuffix ".nix") (
+    map toString (filter (p: p != ./default.nix) (listFilesRecursive ./.))
+  );
 }

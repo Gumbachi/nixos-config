@@ -1,7 +1,6 @@
 { user, pkgs, lib, ... }: {
 
   imports = [
-
     ./programs.nix
     ./services.nix
 
@@ -12,8 +11,8 @@
 
   # Set the system theme with stylix
   theme = {
-    wallpaper = ../images/wallpapers/bisbiswas06.jpg;
-    synth-midnight-dark.enable = true;
+    wallpaper = ../images/wallpapers/pixeltree.png;
+    monokai.enable = true;
   };
 
   window-managers = {
@@ -116,8 +115,9 @@
   };
 
   documentation = {
-    man.enable = true;
+    man.enable = false;
     tldr.enable = true;
+    nixos.enable = true;
   };
 
   system.stateVersion = "24.05"; # Did you read the comment? yes

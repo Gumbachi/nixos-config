@@ -8,16 +8,7 @@ in
   options.emulation = {
     switch.ryubing.enable = mkEnableOption "Enable switch emulation with Ryubing.";
     gba.mgba.enable = mkEnableOption "Enable standalone mGBA emulator.";
-
-    retroarch = {
-      enable = mkEnableOption "Enable Retroarch software with some basic cores.";
-      extraCores = mkOption {
-        type = types.list;
-        default = [];
-        description = "Extra cores to install with Retroarch.";
-      };
-    };
-
+    retroarch.enable = mkEnableOption "Enable Retroarch software with some basic cores.";
   };
 
   config = mkMerge [
