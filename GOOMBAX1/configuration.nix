@@ -1,4 +1,4 @@
-{ user, pkgs, lib, ... }: {
+{ user, pkgs, lib, inputs, ... }: {
 
   imports = [
     ./programs.nix
@@ -11,8 +11,9 @@
 
   # Set the system theme with stylix
   theme = {
-    wallpaper = ../images/wallpapers/pixeltree.png;
+    # wallpaper = ../images/wallpapers/pixeltree.png;
     monokai.enable = true;
+    wallpaper = inputs.wallpaper;
   };
 
   window-managers = {
@@ -80,7 +81,7 @@
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
       inter
-      vistafonts # Calibri
+      vista-fonts # Calibri
     ];
   };
 

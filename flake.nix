@@ -31,6 +31,10 @@
 
     nixos-cli.url = "github:nix-community/nixos-cli";
 
+    # Fetch wallpaper and load into nix store
+    wallpaper.url = "https://files.gumbachi.com/wallpapers/bisbiswas16.jpg";
+    wallpaper.flake = false;
+
   };
 
   outputs = { nixpkgs, home-manager, ... } @ inputs: let
