@@ -19,6 +19,9 @@
       sshs2 = "ssh jared@192.168.69.2";
     };
     shellInit = ''set fish_greeting'';
+    functions = {
+      upload-wallpaper = "scp $argv jared@192.168.69.2:main/config/caddy/srv/wallpapers";
+    };
   };
 
 }

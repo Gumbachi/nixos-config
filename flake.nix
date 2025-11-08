@@ -60,10 +60,7 @@
             backupFileExtension = "hmbak";
             extraSpecialArgs = { inherit inputs configPath; };
           };
-          home-manager.users.${user}.imports = [
-            ./GOOMBAX1/home.nix
-            inputs.walker.homeManagerModules.default
-          ];
+          home-manager.users.${user}.imports = [ ./GOOMBAX1/home.nix ];
         }
 
         # Overlays
