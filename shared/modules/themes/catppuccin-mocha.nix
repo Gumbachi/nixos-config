@@ -18,9 +18,6 @@ in
       polarity = "dark";
     };
 
-    # Set a default wallpaper
-    theme.wallpaper = mkDefault ../../../images/wallpapers/catppuccin-nix.png;
-
     # Set home manager configurations
     home-manager.sharedModules = [{
 

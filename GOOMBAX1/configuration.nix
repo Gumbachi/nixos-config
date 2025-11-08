@@ -11,7 +11,6 @@
 
   # Set the system theme with stylix
   theme = {
-    # wallpaper = ../images/wallpapers/pixeltree.png;
     monokai.enable = true;
     wallpaper = inputs.wallpaper;
   };

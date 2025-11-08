@@ -19,7 +19,11 @@ in
     };
 
     # Set a default wallpaper
-    theme.wallpaper = mkDefault ../../../images/wallpapers/monokai.png;
+    theme.wallpaper = mkDefault (pkgs.fetchurl {
+      url = "https://files.gumbachi.com/wallpapers/monokai.png";
+      sha256 = "1dm6qm5z7ynjbhb3w7x1yzs6ghw2j6ba4k8s6cpg2w6bw50s3mh8";
+    });
+
     cursors.bibata-modern-ice.enable = true;
 
     # Set home manager configurations

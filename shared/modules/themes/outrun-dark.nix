@@ -19,7 +19,11 @@ in
     };
 
     # Set a default wallpaper
-    theme.wallpaper = mkDefault ../../../images/wallpapers/vaporwave-grid.jpg;
+    theme.wallpaper = mkDefault (pkgs.fetchurl {
+      url = "https://files.gumbachi.com/wallpapers/vaporwave-grid.jpg";
+      sha256 = "1yjpp4xz0pjbvi632s4g441ayysbwi0b3452qlk7vca98a4ahc5w";
+    });
+
     cursors.bibata-modern-ice.enable = true;
 
     # Set home manager configurations

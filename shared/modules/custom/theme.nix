@@ -13,7 +13,10 @@ in
   options.theme = {
     wallpaper = mkOption {
       type = lib.types.path;
-      default = ../../../images/wallpapers/nix-gray.png;
+      default = pkgs.fetchurl {
+        url = "https://files.gumbachi.com/wallpapers/nix-gray.png";
+        hash = "07zl1dlxqh9dav9pibnhr2x1llywwnyphmzcdqaby7dz5js184ly";
+      };
     };
   };
 

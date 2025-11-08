@@ -43,7 +43,10 @@ in
     };
 
     # Set a default wallpaper
-    theme.wallpaper = mkDefault ../../../images/wallpapers/bisbiswas05.jpg;
+    theme.wallpaper = mkDefault (pkgs.fetchurl {
+      url = "https://files.gumbachi.com/wallpapers/bisbiswas05.jpg";
+      sha256 = "0fx5ahgc6v7q60cqkg8ms1y84rps4pprhh7lrsr3g9pnjyh1hnm1";
+    });
     cursors.bibata-modern-ice.enable = true;
 
     # Set home manager configurations

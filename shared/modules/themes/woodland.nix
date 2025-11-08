@@ -19,7 +19,11 @@ in
     };
 
     # Set a default wallpaper
-    theme.wallpaper = mkDefault ../../../images/wallpapers/pixeltree.png;
+    theme.wallpaper = mkDefault (pkgs.fetchurl {
+      url = "https://files.gumbachi.com/wallpapers/pixeltree.png";
+      sha256 = "1m0xkmjaspcnaqm51b69g6djbk5767lckhzlvlgfgaf5g04dzs6m";
+    });
+
     cursors.bibata-modern-ice.enable = true;
 
     # Set home manager configurations

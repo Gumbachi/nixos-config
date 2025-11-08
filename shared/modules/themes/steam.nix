@@ -46,9 +46,6 @@ in
       polarity = "dark";
     };
 
-    # Set a default wallpaper
-    # theme.wallpaper = mkDefault ../../images/wallpapers/bisbiswas05.jpg;
-
     cursors.bibata-modern-ice.enable = true;
 
     # Set home manager configurations
