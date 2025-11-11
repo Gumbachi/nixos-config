@@ -1,13 +1,15 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
 
   programs.helix = {
+
+    package = inputs.helix.packages."x86_64-linux".default; # use the flake
 
     settings.editor = {
       line-number = "absolute";
       lsp.display-messages = true;
       clipboard-provider = "wayland";
       scrolloff = 8;
-      # rainbow-brackets = true;
+      rainbow-brackets = true;
       trim-final-newlines = true;
       trim-trailing-whitespace = true;
       popup-border = "all";
@@ -28,13 +30,6 @@
         character = "╎";
       };
     };
-
-    # languages = {
-    #   language-server.qmlls = {
-    #     command = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
-    #     args = [ "-E" ];
-    #   };
-    # };
 
     extraPackages = with pkgs; [
       marksman
