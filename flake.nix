@@ -106,6 +106,7 @@
         inputs.nvf.nixosModules.default # Neovim
         inputs.stylix.nixosModules.stylix
         inputs.agenix.nixosModules.default
+        inputs.nixos-cli.nixosModules.nixos-cli
 
       ];
     };
@@ -136,6 +137,7 @@
         inputs.nvf.nixosModules.default
         inputs.nur.modules.nixos.default
         inputs.niri.nixosModules.niri
+        inputs.nixos-cli.nixosModules.nixos-cli
       ];
     };
 

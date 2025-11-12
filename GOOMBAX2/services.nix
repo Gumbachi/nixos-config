@@ -16,6 +16,8 @@
 
     gvfs.enable = true;
 
+    nixos-cli.enable = true;
+
   };
-  
+
 }

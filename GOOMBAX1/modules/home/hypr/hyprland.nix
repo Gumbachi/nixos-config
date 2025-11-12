@@ -30,7 +30,7 @@
         "hyprlock"
         "${launchOverlay}"
         "${toggleOverlay}"
-        "${gameLauncher} -silent"
+        "steam -silent"
         "[workspace 1 silent] ${terminal} cava"
         "[workspace 2 silent] sleep 1 && youtube-music" # The sleep is to let network stuff init before launch
         "[workspace 1 silent] ${systemMonitor}"

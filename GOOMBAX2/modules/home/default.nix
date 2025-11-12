@@ -18,6 +18,9 @@ in
     (GOOMBAX1 + /yazi.nix)
     (GOOMBAX1 + /browsers/floorp.nix)
     (GOOMBAX1 + /launchers/walker.nix)
+    (GOOMBAX1 + /launchers/fuzzel.nix)
+    (GOOMBAX1 + /browsers/librewolf.nix)
+
 
     # Custom for X2
     ./hyprland.nix

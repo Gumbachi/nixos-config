@@ -7,6 +7,7 @@
 
     brightnessctl
     playerctl
+    quickshell
 
     jmtpfs
     hyprshot
@@ -27,14 +28,11 @@
 
   file-managers.yazi.enable = true;
 
-  launchers.walker.enable = true;
-  
-  browsers.floorp.enable = true;
+  launchers.fuzzel.enable = true;
 
-  shells = {
-    fish.enable = true;
-    default = pkgs.fish;
-  };
+  browsers.librewolf.enable = true;
+
+  shells.fish.enable = true;
 
   editors.text.helix = {
     enable = true;

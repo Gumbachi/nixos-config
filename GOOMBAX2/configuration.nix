@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ inputs, pkgs, lib, ... }: {
 
   imports = [
     ./hardware-configuration.nix # Mandatory hardware config
@@ -11,8 +11,8 @@
   ];
 
   theme = {
-    wallpaper = ../images/wallpapers/bisbiswas09.jpg;
-    catppuccin-mocha.enable = true; 
+    wallpaper = inputs.wallpaper;
+    monokai.enable = true;
   };
 
   window-managers.hyprland.enable = true;
@@ -29,16 +29,25 @@
       enable = true;
       powerOnBoot = true;
     };
-  }; 
+  };
+
+  defaults = {
+    browser = [ "librewolf.desktop" "chromium.desktop" ];
+    editor = [ "helix.desktop" ];
+    audio = [ "mpv.desktop" ];
+    video = [ "mpv.desktop" ];
+    image = [ "qimgv.desktop" ];
+    shell = pkgs.fish;
+  };
 
   fonts = {
-    enableDefaultPackages = true; 
+    enableDefaultPackages = true;
     packages = with pkgs; [
       nerd-fonts.blex-mono
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
       inter
-      vistafonts # Calibri
+      vista-fonts # Calibri
     ];
   };
 

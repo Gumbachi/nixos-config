@@ -1,21 +1,22 @@
 { configPath, ... }: {
-    
+
   wayland.windowManager.hyprland = {
-    systemd.enable = false; # Disabled for UWSM compatibility
     settings = let
       mainMod = "SUPER";
-      terminal = "uwsm app -- kitty";
-      toggleDashboard = "astal -t overway -i overway";
+      terminal = "kitty";
+      # toggleDashboard = "astal -t overway -i overway";
       fileManager = "${terminal} yazi";
-      menu = ''walker'';
+      menu = "fuzzel";
       editConfig = "${terminal} $EDITOR ${configPath}";
-      screenshot = "uwsm app -- hyprshot -m region --clipboard-only";
-      browser = "uwsm app -- librewolf";
-      clipboard = "uwsm app -- clipse -listen";
-      gameLauncher = "uwsm app -- steam";
+      screenshot = "hyprshot -m region --clipboard-only";
+      browser = "librewolf";
+      clipboard = "clipse -listen";
+      gameLauncher = "steam";
       systemMonitor = "${terminal} btop";
       steamGameRegex = "class:^(steam_app_.*)$";
-    in { 
+      launchOverlay = "qs -p ~/code/overway";
+      toggleOverlay = "qs -p ~/code/overway ipc call overway toggle";
+    in {
 
       monitor = [
         "eDP-1, 1920x1080@60, 1920x0, 1"
@@ -23,18 +24,19 @@
       ];
 
       exec-once = [
-        "uwsm finalize"
         "hyprlock"
         "${clipboard}"
-        # "uwsm app -- steam -silent"
-        # "[workspace 2 silent] uwsm app -- vesktop"
-        # "[workspace 2 silent] uwsm app -- youtube-music"
+        "${launchOverlay}"
+        "${toggleOverlay}"
+        # "steam -silent"
+        # "[workspace 2 silent] vesktop"
+        # "[workspace 2 silent] youtube-music"
       ];
 
       general = {
         gaps_in = 0;
         gaps_out = 0;
-        border_size = 4; 
+        border_size = 4;
         resize_on_border = false; # Click and drag on borders to resize
         allow_tearing = true;
         layout = "dwindle";
@@ -62,7 +64,7 @@
       animations = {
         enabled = true;
         bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-        animation = [      
+        animation = [
           "windows, 1, 7, myBezier"
           "windowsOut, 1, 7, default, popin 80%"
           "border, 1, 10, default"
@@ -90,7 +92,7 @@
       };
 
       input = {
-        # kb_options = "caps:swapescape";
+        kb_options = "caps:swapescape";
         accel_profile = "flat";
         touchpad = {
           natural_scroll = true;
@@ -98,10 +100,12 @@
         };
       };
 
-      gestures = {
-        workspace_swipe = true;
-        workspace_swipe_forever = true;
-      };
+      gesture = [
+        "3,horizontal, workspace"
+        "3, down, close"
+        "3, up, fullscreen"
+        "2, pinch, float"
+      ];
 
       bind = [
         "${mainMod}, T, exec, ${terminal}"
@@ -119,7 +123,7 @@
         "${mainMod}, B, exec, ${browser}"
         ", PRINT, exec, ${screenshot}"
         "${mainMod}, M, exec, ${systemMonitor}"
-        "${mainMod}, D, exec, ${toggleDashboard}"
+        "${mainMod}, D, exec, ${toggleOverlay}"
         "${mainMod}, G, exec, ${gameLauncher}"
 
         "${mainMod}, H, movefocus, l"
@@ -129,8 +133,8 @@
         "${mainMod} SHIFT, H, movewindow, l"
         "${mainMod} SHIFT, L, movewindow, r"
         "${mainMod} SHIFT, K, movewindow, u"
-        "${mainMod} SHIFT, J, movewindow, d" 
- 
+        "${mainMod} SHIFT, J, movewindow, d"
+
         "${mainMod}, 1, workspace, 1"
         "${mainMod}, 2, workspace, 2"
         "${mainMod}, 3, workspace, 3"
@@ -155,9 +159,9 @@
 
         "${mainMod}, S, togglespecialworkspace, magic"
         "${mainMod} SHIFT, S, movetoworkspace, special:magic"
-      ]; 
+      ];
 
-      bindm = [        
+      bindm = [
         "${mainMod}, mouse:272, movewindow"
         "${mainMod}, mouse:273, resizewindow"
       ];
@@ -169,11 +173,11 @@
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
       ];
 
-      bindl = [    
+      bindl = [
         ", switch:Lid Switch, exec, hyprlock" # Run hyprlock when closing lid
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", XF86AudioPlay, exec, playerctl play-pause" 
-        ", XF86AudioNext, exec, playerctl next" 
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioNext, exec, playerctl next"
         ", XF86AudioPrev, exec, playerctl previous"
       ];
 
@@ -188,9 +192,9 @@
 
         "workspace 2, class:(com.github.th_ch.youtube_music)"
         "workspace 2, class:(vesktop)"
-  
+
         "workspace 3, ${steamGameRegex}"
-        "fullscreen, ${steamGameRegex}" 
+        "fullscreen, ${steamGameRegex}"
         "idleinhibit always, ${steamGameRegex}"
 
         "suppressevent maximize, class:.*"
