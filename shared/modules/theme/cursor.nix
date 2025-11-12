@@ -17,7 +17,7 @@ in {
         hyprcursor.enable = true;
         hyprcursor.size = 32;
         name = "Bibata-Modern-Ice";
-        pacakge = pkgs.bibata-cursors;
+        package = pkgs.bibata-cursors;
         size = 24;
       };
     }
@@ -29,7 +29,7 @@ in {
         hyprcursor.enable = true;
         hyprcursor.size = 32;
         name = "catppuccin-mocha-light-cursors";
-        pacakge = pkgs.catppuccin-cursors.mochaLight;
+        package = pkgs.catppuccin-cursors.mochaLight;
         size = 24;
       };
     }

@@ -1,6 +1,6 @@
 { pkgs, config, lib, ... }:
 let
-  inherit (lib) mkOption;
+  inherit (lib) mkOption mkForce;
   cfg = config.theme.wallpaper;
 in
 {
@@ -39,6 +39,34 @@ in
       else
         [ ",${cfg.landscape}" ];
     };
+
+    programs.hyprlock.settings.background = let
+      value = if (cfg.portrait != null) then
+      [
+        {
+          monitor = "DP-1";
+          path = "${cfg.landscape}";
+          blur_passes = 3;
+        }
+        {
+          monitor = "DP-2";
+          path = "${cfg.portrait}";
+          blur_passes = 3;
+        }
+        {
+          monitor = "DP-3";
+          path = "${cfg.portrait}";
+          blur_passes = 3;
+        }
+      ]
+    else
+      [
+        {
+          path = "${cfg.landscape}";
+          blur_passes = 3;
+        }
+      ];
+    in mkForce value;
 
   }];
 }

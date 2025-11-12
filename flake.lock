@@ -1092,13 +1092,13 @@
     "wallpaper-portrait": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-qQZKvbLtb+flRt7LSoOdb0TtWIE+2DgIXA2DJUWwtfQ=",
+        "narHash": "sha256-hYKLzhR+T4eydrviOJG0KOnwg9sGB8hZUEYSj14Yees=",
         "type": "file",
-        "url": "https://files.gumbachi.com/wallpapers/cyberpunk-portrait.png"
+        "url": "https://files.gumbachi.com/wallpapers/cyberpunk-portrait-compressed.png"
       },
       "original": {
         "type": "file",
-        "url": "https://files.gumbachi.com/wallpapers/cyberpunk-portrait.png"
+        "url": "https://files.gumbachi.com/wallpapers/cyberpunk-portrait-compressed.png"
       }
     },
     "xwayland-satellite-stable": {

@@ -18,27 +18,16 @@ in
       polarity = "dark";
     };
 
-    cursors.bibata-modern-ice.enable = true;
-
     # Set home manager configurations
     home-manager.sharedModules = [{
 
       # Theme code blocks in vencord
       programs.vesktop.vencord.settings.plugins.ShikiCodeblocks.theme = "${shikiThemes}/vesper.json";
 
-      # Set XCursor
-      home.pointerCursor = {
-        package = pkgs.bibata-cursors;
-        name = "Bibata-Modern-Ice";
-      };
-
       gtk.iconTheme = {
         name = "Papirus-Dark";
         package = pkgs.papirus-icon-theme;
       };
-
-      # Set Hyprcursor theme
-      wayland.windowManager.hyprland.settings.env = [ "HYPRCURSOR_THEME,Bibata-Modern-Ice" ];
 
     }];
   };

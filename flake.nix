@@ -37,7 +37,7 @@
     wallpaper.url = "https://files.gumbachi.com/wallpapers/cyberpunk.png";
     wallpaper.flake = false;
 
-    wallpaper-portrait.url = "https://files.gumbachi.com/wallpapers/cyberpunk-portrait.png";
+    wallpaper-portrait.url = "https://files.gumbachi.com/wallpapers/cyberpunk-portrait-compressed.png";
     wallpaper-portrait.flake = false;
 
   };
