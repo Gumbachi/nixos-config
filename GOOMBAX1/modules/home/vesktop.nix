@@ -5,7 +5,7 @@
       discordBranch = "stable";
       customTitleBar = false;
       enableMenu = true;
-      minimizeToTray = false;
+      minimizeToTray = true;
       splashTheming = true;
       tray = true;
       hardwareAcceleration = true;

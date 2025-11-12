@@ -31,9 +31,14 @@
 
     nixos-cli.url = "github:nix-community/nixos-cli";
 
-    # Fetch wallpaper and load into nix store
-    wallpaper.url = "https://files.gumbachi.com/wallpapers/bisbiswas16.jpg";
+    helix.url = "github:helix-editor/helix";
+
+    # Fetch wallpapers and load into nix store
+    wallpaper.url = "https://files.gumbachi.com/wallpapers/cyberpunk.png";
     wallpaper.flake = false;
+
+    wallpaper-portrait.url = "https://files.gumbachi.com/wallpapers/cyberpunk-portrait-compressed.png";
+    wallpaper-portrait.flake = false;
 
   };
 

@@ -6,13 +6,16 @@
 
     ./hardware-configuration.nix # Mandatory hardware config
     ../shared/modules/custom # Custom nix option definitions. Does not install anything
+    ../shared/modules/theme # Custom simple theming system
     ./modules # Modules declaring the system layout
   ];
 
-  # Set the system theme with stylix
+  # Set the system theme with Stylix and Home Manager
   theme = {
     monokai.enable = true;
-    wallpaper = inputs.wallpaper;
+    wallpaper.landscape = inputs.wallpaper;
+    wallpaper.portrait = inputs.wallpaper-portrait;
+    cursor.bibata-modern-ice.enable = true;
   };
 
   window-managers = {
