@@ -1,16 +1,16 @@
 {
 	"window-size": {
-		"width": 960,
-		"height": 540
+		"width": 1920,
+		"height": 1080
 	},
 	"window-maximized": true,
 	"window-position": {
 		"x": 0,
 		"y": 0
 	},
-	"url": "https://music.youtube.com/watch?v=qMxfhhrl-gU&list=LM&index=0",
+	"url": "https://music.youtube.com/watch?v=wlH4ke4TiKY&list=LM&index=0",
 	"options": {
-		"tray": false,
+		"tray": true,
 		"appVisible": true,
 		"autoUpdates": true,
 		"alwaysOnTop": false,
@@ -19,17 +19,17 @@
 		"startAtLogin": false,
 		"disableHardwareAcceleration": false,
 		"removeUpgradeButton": true,
-		"restartOnConfigChanges": true,
+		"restartOnConfigChanges": false,
 		"trayClickPlayPause": false,
 		"autoResetAppCache": false,
 		"resumeOnStart": true,
 		"likeButtons": "",
 		"proxy": "",
-		"startingPage": "Home",
+		"startingPage": "Playlists",
 		"overrideUserAgent": false,
 		"usePodcastParticipantAsArtist": false,
 		"themes": [
-			"/home/jared/nixos-config/GOOMBAX2/.config/YouTube Music/mocha.css"
+			"/home/jared/.config/YouTube Music/stylix.css"
 		]
 	},
 	"plugins": {
@@ -42,14 +42,14 @@
 			"align": "middle"
 		},
 		"precise-volume": {
-			"enabled": true,
+			"enabled": false,
 			"steps": 1,
 			"arrowsShortcut": true,
 			"globalShortcuts": {
 				"volumeUp": "",
 				"volumeDown": ""
 			},
-			"savedVolume": 13
+			"savedVolume": 53
 		},
 		"discord": {
 			"listenAlong": true,
@@ -62,7 +62,7 @@
 			"enabled": true
 		},
 		"exponential-volume": {
-			"enabled": true
+			"enabled": false
 		},
 		"adblocker": {
 			"enabled": true,
@@ -163,15 +163,30 @@
 			"enabled": true
 		},
 		"synced-lyrics": {
-			"enabled": true
+			"enabled": false
 		},
 		"unobtrusive-player": {
+			"enabled": true
+		},
+		"performance-improvement": {
+			"enabled": true
+		},
+		"custom-output-device": {
+			"enabled": true,
+			"output": "9e63e16013a6bf41ec33918af3384da72de6733022bdf000e945b43535a2d135",
+			"devices": {
+				"default": "Default",
+				"9e63e16013a6bf41ec33918af3384da72de6733022bdf000e945b43535a2d135": "Built-in Audio Stereo",
+				"d8e4e1bf8d3ab75cc61895d0336165a03f56818ba2e9ba431d5583a0c24e3b9b": "Built-in Audio Stereo"
+			}
+		},
+		"album-actions": {
 			"enabled": true
 		}
 	},
 	"__internal__": {
 		"migrations": {
-			"version": "3.9.0"
+			"version": "3.11.0"
 		}
 	}
 }
