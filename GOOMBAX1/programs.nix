@@ -10,6 +10,7 @@
     pavucontrol # Sound Settings
     hyprshot
     nwg-look # GTK Style GUI
+    bitwarden-desktop
   ];
 
   # Home manager programs
@@ -111,9 +112,7 @@
 
   viewers = {
     qimgv.enable = true;
-    imv.enable = false;
     mpv.enable = true;
-    vlc.enable = true;
   };
 
   social = {
@@ -151,5 +150,9 @@
     };
   };
 
+  window-managers = {
+    hyprland.enable = true;
+    niri.enable = false;
+  };
 
 }

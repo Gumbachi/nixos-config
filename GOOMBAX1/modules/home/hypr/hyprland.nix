@@ -226,6 +226,7 @@
 
         "suppressevent maximize, class:.*"
         "suppressevent fullscreen, class:vesktop"
+        "suppressevent fullscreen, class:com.github.th_ch.youtube_music"
       ];
 
     };

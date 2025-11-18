@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
   userConfig = "/home/jared/nixos-config/GOOMBAX1/.config";
@@ -7,6 +7,23 @@ in
 
   home.username = "jared";
   home.homeDirectory = "/home/jared";
+
+
+  # https://discourse.nixos.org/t/how-to-install-xdg-desktop-portal-termfilechooser/62819/3
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-termfilechooser ];
+    config.common."org.freedesktop.impl.portal.FileChooser" = "termfilechooser";
+  };
+  home.sessionVariables.TERMCMD = "kitty --class=file_chooser";
+  xdg.configFile."xdg-desktop-portal-termfilechooser/config" = {
+    force = true;
+    text = ''
+      [filechooser]
+      cmd=${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
+    '';
+  };
+
 
   ################
   ### SYMLINKS ###

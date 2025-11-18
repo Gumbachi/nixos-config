@@ -1,45 +1,52 @@
 { config, lib, pkgs, ... }:
 let
   inherit (lib) mkPackageOption mkOption;
-  inherit (lib.types) str listOf;
-  module = "defaults";
+  inherit (lib.types) listOf package;
+  module = "default-apps";
   cfg = config.${module};
 in {
 
   options.${module} = {
 
     browser = mkOption {
-      type = listOf str;
-      description = "Set the default browser. Can set more than one default to be used";
-      example = [ "firefox.desktop" "chromium.desktop" ];
+      type = listOf package;
+      description = "Set the default browser.";
+      example = [ pkgs.chromium pkgs.firefox ];
       default = [];
     };
 
-    editor = mkOption {
-      type = listOf str;
+    files = mkOption {
+      type = listOf package;
+      description = "Set the default file manager.";
+      example = [ pkgs.yazi pkgs.xfce.thunar ];
+      default = [];
+    };
+
+    text = mkOption {
+      type = listOf package;
       description = "Set the default text editor";
-      example = [ "nvim.desktop" ];
+      example = [ pkgs.helix pkgs.vim ];
       default = [];
     };
 
     video = mkOption {
-      type = listOf str;
+      type = listOf package;
       description = "Set the default video player";
-      example = [ "mpv.desktop" ];
+      example = [ pkgs.mpv pkgs.vlc ];
       default = [];
     };
 
     audio = mkOption {
-      type = listOf str;
+      type = listOf package;
       description = "Set the default audio player";
-      example = [ "mpv.desktop" ];
+      example = [ pkgs.mpv pkgs.cantata ];
       default = [];
     };
 
     image = mkOption {
-      type = listOf str;
+      type = listOf package;
       description = "Set the default image viewer";
-      example = [ "imv.desktop" ];
+      example = [ pkgs.imv ];
       default = [];
     };
 
@@ -50,40 +57,46 @@ in {
 
     # Shell
     users.defaultUserShell = cfg.shell;
-    
-    
-    
+
     home-manager.sharedModules = [{
-          
-      xdg.mimeApps = let
-        browser = {
-          prefix = "x-scheme-handler";
-          types = [ "http" "https" "about" "unknown" ];
-          apps = cfg.browser;
-        };
-        audio = {
-          prefix = "audio";
-          types = [ "mp4" "webm" "x-msvideo" "mpeg" "ogg" "quicktime" "x-matroska" ];
-          apps = cfg.audio;
-        };
-        video = {
-          prefix = "video";
-          types = [ "mp4" "webm" "x-msvideo" "mpeg" "ogg" "quicktime" "x-matroska" ];
-          apps = cfg.video;
-        };
-        image = {
-          prefix = "image";
-          types = [ "apng" "avif" "bmp" "gif" "x-icon" "jpeg" "png" "svg+xml" "tiff" "webp" ];
-          apps = cfg.image;
-        };
-      in {
-        enable = true;
-        defaultApplications = 
-          builtins.listToAttrs ( map (type: { name = "${audio.prefix}/${type}" ; value = audio.apps; }) audio.types ) //
-          builtins.listToAttrs ( map (type: { name = "${video.prefix}/${type}" ; value = video.apps; }) video.types ) //
-          builtins.listToAttrs ( map (type: { name = "${image.prefix}/${type}" ; value = image.apps; }) image.types ) //
-          builtins.listToAttrs ( map (type: { name = "${browser.prefix}/${type}" ; value = browser.apps; }) browser.types );
-      };
+
+      xdg.mimeApps.enable = true;
+      xdg.mimeApps.defaultApplicationPackages = cfg.browser
+        ++ cfg.files
+        ++ cfg.text
+        ++ cfg.video
+        ++ cfg.audio
+        ++ cfg.image;
+
+    #   xdg.mimeApps = let
+    #     # browser = {
+    #     #   prefix = "x-scheme-handler";
+    #     #   types = [ "http" "https" "about" "unknown" ];
+    #     #   apps = cfg.browser;
+    #     # };
+    #     audio = {
+    #       prefix = "audio";
+    #       types = [ "mp4" "webm" "x-msvideo" "mpeg" "ogg" "quicktime" "x-matroska" ];
+    #       apps = cfg.audio;
+    #     };
+    #     video = {
+    #       prefix = "video";
+    #       types = [ "mp4" "webm" "x-msvideo" "mpeg" "ogg" "quicktime" "x-matroska" ];
+    #       apps = cfg.video;
+    #     };
+    #     image = {
+    #       prefix = "image";
+    #       types = [ "apng" "avif" "bmp" "gif" "x-icon" "jpeg" "png" "svg+xml" "tiff" "webp" ];
+    #       apps = cfg.image;
+    #     };
+    #   in {
+    #     enable = true;
+    #     defaultApplications =
+    #       builtins.listToAttrs ( map (type: { name = "${audio.prefix}/${type}" ; value = audio.apps; }) audio.types ) //
+    #       builtins.listToAttrs ( map (type: { name = "${video.prefix}/${type}" ; value = video.apps; }) video.types ) //
+    #       builtins.listToAttrs ( map (type: { name = "${image.prefix}/${type}" ; value = image.apps; }) image.types );
+    #       # builtins.listToAttrs ( map (type: { name = "${browser.prefix}/${type}" ; value = browser.apps; }) browser.types );
+    #   };
     }];
 
   };

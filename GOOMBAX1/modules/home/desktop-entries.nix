@@ -17,7 +17,7 @@ let
     "Yazi"
     "fish"
     "kitty"
-    "uuctl" 
+    "uuctl"
     "Neovim"
   ];
 in
@@ -34,11 +34,34 @@ in
     #   icon = "system-file-manager";
     # };
 
-    vlc = {
-      name = "VLC";
-      genericName = "Media Player";
-      exec = "env -u DISPLAY vlc";
-      icon = "vlc";
+    # vlc = {
+    #   name = "VLC";
+    #   genericName = "Media Player";
+    #   exec = "env -u DISPLAY vlc";
+    #   icon = "vlc";
+    # };
+
+    gtksettings = {
+      name = "GTK Settings";
+      genericName = "GTK Settings";
+      exec = "nwg-look";
+      noDisplay = true;
+      icon = "configure";
+    };
+
+    nixoptsearch = {
+      name = "NixOS Options";
+      genericName = "Nix Search";
+      exec = ''xdg-open "https://search.nixos.org/options?channel=unstable"'';
+      icon = "nix-snowflake";
+    };
+
+
+    nixpkgsearch = {
+      name = "NixOS Packages";
+      genericName = "Nix Search";
+      exec = ''xdg-open "https://search.nixos.org/packages?channel=unstable"'';
+      icon = "nix-snowflake";
     };
 
     immich = {
@@ -57,4 +80,4 @@ in
 
   };
 
-} 
+}

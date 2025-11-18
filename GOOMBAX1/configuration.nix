@@ -18,9 +18,14 @@
     cursor.bibata-modern-ice.enable = true;
   };
 
-  window-managers = {
-    hyprland.enable = true;
-    niri.enable = false;
+  default-apps = {
+    browser = [ pkgs.librewolf pkgs.chromium ];
+    files = [ pkgs.yazi ];
+    text = [ pkgs.helix ];
+    audio = [ pkgs.mpv ];
+    video = [ pkgs.mpv ];
+    image = [ pkgs.qimgv ];
+    shell = pkgs.fish;
   };
 
   boot = {
@@ -31,7 +36,7 @@
     kernelParams = [
       "video=DP-1:3840x2160@240"
       "video=DP-2:2560x1440@120"
-      "video=DP-1:2560x1440@120"
+      "video=DP-3:2560x1440@120"
     ];
   };
 
@@ -42,15 +47,6 @@
   };
 
   environment.sessionVariables.CONFIG = "/home/jared/nixos-config";
-
-  defaults = {
-    browser = [ "chromium.desktop" "librewolf.desktop" ];
-    editor = [ "helix.desktop" ];
-    audio = [ "mpv.desktop" ];
-    video = [ "mpv.desktop" ];
-    image = [ "qimgv.desktop" ];
-    shell = pkgs.fish;
-  };
 
   hardware = {
     graphics = {
