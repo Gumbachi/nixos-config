@@ -8,6 +8,7 @@
     brightnessctl
     playerctl
     quickshell
+    pavucontrol
 
     jmtpfs
     hyprshot

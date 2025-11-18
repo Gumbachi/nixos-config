@@ -36,7 +36,7 @@
       general = {
         gaps_in = 0;
         gaps_out = 0;
-        border_size = 4;
+        border_size = 2;
         resize_on_border = false; # Click and drag on borders to resize
         allow_tearing = true;
         layout = "dwindle";
@@ -102,9 +102,10 @@
 
       gesture = [
         "3,horizontal, workspace"
-        "3, down, close"
-        "3, up, fullscreen"
-        "2, pinch, float"
+        "3, vertical, fullscreen"
+        "4, down, close"
+        "4, up, float"
+        "2, pinch, resize"
       ];
 
       bind = [

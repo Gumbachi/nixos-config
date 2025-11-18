@@ -7,12 +7,14 @@
     ./services.nix
 
     ../shared/modules/custom # Custom Nix Options
+    ../shared/modules/theme # Custom simple theming system
     ./modules # Modules declaring the system layout
   ];
 
   theme = {
-    wallpaper = inputs.wallpaper;
+    wallpaper.landscape = inputs.wallpaper;
     monokai.enable = true;
+    cursor.bibata-modern-ice.enable = true;
   };
 
   window-managers.hyprland.enable = true;
@@ -66,7 +68,7 @@
   environment.sessionVariables.CONFIG = "/home/jared/NixOS-Config";
 
   # Sound configuration
-  services.pulseaudio.enable = lib.mkForce false;
+  # services.pulseaudio.enable = lib.mkForce false;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
