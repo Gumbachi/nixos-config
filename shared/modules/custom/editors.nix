@@ -34,7 +34,7 @@ in {
   };
 
   config = mkMerge [
-    
+
     (mkIf cfg.libreoffice.enable {
       environment.systemPackages = with pkgs; [
         libreoffice # Office Software
@@ -65,10 +65,10 @@ in {
     })
 
     (mkIf cfg.text.helix.enable {
-      environment.sessionVariables.EDITOR = mkIf cfg.text.helix.setDefault "hx";
-      home-manager.sharedModules = [{ 
+      # environment.sessionVariables.EDITOR = mkIf cfg.text.helix.setDefault "hx";
+      home-manager.sharedModules = [{
         programs.helix.enable = true;
-        programs.helix.defaultEditor = cfg.text.helix.setDefault;
+        # programs.helix.defaultEditor = cfg.text.helix.setDefault;
       }];
     })
 

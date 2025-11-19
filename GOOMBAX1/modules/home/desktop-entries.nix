@@ -25,14 +25,14 @@ in
 
   xdg.desktopEntries = {
 
-    # yazi = {
-    #   name = "Yazi";
-    #   genericName = "File Explorer";
-    #   exec = "yazi";
-    #   terminal = true;
-    #   mimeType = ["inode/directory"];
-    #   icon = "system-file-manager";
-    # };
+    yazi = {
+      name = "Yazi";
+      genericName = "File Explorer";
+      exec = ''yazi'';
+      terminal = false;
+      mimeType = ["inode/directory"];
+      icon = "system-file-manager";
+    };
 
     # vlc = {
     #   name = "VLC";

@@ -1,18 +1,19 @@
-{ configPath, ... }: {
-
-  # System Hyprland config in GOOMBAX1/modules/nixos/hyprland.nix
+{ osConfig, lib, configPath, ... }: let
+  # Get the default exe from the defaults determined by default-apps.nix
+  # Example: getDefault browser -> librewolf
+  getDefault = type: lib.getExe (builtins.elemAt osConfig.default-apps.${type} 0);
+in {
 
   wayland.windowManager.hyprland = {
-    # systemd.enable = false; # Disabled for UWSM compatibility
     settings = let
       mainMod = "SUPER";
-      terminal = "kitty";
-      fileManager = "${terminal} yazi";
+      terminal = "${getDefault "terminal"}";
+      fileManager = "${terminal} ${getDefault "files"}";
       launcher = "fuzzel";
       confedit = "${terminal} $EDITOR ${configPath}";
       screenshot = "hyprshot -m region --clipboard-only";
       screenshotSave = "hyprshot -m region -o $HOME/screenshots/";
-      browser = "librewolf";
+      browser = "${getDefault "browser"}";
       systemMonitor = "${terminal} btop";
       gameLauncher = "steam";
       steamGameRegex = "class:^(steam_app_.*)$";

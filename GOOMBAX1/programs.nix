@@ -17,6 +17,7 @@
   home-manager.sharedModules = [{
     wayland.windowManager.hyprland.enable = true;
     programs.hyprlock.enable = true;
+    programs.zellij.enable = true;
 
     programs.nh = {
       enable = true;
@@ -69,7 +70,7 @@
 
     text.helix = {
       enable = true;
-      setDefault = true;
+      # setDefault = true;
     };
 
     text.nvf = {

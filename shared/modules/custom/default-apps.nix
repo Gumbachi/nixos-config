@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
-  inherit (lib) mkPackageOption mkOption;
+  inherit (builtins) elemAt length;
+  inherit (lib) mkPackageOption mkOption getExe mkIf;
   inherit (lib.types) listOf package;
   module = "default-apps";
   cfg = config.${module};
@@ -12,42 +13,49 @@ in {
       type = listOf package;
       description = "Set the default browser.";
       example = [ pkgs.chromium pkgs.firefox ];
-      default = [];
+      default = [ pkgs.firefox ];
+    };
+
+    terminal = mkOption {
+      type = listOf package;
+      description = "Set the default terminal emulator.";
+      example = [ pkgs.kitty pkgs.ghostty ];
+      default = [ pkgs.kitty ];
     };
 
     files = mkOption {
       type = listOf package;
       description = "Set the default file manager.";
       example = [ pkgs.yazi pkgs.xfce.thunar ];
-      default = [];
+      default = [ pkgs.xfce.thunar ];
     };
 
     text = mkOption {
       type = listOf package;
       description = "Set the default text editor";
       example = [ pkgs.helix pkgs.vim ];
-      default = [];
+      default = [ pkgs.helix ];
     };
 
     video = mkOption {
       type = listOf package;
       description = "Set the default video player";
       example = [ pkgs.mpv pkgs.vlc ];
-      default = [];
+      default = [ pkgs.mpv ];
     };
 
     audio = mkOption {
       type = listOf package;
       description = "Set the default audio player";
       example = [ pkgs.mpv pkgs.cantata ];
-      default = [];
+      default = [ pkgs.mpv ];
     };
 
     image = mkOption {
       type = listOf package;
       description = "Set the default image viewer";
       example = [ pkgs.imv ];
-      default = [];
+      default = [ pkgs.imv ];
     };
 
     shell = mkPackageOption pkgs "bash" {};
@@ -55,48 +63,25 @@ in {
 
   config = {
 
-    # Shell
     users.defaultUserShell = cfg.shell;
 
     home-manager.sharedModules = [{
+      xdg.mimeApps = {
+        enable = true;
+        defaultApplicationPackages = cfg.browser
+          ++ cfg.terminal
+          ++ cfg.files
+          ++ cfg.text
+          ++ cfg.video
+          ++ cfg.audio
+          ++ cfg.image;
+      };
 
-      xdg.mimeApps.enable = true;
-      xdg.mimeApps.defaultApplicationPackages = cfg.browser
-        ++ cfg.files
-        ++ cfg.text
-        ++ cfg.video
-        ++ cfg.audio
-        ++ cfg.image;
+      home.sessionVariables = {
+        EDITOR = getExe (elemAt cfg.text 0);
+        BROWSER = getExe (elemAt cfg.browser 0);
+      };
 
-    #   xdg.mimeApps = let
-    #     # browser = {
-    #     #   prefix = "x-scheme-handler";
-    #     #   types = [ "http" "https" "about" "unknown" ];
-    #     #   apps = cfg.browser;
-    #     # };
-    #     audio = {
-    #       prefix = "audio";
-    #       types = [ "mp4" "webm" "x-msvideo" "mpeg" "ogg" "quicktime" "x-matroska" ];
-    #       apps = cfg.audio;
-    #     };
-    #     video = {
-    #       prefix = "video";
-    #       types = [ "mp4" "webm" "x-msvideo" "mpeg" "ogg" "quicktime" "x-matroska" ];
-    #       apps = cfg.video;
-    #     };
-    #     image = {
-    #       prefix = "image";
-    #       types = [ "apng" "avif" "bmp" "gif" "x-icon" "jpeg" "png" "svg+xml" "tiff" "webp" ];
-    #       apps = cfg.image;
-    #     };
-    #   in {
-    #     enable = true;
-    #     defaultApplications =
-    #       builtins.listToAttrs ( map (type: { name = "${audio.prefix}/${type}" ; value = audio.apps; }) audio.types ) //
-    #       builtins.listToAttrs ( map (type: { name = "${video.prefix}/${type}" ; value = video.apps; }) video.types ) //
-    #       builtins.listToAttrs ( map (type: { name = "${image.prefix}/${type}" ; value = image.apps; }) image.types );
-    #       # builtins.listToAttrs ( map (type: { name = "${browser.prefix}/${type}" ; value = browser.apps; }) browser.types );
-    #   };
     }];
 
   };

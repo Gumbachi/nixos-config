@@ -1,4 +1,4 @@
-{ user, pkgs, lib, inputs, ... }: {
+{ user, pkgs, lib, config, inputs, ... }: {
 
   imports = [
     ./programs.nix
@@ -18,14 +18,15 @@
     cursor.bibata-modern-ice.enable = true;
   };
 
-  default-apps = {
-    browser = [ pkgs.librewolf pkgs.chromium ];
-    files = [ pkgs.yazi ];
-    text = [ pkgs.helix ];
-    audio = [ pkgs.mpv ];
-    video = [ pkgs.mpv ];
-    image = [ pkgs.qimgv ];
-    shell = pkgs.fish;
+  default-apps = with pkgs; {
+    browser = [ librewolf chromium ];
+    terminal = [ kitty ];
+    files = [ yazi ];
+    text = [ helix ];
+    audio = [ mpv ];
+    video = [ mpv ];
+    image = [ qimgv ];
+    shell = fish;
   };
 
   boot = {
