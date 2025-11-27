@@ -65,7 +65,7 @@
     plymouth.enable = false;
   };
 
-  environment.sessionVariables.CONFIG = "/home/jared/NixOS-Config";
+  environment.sessionVariables.CONFIG = "/home/jared/nixos-config";
 
   # Sound configuration
   # services.pulseaudio.enable = lib.mkForce false;

@@ -10,8 +10,11 @@
 
     # Config Modules
     ../shared/modules/custom # Custom nix options. Does not install anything
+    # ../shared/modules/theme # Theming options
     ./modules # System specific config
   ];
+
+  # theme.outrun-dark.enable = true;
 
   networking = {
     hostName = "GOOMBAS2";

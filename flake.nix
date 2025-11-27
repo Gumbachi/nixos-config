@@ -10,6 +10,7 @@
 
     # System
     stylix.url = "github:danth/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
 
     agenix.url = "github:ryantm/agenix";
 
@@ -90,7 +91,7 @@
     nixosConfigurations.GOOMBAS2 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs user; };
-      modules = defaultModules ++ [
+      modules = [
         ./GOOMBAS2/configuration.nix # Main Config
 
         # Home Manager
@@ -111,7 +112,7 @@
 
         # Third Party
         inputs.agenix.nixosModules.default
-      ];
+      ] ++ defaultModules;
     };
 
     nixosConfigurations.GOOMBAX2 = nixpkgs.lib.nixosSystem {
