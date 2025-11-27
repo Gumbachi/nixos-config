@@ -16,6 +16,15 @@ in
       enable = true;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/${module}.yaml";
       polarity = "dark";
+
+      opacity = let
+        opacity = 1.0;
+      in {
+        applications = opacity;
+        popups = opacity;
+        desktop = opacity;
+        terminal = opacity;
+      };
     };
 
     # Set home manager configurations

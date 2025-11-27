@@ -14,7 +14,7 @@ in {
   };
 
   config = mkMerge [
-    
+
     (mkIf cfg.firefox.enable {
       home-manager.sharedModules = [{ programs.firefox.enable = true; }];
     })
@@ -32,7 +32,9 @@ in {
     })
 
     (mkIf cfg.zen.enable {
-      environment.systemPackages = [ inputs.zen-browser.packages.${pkgs.system}.default ];
+      environment.systemPackages = [
+        inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+      ];
     })
 
     (mkIf cfg.ladybird.enable {

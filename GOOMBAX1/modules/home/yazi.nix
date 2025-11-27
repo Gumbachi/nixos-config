@@ -41,6 +41,9 @@
     tasks.image_alloc = 0;
     tasks.image_bound = [0 0]; # Render the image. we got enough ram
 
+    preview.ueberzug_scale = 0.5;
+    preview.ueberzug_offset = [350 20 0 0];
+
     opener.play = [
       {
         run = ''mpv "$@"'';

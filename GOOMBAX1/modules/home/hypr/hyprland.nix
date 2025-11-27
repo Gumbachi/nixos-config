@@ -19,6 +19,8 @@ in {
       steamGameRegex = "class:^(steam_app_.*)$";
       launchOverlay = "qs -p ~/code/overway";
       toggleOverlay = "qs -p ~/code/overway ipc call overway toggle";
+      toggleShortcuts = "qs -p ~/code/overway ipc call shortcuts toggle";
+      toggleLauncher = "qs -p ~/code/overway ipc call launcher toggle";
     in {
 
       monitor = [
@@ -40,16 +42,16 @@ in {
       ];
 
       general = {
-        gaps_in = 5;
-        gaps_out = 10;
-        border_size = 4;
+        gaps_in = 0; # 5
+        gaps_out = 0; # 10
+        border_size = 0; # 4
         resize_on_border = false; # Click and drag on borders to resize
         allow_tearing = false;
         layout = "dwindle";
       };
 
       decoration = {
-        rounding = 4;
+        rounding = 0; # 4
         active_opacity = 1.0;
         inactive_opacity = 1.0;
 
@@ -119,7 +121,8 @@ in {
         "${mainMod} SHIFT, M, exec, pkill Hyprland,"
         "${mainMod}, E, exec, ${fileManager}"
         "${mainMod}, V, togglefloating,"
-        "${mainMod}, R, exec, ${launcher}"
+        "${mainMod}, R, exec, ${toggleLauncher}"
+        "${mainMod} SHIFT, R, exec, ${launcher}"
         "${mainMod}, P, pseudo, # dwindle"
         "${mainMod}, Y, togglesplit, # dwindle"
         "${mainMod}, N, exec, ${confedit}"
@@ -129,7 +132,8 @@ in {
         ", PRINT, exec, ${screenshot}"
         "SHIFT, PRINT, exec, ${screenshotSave}"
         "${mainMod}, M, exec, ${systemMonitor}"
-        "${mainMod}, D, exec, ${toggleOverlay}"
+        "${mainMod}, O, exec, ${toggleOverlay}"
+        "${mainMod}, slash, exec, ${toggleShortcuts}"
         "${mainMod}, G, exec, ${gameLauncher}"
 
         "${mainMod}, H, movefocus, l"

@@ -12,7 +12,7 @@
 
   # Set the system theme with Stylix and Home Manager
   theme = {
-    monokai.enable = true;
+    outrun-dark.enable = true;
     wallpaper.landscape = inputs.wallpaper;
     wallpaper.portrait = inputs.wallpaper-portrait;
     cursor.bibata-modern-ice.enable = true;

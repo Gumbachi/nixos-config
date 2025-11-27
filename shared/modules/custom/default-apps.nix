@@ -65,23 +65,22 @@ in {
 
     users.defaultUserShell = cfg.shell;
 
+    environment.sessionVariables = {
+      EDITOR = getExe (elemAt cfg.text 0);
+      BROWSER = getExe (elemAt cfg.browser 0);
+    };
+
     home-manager.sharedModules = [{
       xdg.mimeApps = {
         enable = true;
-        defaultApplicationPackages = cfg.browser
-          ++ cfg.terminal
-          ++ cfg.files
-          ++ cfg.text
+        defaultApplicationPackages = cfg.image
           ++ cfg.video
           ++ cfg.audio
-          ++ cfg.image;
+          ++ cfg.files
+          ++ cfg.text
+          ++ cfg.terminal
+          ++ cfg.browser;
       };
-
-      home.sessionVariables = {
-        EDITOR = getExe (elemAt cfg.text 0);
-        BROWSER = getExe (elemAt cfg.browser 0);
-      };
-
     }];
 
   };
