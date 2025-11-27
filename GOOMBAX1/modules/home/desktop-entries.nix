@@ -25,14 +25,14 @@ in
 
   xdg.desktopEntries = {
 
-    yazi = {
-      name = "Yazi";
-      genericName = "File Explorer";
-      exec = ''yazi'';
-      terminal = false;
-      mimeType = ["inode/directory"];
-      icon = "system-file-manager";
-    };
+    # yazi = {
+    #   name = "Yazi";
+    #   genericName = "File Explorer";
+    #   exec = ''yazi'';
+    #   terminal = false;
+    #   mimeType = ["inode/directory"];
+    #   icon = "system-file-manager";
+    # };
 
     # vlc = {
     #   name = "VLC";
@@ -41,13 +41,13 @@ in
     #   icon = "vlc";
     # };
 
-    gtksettings = {
-      name = "GTK Settings";
-      genericName = "GTK Settings";
-      exec = "nwg-look";
-      noDisplay = true;
-      icon = "configure";
-    };
+    # gtksettings = {
+    #   name = "GTK Settings";
+    #   genericName = "GTK Settings";
+    #   exec = "nwg-look";
+    #   noDisplay = true;
+    #   icon = "configure";
+    # };
 
     nixoptsearch = {
       name = "NixOS Options";

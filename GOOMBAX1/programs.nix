@@ -100,6 +100,7 @@
   gaming = {
     steam.enable = true;
     mangohud.enable = true;
+    lutris.enable = false;
     protonplus.enable = false;
     minecraft.enable = true;
   };

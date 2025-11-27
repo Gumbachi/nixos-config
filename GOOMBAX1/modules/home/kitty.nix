@@ -15,6 +15,9 @@
     # WINDOW CUSTOMIZATION
     confirm_os_window_close = "0";
 
+    # WINDOWS LAYOUTS
+    enabled_layouts = "tall:bias=50;full_size=1;mirrored=false";
+
   };
 
 }

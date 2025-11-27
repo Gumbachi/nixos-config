@@ -16,6 +16,7 @@
       steamGameRegex = "class:^(steam_app_.*)$";
       launchOverlay = "qs -p ~/code/overway";
       toggleOverlay = "qs -p ~/code/overway ipc call overway toggle";
+      toggleShortcuts = "qs -p ~/code/overway ipc call shortcuts toggle";
     in {
 
       monitor = [
@@ -125,6 +126,7 @@
         ", PRINT, exec, ${screenshot}"
         "${mainMod}, M, exec, ${systemMonitor}"
         "${mainMod}, D, exec, ${toggleOverlay}"
+        "${mainMod}, /, exec, ${toggleShortcuts}"
         "${mainMod}, G, exec, ${gameLauncher}"
 
         "${mainMod}, H, movefocus, l"
