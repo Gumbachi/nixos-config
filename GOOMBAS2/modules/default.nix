@@ -12,7 +12,10 @@
 
 in {
   # Import all nixos related submodules
-  imports = importAll ./nixos;
+  imports = let
+    # generate list of modules to borrow from GOOMBAX1/modules/home
+    GOOMBAX1-modules = map (module: ../../GOOMBAX1/modules/nixos + module) [ /nixos-cli.nix ];
+  in importAll ./nixos ++ GOOMBAX1-modules;
 
   # Import all home manager related submodules
   home-manager.users.${user}.imports = let

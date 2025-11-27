@@ -7,7 +7,7 @@ in {
 
   services.nixos-cli.config = {
     config_location = "/home/jared/nixos-config";
-    no_confirm = true;
+    confirmation.always = false;
     use_nvd = true;
     apply.use_nom = true;
   };
