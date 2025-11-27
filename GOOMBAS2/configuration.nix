@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
 
   imports = [
     ./hardware-configuration.nix # Hardware config
@@ -10,11 +10,15 @@
 
     # Config Modules
     ../shared/modules/custom # Custom nix options. Does not install anything
-    # ../shared/modules/theme # Theming options
+    ../shared/modules/theme # Theming options
     ./modules # System specific config
   ];
 
-  # theme.outrun-dark.enable = true;
+  # Warning: Theme must be set or the theme module import will break
+  theme = {
+    outrun-dark.enable = true;
+    wallpaper.landscape = inputs.wallpaper;
+  };
 
   networking = {
     hostName = "GOOMBAS2";
