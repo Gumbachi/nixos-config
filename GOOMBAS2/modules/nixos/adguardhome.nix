@@ -67,41 +67,47 @@ in
       ];
       filters = [
         {
-          enabled = false;
-          url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt";
-          name = "AdGuard DNS filter";
+          enabled = true;
+          name = "OISD Blocklist Big";
+          url = "https://big.oisd.nl";
           id = 1;
         }
-        {
-          enabled = false;
-          url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt";
-          name = "AdAway Default Blocklist";
-          id = 2;
-        }
-        {
-          enabled = false;
-          url = "https://github.com/ppfeufer/adguard-filter-list/blob/master/blocklist?raw=true";
-          name = "Big List";
-          id = 1738986649;
-        }
-        {
-          enabled = true;
-          url = "https://easylist.to/easylist/easylist.txt";
-          name = "Easy List";
-          id = 1738986650;
-        }
-        {
-          enabled = true;
-          url = "https://secure.fanboy.co.nz/fanboy-annoyance.txt";
-          name = "Fanboy Annoyance List";
-          id = 1738986651;
-        }
-        {
-          enabled = true;
-          url = "https://easylist.to/easylist/easyprivacy.txt";
-          name = "Easy Privacy";
-          id = 1738986652;
-        }
+        # {
+        #   enabled = false;
+        #   url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt";
+        #   name = "AdGuard DNS filter";
+        #   id = 1;
+        # }
+        # {
+        #   enabled = false;
+        #   url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt";
+        #   name = "AdAway Default Blocklist";
+        #   id = 2;
+        # }
+        # {
+        #   enabled = false;
+        #   url = "https://github.com/ppfeufer/adguard-filter-list/blob/master/blocklist?raw=true";
+        #   name = "Big List";
+        #   id = 1738986649;
+        # }
+        # {
+        #   enabled = true;
+        #   url = "https://easylist.to/easylist/easylist.txt";
+        #   name = "Easy List";
+        #   id = 1738986650;
+        # }
+        # {
+        #   enabled = true;
+        #   url = "https://secure.fanboy.co.nz/fanboy-annoyance.txt";
+        #   name = "Fanboy Annoyance List";
+        #   id = 1738986651;
+        # }
+        # {
+        #   enabled = true;
+        #   url = "https://easylist.to/easylist/easyprivacy.txt";
+        #   name = "Easy Privacy";
+        #   id = 1738986652;
+        # }
       ];
     };
   };

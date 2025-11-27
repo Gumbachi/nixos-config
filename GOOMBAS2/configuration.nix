@@ -13,8 +13,6 @@
     ./modules # System specific config
   ];
 
-  theme.monokai.enable = true;
-
   networking = {
     hostName = "GOOMBAS2";
     networkmanager.enable = true;
@@ -34,13 +32,14 @@
     nvidia.open = false;
   };
 
-  defaults = {
-    shell = pkgs.fish;
+  default-apps = with pkgs; {
+    shell = fish; # I dont like this
+    text = [ helix ];
+    terminal = [ kitty ];
   };
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
-
 
   # Access groups
   users.groups = {
@@ -51,12 +50,15 @@
   users.users.jared = {
     isNormalUser = true;
     description = "Jared";
-    extraGroups = ["networkmanager" "wheel" "video" "minecraft" "docker" "media" "backup" ];
+    extraGroups = ["networkmanager" "wheel" "video" "minecraft" "media" "backup" ];
   };
 
-  nix.settings = {
-    auto-optimise-store = true;
-    experimental-features = ["nix-command" "flakes"];
+  nix = {
+    nixPath = [ "~/nixos-config" ];
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = ["nix-command" "flakes"];
+    };
   };
 
   # Allow unfree packages

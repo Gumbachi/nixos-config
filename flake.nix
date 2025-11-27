@@ -45,6 +45,13 @@
   outputs = { nixpkgs, home-manager, ... } @ inputs: let
     user = "jared";
     configPath = "/home/${user}/nixos-config";
+    # Nix Modules that should be on all systems. Reduces repetition
+    defaultModules = [
+      inputs.stylix.nixosModules.stylix
+      inputs.nvf.nixosModules.default
+      inputs.nur.modules.nixos.default
+      inputs.nixos-cli.nixosModules.nixos-cli
+    ];
   in {
     # Host Name = <GOOMBA><X/S/L><Number>
     # GOOMBA = Name
@@ -54,7 +61,7 @@
     nixosConfigurations.GOOMBAX1 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs user; };
-      modules = [
+      modules = defaultModules ++ [
         ./GOOMBAX1/configuration.nix # Main Config
 
         # Home Manager
@@ -69,26 +76,20 @@
         }
 
         # Overlays
-        { nixpkgs.overlays = [
-          inputs.niri.overlays.niri
-        ]; }
+        { nixpkgs.overlays = [ inputs.niri.overlays.niri ]; }
 
         # Hardware Support
         inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
 
         # Third Party
-        inputs.stylix.nixosModules.stylix
-        inputs.nvf.nixosModules.default
-        inputs.nur.modules.nixos.default
         inputs.niri.nixosModules.niri
-        inputs.nixos-cli.nixosModules.nixos-cli
       ];
     };
 
     nixosConfigurations.GOOMBAS2 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs user; };
-      modules = [
+      modules = defaultModules ++ [
         ./GOOMBAS2/configuration.nix # Main Config
 
         # Home Manager
@@ -108,18 +109,14 @@
         inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
 
         # Third Party
-        inputs.nvf.nixosModules.default # Neovim
-        inputs.stylix.nixosModules.stylix
         inputs.agenix.nixosModules.default
-        inputs.nixos-cli.nixosModules.nixos-cli
-
       ];
     };
 
     nixosConfigurations.GOOMBAX2 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs user; };
-      modules = [
+      modules = defaultModules ++ [
         ./GOOMBAX2/configuration.nix # Main Config
 
         # Home Manager
@@ -138,11 +135,7 @@
         inputs.nixos-hardware.nixosModules.dell-xps-15-9560
 
         # Third Party Modules
-        inputs.stylix.nixosModules.stylix
-        inputs.nvf.nixosModules.default
-        inputs.nur.modules.nixos.default
         inputs.niri.nixosModules.niri
-        inputs.nixos-cli.nixosModules.nixos-cli
       ];
     };
 
