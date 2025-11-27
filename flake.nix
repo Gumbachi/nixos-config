@@ -91,7 +91,7 @@
     nixosConfigurations.GOOMBAS2 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs user; };
-      modules = [
+      modules = defaultModules ++ [
         ./GOOMBAS2/configuration.nix # Main Config
 
         # Home Manager
@@ -112,7 +112,7 @@
 
         # Third Party
         inputs.agenix.nixosModules.default
-      ] ++ defaultModules;
+      ];
     };
 
     nixosConfigurations.GOOMBAX2 = nixpkgs.lib.nixosSystem {
