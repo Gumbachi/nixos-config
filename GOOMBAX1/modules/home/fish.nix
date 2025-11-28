@@ -1,9 +1,8 @@
-{ pkgs, configPath, ... }: {
+{ pkgs, configPath, lib, osConfig, ... }: {
 
-  # TODO: Conditional import this
-  home.packages = with pkgs.fishPlugins; [
-    transient-fish
-    sponge
+  home.packages = lib.mkIf osConfig.programs.fish.enable [
+    pkgs.fishPlugins.transient-fish
+    pkgs.fishPlugins.sponge
   ];
 
   # enable integrations
