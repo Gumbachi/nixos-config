@@ -23,6 +23,7 @@ in {
     GOOMBAX1-modules = map (module: ../../GOOMBAX1/modules/home + module) [
       /fish.nix
       /git.nix
+      /helix.nix
       /starship.nix
       /yazi.nix
       /kitty.nix

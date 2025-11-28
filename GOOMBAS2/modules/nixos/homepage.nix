@@ -26,7 +26,7 @@ in {
     statusStyle = "dot";
     cardBlur = "md";
     favicon = "https://files.gumbachi.com/icons/home.png";
-    background.image = "https://files.gumbachi.com/wallpapers/aurora.png";
+    background.image = "https://files.gumbachi.com/wallpapers/bisbiswas10.jpg";
     hideVersion = true;
   };
 
