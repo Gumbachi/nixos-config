@@ -2,10 +2,12 @@
 let
   cfg = config.services.immich;
   port = config.variables.immich.port;
-in 
+in
 {
 
-  users.users.immich.extraGroups = lib.mkIf cfg.enable [ "video" "render" "media" ];
+  users.users.immich.isSystemUser = true;
+  users.users.immich.extraGroups = [ "video" "render" "media" ];
+  users.users.immich.group = "media";
 
   # Reverse proxy setup
   services.caddy.virtualHosts."photos.gumbachi.com" = lib.mkIf cfg.enable {
@@ -16,7 +18,7 @@ in
     group = "media";
     port = port;
     openFirewall = true;
-    mediaLocation = "/mnt/main/media/photos-and-videos/immich"; 
+    mediaLocation = "/mnt/main/media/photos-and-videos/immich";
     accelerationDevices = null;
   };
 

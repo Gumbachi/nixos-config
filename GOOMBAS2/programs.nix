@@ -1,12 +1,13 @@
 { inputs, pkgs, ... }: {
-  
+
   environment.systemPackages = with pkgs; [
- 
+
     inputs.agenix.packages.${system}.default
 
     # DV recording Tools
     dvgrab
-    ffmpeg-headless 
+    ffmpeg-headless
+    mkvtoolnix-cli
     yt-dlp # YoutubeDL
 
     jdk # Java 21
@@ -17,7 +18,7 @@
 
     btrfs-progs
     immich-cli
- 
+
   ];
 
   home-manager.sharedModules = [{
@@ -26,7 +27,7 @@
       flake = "/home/jared/nixos-config";
     };
   }];
-   
+
   terminals.kitty.enable = true;
 
   shells.fish.enable = true;

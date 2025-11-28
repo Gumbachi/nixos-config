@@ -20,6 +20,7 @@ in
   services.adguardhome = {
     port = port;
     openFirewall = true;
+    mutableSettings = false;
     settings = {
       http.address = "0.0.0.0:${toString port}";
       users = [

@@ -13,7 +13,7 @@
     adguardhome.enable = true; # DNS Adblocking
     homepage-dashboard.enable = true; # Homepage for service overview
     homer.enable = false; # Homepage for services overview
-    immich.enable = true; # Photos backup and WebUI
+    immich.enable = false; # Photos backup and WebUI
     jellyfin.enable = true; # WebUI for serving movies and shows
     jellyseerr.enable = false; # WebUI for requesting movies and shows
     deluge.enable = true; # Deluge Bittorrent Manager
@@ -21,7 +21,7 @@
     prowlarr.enable = true; # Indexer manager
     radarr.enable = true; # Movie manager
     sonarr.enable = true; # Show Manager
-    bazarr.enable = true; # Subtitle Manager
+    bazarr.enable = false; # Subtitle Manager
 
     # Containerized
     gumbotchi.enable = true; # The goat

@@ -8,10 +8,14 @@ in
   #### !!!!!! #####
   # If the system service claims an iptables issue do
   # sudo modprobe iptable_nat iptable_filter
-
   options.services.qbit-vpn.enable = lib.mkEnableOption "Enable qbit-vpn container";
 
   config = lib.mkIf cfg.enable {
+
+    boot.kernelModules = [
+      "iptable_nat"
+      "iptable_filter"
+    ];
 
     # Reverse Proxy
     services.caddy.virtualHosts."qbit-vpn.gumbachi.com" = {

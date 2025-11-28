@@ -24,14 +24,15 @@
     hostName = "GOOMBAS2";
     networkmanager.enable = true;
     firewall.enable = true;
-    enableIPv6 = false;
+    # enableIPv6 = false;
   };
 
   environment.sessionVariables.CONFIG = "/home/jared/nixos-config";
 
-  boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+    timeout = 0; # boot faster by skipping gen list
   };
 
   hardware = {

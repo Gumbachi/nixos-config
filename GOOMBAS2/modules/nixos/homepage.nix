@@ -20,7 +20,7 @@ in {
   services.homepage-dashboard.settings = {
     title = "Home";
     description = "GOOMBAS2";
-    theme = "dark";
+    # theme = "dark";
     target = "_self"; # Open in place of homepage
     fullWidth = true;
     statusStyle = "dot";
