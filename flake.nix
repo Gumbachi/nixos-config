@@ -21,7 +21,7 @@
 
     # Applications
     # overway.url = "github:Gumbachi/overway";
-    overway.url = "path:/home/jared/code/overway";
+    # overway.url = "path:/home/jared/code/overway";
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";

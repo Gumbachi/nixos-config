@@ -12,13 +12,13 @@ in
 
   # Reverse Proxy
   services.caddy.virtualHosts = {
-    "prowlarr.gumbachi.com".extraConfig = 
+    "prowlarr.gumbachi.com".extraConfig =
       lib.mkIf cfg.prowlarr.enable ''reverse_proxy localhost:${toString ports.prowlarr}'';
-    "sonarr.gumbachi.com".extraConfig = 
+    "sonarr.gumbachi.com".extraConfig =
       lib.mkIf cfg.sonarr.enable ''reverse_proxy localhost:${toString ports.sonarr}'';
-    "bazarr.gumbachi.com".extraConfig = 
+    "bazarr.gumbachi.com".extraConfig =
       lib.mkIf cfg.bazarr.enable ''reverse_proxy localhost:${toString ports.bazarr}'';
-    "radarr.gumbachi.com".extraConfig = 
+    "radarr.gumbachi.com".extraConfig =
       lib.mkIf cfg.radarr.enable ''reverse_proxy localhost:${toString ports.radarr}'';
   };
 
@@ -31,14 +31,13 @@ in
 
   # Main Config
   services.prowlarr = {
-    # dataDir = "/mnt/main/config/prowlarr";
+    dataDir = "/mnt/main/config/prowlarr";
     openFirewall = true;
     settings.server.port = ports.prowlarr;
-    # settings.auth = {
-    #   authenticationmethod = "Forms";
-    #   authenticationrequired = "Enabled";
-    # };
-    # This settings gets the DB to lock too often just hold off until nixified
+    settings.auth = {
+      authenticationmethod = "Forms";
+      authenticationrequired = "Enabled";
+    };
   };
 
   services.radarr = {

@@ -52,7 +52,7 @@ in
         WEBUI_PORT = "${toString port}";
         DEBUG = "true";
         PUID = "1000";
-        PGID = "986"; # Media Group
+        PGID = "2000"; # Media Group
         UMASK = "000";
       };
       ports = [

@@ -10,10 +10,16 @@ in
     extraConfig = ''reverse_proxy localhost:${toString port}'';
   };
 
+
+  # Add jellyfin user to special groups if enabled
+  users.users = lib.mkIf cfg.enable {
+    jellyfin.extraGroups = [ "media" "video" "render" ];
+  };
+
   services.jellyfin = {
-    group = "media";
-    configDir = "/mnt/main/config/jellyfin";
+    dataDir = "/mnt/main/config/jellyfin";
+    configDir = "/mnt/main/config/jellyfin/config";
     openFirewall = true;
   };
- 
+
 }

@@ -9,6 +9,7 @@
     ffmpeg-headless
     mkvtoolnix-cli
     yt-dlp # YoutubeDL
+    immich-go
 
     jdk # Java 21
     jdk8 # Java 8
@@ -17,7 +18,6 @@
     fdupes
 
     btrfs-progs
-    immich-cli
 
   ];
 

@@ -189,14 +189,14 @@ in {
           siteMonitor = "http://localhost:8989";
         };
       }
-      {
-        "Bazarr" = {
-          icon = "bazarr.png";
-          description = "Subtitles";
-          href = "https://bazarr.gumbachi.com";
-          siteMonitor = "http://localhost:6767";
-        };
-      }
+      # {
+      #   "Bazarr" = {
+      #     icon = "bazarr.png";
+      #     description = "Subtitles";
+      #     href = "https://bazarr.gumbachi.com";
+      #     siteMonitor = "http://localhost:6767";
+      #   };
+      # }
       {
         "Prowlarr" = {
           icon = "prowlarr.png";

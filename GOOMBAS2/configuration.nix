@@ -51,8 +51,8 @@
 
   # Access groups
   users.groups = {
-    media = {};
-    backup = {};
+    media = { gid = 2000; };
+    backup = { gid = 2100; };
   };
 
   users.users.jared = {
@@ -72,5 +72,5 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  system.stateVersion = "24.05"; # Did you read the comment? Yep
+  system.stateVersion = "25.05"; # Did you read the comment? Yep
 }
