@@ -9,7 +9,7 @@ fresh machine that wants to replicate GOOMBAX1.
    `nix-shell -p git fish helix --run fish`
 
 2. Clone the repo\
-   `cd /home/jared/ && git clone github.com/gumbachi/nixos-config`
+   `git clone https://github.com/gumbachi/nixos-config`
 
 ## Create auto-mounts
 
@@ -28,6 +28,10 @@ fresh machine that wants to replicate GOOMBAX1.
 1. Rebuild system from flake and reboot\
    `sudo nixos-rebuild boot --flake ~/nixos-config#GOOMBAX1`
 2. `reboot`
+
+## Notes for GOOMBAS2
+
+1. Copy ssh keys back to /etc/ssh and ~/.ssh
 
 ## Post-Flake-Install
 
