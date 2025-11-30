@@ -14,13 +14,11 @@
     sizes.terminal = 12;
   };
 
-  stylix.targets = {
-    console.enable = true;
-  };
+  stylix.targets.console.enable = true;
 
   # Home Manager Options
   home-manager.sharedModules = [{
-    style.targets = {
+    stylix.targets = {
       bat.enable = true;
       btop.enable = true;
       fish.enable = true;
@@ -28,7 +26,7 @@
       helix.enable = true;
       kitty.enable = true;
       nushell.enable = true;
-      sharship.enable = true;
+      starship.enable = true;
       zellij.enable = true;
     };
   }];
