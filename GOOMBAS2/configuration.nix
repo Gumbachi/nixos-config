@@ -24,7 +24,6 @@
     hostName = "GOOMBAS2";
     networkmanager.enable = true;
     firewall.enable = true;
-    # enableIPv6 = false;
   };
 
   environment.sessionVariables.CONFIG = "/home/jared/nixos-config";
