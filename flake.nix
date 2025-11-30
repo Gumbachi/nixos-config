@@ -62,10 +62,10 @@
     # Number = ID
 
     nixosConfigurations.GOOMBAX1 = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
       specialArgs = { inherit inputs user; };
       modules = defaultModules ++ [
         ./GOOMBAX1/configuration.nix # Main Config
+        { nixpkgs.hostPlatform = "x86_64-linux"; } # https://isabelroses.com/blog/im-not-mad-im-disappointed/
 
         # Home Manager
         home-manager.nixosModules.home-manager {
@@ -90,10 +90,10 @@
     };
 
     nixosConfigurations.GOOMBAS2 = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
       specialArgs = { inherit inputs user; };
       modules = defaultModules ++ [
         ./GOOMBAS2/configuration.nix # Main Config
+        { nixpkgs.hostPlatform = "x86_64-linux"; } # https://isabelroses.com/blog/im-not-mad-im-disappointed/
 
         # Home Manager
         home-manager.nixosModules.home-manager {
@@ -117,10 +117,10 @@
     };
 
     nixosConfigurations.GOOMBAX2 = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
       specialArgs = { inherit inputs user; };
       modules = defaultModules ++ [
         ./GOOMBAX2/configuration.nix # Main Config
+        { nixpkgs.hostPlatform = "x86_64-linux"; } # https://isabelroses.com/blog/im-not-mad-im-disappointed/
 
         # Home Manager
         home-manager.nixosModules.home-manager
