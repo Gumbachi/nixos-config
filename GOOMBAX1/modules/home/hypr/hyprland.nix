@@ -196,35 +196,34 @@ in {
       ];
 
       windowrule = [
-        "float, class:(clipse)"
-        "size 622 652, class:(clipse)"
+
+        # Floating windows dont look stupid
+        "bordersize 2, rounding 4, floating:1"
 
         # Discord file upload
-        "float, title:(Open Files)"
-        "size 1200, 800, title:(Open Files)"
+        "float, size 1200 800, title:(Open Files)"
 
         # firefox file upload
-        "center, title:(File Upload)"
+        "center, size 1200 800, title:(File Upload)"
 
         "workspace 2, class:(com.github.th_ch.youtube_music)"
         "workspace 2, class:(vesktop)"
 
-        "workspace 10, class:.virt-manager-wrapped, title:^Windows10.*$"
-        "fullscreen, class:.virt-manager-wrapped, title:^Windows10.*$"
+        "workspace 10, fullscreen, class:.virt-manager-wrapped, title:^Windows10.*$"
 
         "float, title:(Authentication Required)"
 
         # Jetbrains Fixes
         "suppressevent fullscreen, class:^(jetbrains-studio)$"
 
-        "workspace 4, ${steamGameRegex}"
-        "fullscreen, ${steamGameRegex}"
-        "idleinhibit always, ${steamGameRegex}"
+        "workspace 4, fullscreen, idleinhibit always, ${steamGameRegex}"
+        # "fullscreen, ${steamGameRegex}"
+        # "idleinhibit always, ${steamGameRegex}"
 
         # Steam Game Overrides
-        "fullscreenstate 0 0, class:steam_app_1361210, title:^(Launcher)$"
-        "float, class:steam_app_1361210, title:^(Launcher)$"
-        "center, class:steam_app_1361210, title:^(Launcher)$"
+        "fullscreenstate 0 0, float, center, class:steam_app_1361210, title:^(Launcher)$"
+        # "float, class:steam_app_1361210, title:^(Launcher)$"
+        # "center, class:steam_app_1361210, title:^(Launcher)$"
 
         # Steam UI
         "monitor DP-1, class:^(steam)$"
