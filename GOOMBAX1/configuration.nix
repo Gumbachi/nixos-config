@@ -16,6 +16,7 @@
     wallpaper.landscape = inputs.wallpaper;
     wallpaper.portrait = inputs.wallpaper-portrait;
     cursor.bibata-modern-ice.enable = true;
+    icons.papirus.enable = true;
   };
 
   default-apps = with pkgs; {

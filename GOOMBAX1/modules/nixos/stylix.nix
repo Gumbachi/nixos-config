@@ -1,13 +1,5 @@
 { pkgs, ... }: {
 
-  imports = [
-    ./styles/patch.nix # Nix file for patching css
-    ./presets # Import theme presets for different color schemes
-  ];
-
-  # Enable default icon theme
-  icons.papirus.enable = true;
-
   # Default theme settings: applicable to all themes
   stylix.autoEnable = true;
   stylix.image = null;

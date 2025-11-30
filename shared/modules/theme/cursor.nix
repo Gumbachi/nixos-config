@@ -41,3 +41,12 @@ in {
     # home.file.".icons/Bibata-Modern-Ice/" = mkIf cfg.bibata-modern-ice.enable {
     #   source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Ice/";
     # };
+
+
+#   fetchCursor = url: hash: name: pkgs.runCommand "moveUp" {} ''
+#     mkdir -p $out/share/icons
+#     ln -s ${pkgs.fetchzip {
+#       url = url;
+#       hash = hash;
+#     }} $out/share/icons/${name}
+#   '';
