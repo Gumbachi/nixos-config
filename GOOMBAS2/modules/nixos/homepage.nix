@@ -8,12 +8,13 @@ in {
     extraConfig = ''reverse_proxy localhost:${toString port}'';
     # if you add a server alias make sure to add to allowed hosts
     # e.g. allowedHosts = "homepage.gumbachi.com,dashboard.gumbachi.com, ..."
+    serverAliases = [ "home.gumbachi.com" ];
   };
 
   services.homepage-dashboard = {
     listenPort = port;
     openFirewall = true;
-    allowedHosts = "homepage.gumbachi.com,192.168.69.2:${toString port}";
+    allowedHosts = "homepage.gumbachi.com,home.gumbachi.com,192.168.69.2:${toString port}";
   };
 
   # Settings - https://gethomepage.dev/configs/settings/
@@ -76,6 +77,13 @@ in {
         "Home Manager" = [{
           href = "https://home-manager-options.extranix.com/?query=&release=master";
           icon = "nixos.png";
+          description = "";
+        }];
+      }
+      {
+        "Codeberg" = [{
+          href = "https://codeberg.org/";
+          icon = "codeberg.png";
           description = "";
         }];
       }
@@ -150,11 +158,11 @@ in {
   services.homepage-dashboard.services = [{
     Services = [
       {
-        "Jellyfin" = {
-          icon = "jellyfin.png";
-          description = "Better than Plex";
-          href = "https://watch.gumbachi.com";
-          siteMonitor = "http://localhost:8096";
+        "Sonarr" = {
+          icon = "sonarr.png";
+          description = "Shows";
+          href = "https://sonarr.gumbachi.com";
+          siteMonitor = "http://localhost:${toString vars.sonarr.port}";
         };
       }
       {
@@ -166,6 +174,14 @@ in {
         };
       }
       {
+        "Deluge" = {
+          icon = "deluge.png";
+          description = "Bittorrent";
+          href = "https://open-deluge.gumbachi.com";
+          siteMonitor = "http://localhost:${toString vars.deluge.port}";
+        };
+      }
+      {
         "File Server" = {
           icon = "files.png";
           description = "File Browser";
@@ -174,19 +190,19 @@ in {
         };
       }
       {
+        "Jellyfin" = {
+          icon = "jellyfin.png";
+          description = "Better than Plex";
+          href = "https://watch.gumbachi.com";
+          siteMonitor = "http://localhost:${toString vars.jellyfin.port}";
+        };
+      }
+      {
         "Radarr" = {
           icon = "radarr.png";
           description = "Movies";
           href = "https://radarr.gumbachi.com";
-          siteMonitor = "http://localhost:7878";
-        };
-      }
-      {
-        "Sonarr" = {
-          icon = "sonarr.png";
-          description = "Shows";
-          href = "https://sonarr.gumbachi.com";
-          siteMonitor = "http://localhost:8989";
+          siteMonitor = "http://localhost:${toString vars.radarr.port}";
         };
       }
       # {
@@ -202,7 +218,7 @@ in {
           icon = "prowlarr.png";
           description = "Indexer Management";
           href = "https://prowlarr.gumbachi.com";
-          siteMonitor = "http://localhost:9696";
+          siteMonitor = "http://localhost:${toString vars.prowlarr.port}";
         };
       }
       {
@@ -210,15 +226,7 @@ in {
           icon = "syncthing.png";
           description = "File Sync";
           href = "https://sync.gumbachi.com";
-          siteMonitor = "http://localhost:8384";
-        };
-      }
-      {
-        "Deluge" = {
-          icon = "deluge.png";
-          description = "Bittorrent";
-          href = "https://open-deluge.gumbachi.com";
-          siteMonitor = "http://localhost:8112";
+          siteMonitor = "http://localhost:${toString vars.syncthing.port}";
         };
       }
       {
@@ -226,7 +234,7 @@ in {
           icon = "adguard-home.png";
           description = "DNS ad-blocking";
           href = "https://adguard.gumbachi.com";
-          siteMonitor = "http://localhost:3080";
+          siteMonitor = "http://localhost:${toString vars.adguardhome.port}";
         };
       }
       {
@@ -234,7 +242,7 @@ in {
           icon = "immich.png";
           description = "Cloud Photos";
           href = "https://photos.gumbachi.com";
-          siteMonitor = "http://localhost:2283";
+          siteMonitor = "http://localhost:${toString vars.immich.port}";
         };
       }
     ];
