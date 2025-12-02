@@ -16,6 +16,7 @@ in
     sonarr.port = mkOption { default = 8989; };
     prowlarr.port = mkOption { default = 9696; };
     bazarr.port = mkOption { default = 6767; };
+    jackett.port = mkOption { default = 9117; };
 
     qbit-vpn.port = mkOption { default = 8668; };
     deluge.port = mkOption { default = 8112; };

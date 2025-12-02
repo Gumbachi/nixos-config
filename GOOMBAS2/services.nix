@@ -23,6 +23,7 @@
     radarr.enable = true; # Movie manager
     sonarr.enable = true; # Show Manager
     bazarr.enable = false; # Subtitle Manager
+    jackett.enable = true; # A different indexer manager
 
     # Containerized
     gumbotchi.enable = true; # The goat

@@ -7,11 +7,11 @@ in
 
   # Secrets
   services.deluge.authFile = config.age.secrets.deluge-auth.path; # File should be plaintext as user:pass:level
-  age.secrets.deluge-auth = {
+  age.secrets.deluge-auth = lib.mkIf cfg.enable {
     file = ../../secrets/deluge.age;
     owner = "deluge";
     group = "media";
-    mode = "440";
+    mode = "770";
   };
 
   # Reverse Proxy
@@ -19,9 +19,14 @@ in
     extraConfig = ''reverse_proxy localhost:${toString port}'';
   };
 
+  # Add immich user to special groups if immich is enabled
+  users.users = lib.mkIf cfg.enable {
+    deluge.extraGroups = lib.mkIf cfg.enable [ "media" ];
+  };
+
   services.deluge = {
+    dataDir = "/mnt/main/config/deluge";
     openFirewall = true;
-    group = "media";
     web = {
       enable = cfg.enable;
       openFirewall = true;
