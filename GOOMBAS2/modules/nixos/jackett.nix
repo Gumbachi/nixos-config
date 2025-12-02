@@ -11,7 +11,7 @@ in {
   # Main Config
   services.jackett = {
     group = "media";
-    port = ports.jackett;
+    port = port;
     openFirewall = true;
     dataDir = "/mnt/main/config/jackett";
   };

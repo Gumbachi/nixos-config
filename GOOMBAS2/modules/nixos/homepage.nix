@@ -166,6 +166,14 @@ in {
         };
       }
       {
+        "Radarr" = {
+          icon = "radarr.png";
+          description = "Movies";
+          href = "https://radarr.gumbachi.com";
+          siteMonitor = "http://localhost:${toString vars.radarr.port}";
+        };
+      }
+      {
         "Qbit VPN" = {
           icon = "qbittorrent.png";
           description = "Bittorrent";
@@ -182,11 +190,11 @@ in {
         };
       }
       {
-        "File Server" = {
-          icon = "files.png";
-          description = "File Browser";
-          href = "https://files.gumbachi.com";
-          siteMonitor = "https://files.gumbachi.com";
+        "Immich" = {
+          icon = "immich.png";
+          description = "Cloud Photos";
+          href = "https://photos.gumbachi.com";
+          siteMonitor = "http://localhost:${toString vars.immich.port}";
         };
       }
       {
@@ -198,27 +206,11 @@ in {
         };
       }
       {
-        "Radarr" = {
-          icon = "radarr.png";
-          description = "Movies";
-          href = "https://radarr.gumbachi.com";
-          siteMonitor = "http://localhost:${toString vars.radarr.port}";
-        };
-      }
-      # {
-      #   "Bazarr" = {
-      #     icon = "bazarr.png";
-      #     description = "Subtitles";
-      #     href = "https://bazarr.gumbachi.com";
-      #     siteMonitor = "http://localhost:6767";
-      #   };
-      # }
-      {
-        "Prowlarr" = {
-          icon = "prowlarr.png";
-          description = "Indexer Management";
-          href = "https://prowlarr.gumbachi.com";
-          siteMonitor = "http://localhost:${toString vars.prowlarr.port}";
+        "File Server" = {
+          icon = "files.png";
+          description = "File Browser";
+          href = "https://files.gumbachi.com";
+          siteMonitor = "https://files.gumbachi.com";
         };
       }
       {
@@ -238,13 +230,21 @@ in {
         };
       }
       {
-        "Immich" = {
-          icon = "immich.png";
-          description = "Cloud Photos";
-          href = "https://photos.gumbachi.com";
-          siteMonitor = "http://localhost:${toString vars.immich.port}";
+        "Jackett" = {
+          icon = "jackett.png";
+          description = "Indexer Management";
+          href = "https://jackett.gumbachi.com";
+          siteMonitor = "http://localhost:${toString vars.jackett.port}";
         };
       }
+      # {
+      #   "Prowlarr" = {
+      #     icon = "prowlarr.png";
+      #     description = "Indexer Management";
+      #     href = "https://prowlarr.gumbachi.com";
+      #     siteMonitor = "http://localhost:${toString vars.prowlarr.port}";
+      #   };
+      # }
     ];
   }];
 }

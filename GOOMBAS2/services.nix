@@ -19,7 +19,7 @@
 
     deluge.enable = true; # Deluge Bittorrent Manager
     syncthing.enable = true; # Sync files across devices
-    prowlarr.enable = true; # Indexer manager
+    prowlarr.enable = false; # Indexer manager
     radarr.enable = true; # Movie manager
     sonarr.enable = true; # Show Manager
     bazarr.enable = false; # Subtitle Manager
