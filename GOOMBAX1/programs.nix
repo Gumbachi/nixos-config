@@ -2,9 +2,6 @@
 
   # System Programs
   environment.systemPackages = with pkgs; [
-
-    # inputs.overway.packages.${pkgs.system}.default
-
     youtube-music
     quickshell
     playerctl
@@ -21,6 +18,7 @@
     wayland.windowManager.hyprland.enable = true;
     programs.hyprlock.enable = true;
     programs.zellij.enable = true;
+    programs.carapace.enable = true;
 
     programs.nh = {
       enable = true;
@@ -40,7 +38,7 @@
     ricing.enable = true; # Enable for fun style tools like cava
     tokei.enable = false; # Line counter
     unar.enable = true; # Zip archives
-    unrar.enable = true; # Rar archives
+    unrar.enable = false; # Rar archives
   };
 
   development = {
@@ -127,7 +125,7 @@
 
   shells = {
     fish.enable = true;
-    nushell.enable = false;
+    nushell.enable = true;
   };
 
   programs = {
