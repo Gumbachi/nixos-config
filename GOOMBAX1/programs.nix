@@ -11,6 +11,8 @@
     hyprshot
     nwg-look # GTK Style GUI
     bitwarden-desktop
+    feishin
+    inlyne
   ];
 
   # Home manager programs
@@ -18,7 +20,6 @@
     wayland.windowManager.hyprland.enable = true;
     programs.hyprlock.enable = true;
     programs.zellij.enable = true;
-    programs.carapace.enable = true;
 
     programs.nh = {
       enable = true;
@@ -125,7 +126,7 @@
 
   shells = {
     fish.enable = true;
-    nushell.enable = true;
+    nushell.enable = false;
   };
 
   programs = {
@@ -144,7 +145,7 @@
   virtualisation = {
     virt-manager.enable = true;
     docker = {
-      enable = false;
+      enable = true;
       addUserToGroup = true;
     };
     libvirtd = {

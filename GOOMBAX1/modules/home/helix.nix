@@ -29,10 +29,12 @@
 
   programs.helix.settings.keys.normal = {
     space.e = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/nixos-config/scripts/yazi-picker.sh open %{buffer_name}";
+    # space.q = ":sh kitty --type=overlay --cwd=current Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/nixos-config/scripts/yazi-picker.sh open %{buffer_name}";
+    space.m = ":sh inlyne --theme dark --scale 2 %{buffer_name}";
   };
 
   programs.helix.extraPackages = with pkgs; [
-    marksman
+    markdown-oxide
     nixd
     vscode-css-languageserver
     vscode-json-languageserver

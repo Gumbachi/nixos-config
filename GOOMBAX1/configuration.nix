@@ -27,7 +27,7 @@
     audio = [ mpv ];
     video = [ mpv ];
     image = [ qimgv ];
-    shell = nushell;
+    shell = fish;
   };
 
   boot = {
