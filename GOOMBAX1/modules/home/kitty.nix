@@ -18,6 +18,8 @@
     # WINDOWS LAYOUTS
     enabled_layouts = "tall:bias=50;full_size=1;mirrored=false";
 
+    allow_remote_control = "yes";
+
   };
 
 }

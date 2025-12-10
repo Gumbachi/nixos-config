@@ -20,7 +20,7 @@ in
         blur_passes = 2;
       };
 
-      label = [ 
+      label = [
         # TIME
         {
           monitor = "${monitor}";
@@ -33,7 +33,7 @@ in
           valign = "top";
         }
 
-        # DATE 
+        # DATE
         {
           monitor = "${monitor}";
           text = ''cmd[update:43200000] echo "$(date +"%A, %d %B %Y")"'';
@@ -43,7 +43,7 @@ in
           position = "50, -180";
           halign = "left";
           valign = "top";
-        } 
+        }
 
         # GREETING
         {
@@ -92,7 +92,7 @@ in
         # font_color = $text
         position = "0, -70";
         halign = "center";
-        valign = "center";   
+        valign = "center";
       };
 
     };

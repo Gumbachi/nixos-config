@@ -2,9 +2,6 @@
 
   # System Programs
   environment.systemPackages = with pkgs; [
-
-    # inputs.overway.packages.${pkgs.system}.default
-
     youtube-music
     quickshell
     playerctl
@@ -14,6 +11,8 @@
     hyprshot
     nwg-look # GTK Style GUI
     bitwarden-desktop
+    feishin
+    inlyne
   ];
 
   # Home manager programs
@@ -40,7 +39,7 @@
     ricing.enable = true; # Enable for fun style tools like cava
     tokei.enable = false; # Line counter
     unar.enable = true; # Zip archives
-    unrar.enable = true; # Rar archives
+    unrar.enable = false; # Rar archives
   };
 
   development = {
@@ -146,7 +145,7 @@
   virtualisation = {
     virt-manager.enable = true;
     docker = {
-      enable = false;
+      enable = true;
       addUserToGroup = true;
     };
     libvirtd = {

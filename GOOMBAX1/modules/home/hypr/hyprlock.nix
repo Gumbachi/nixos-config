@@ -11,7 +11,7 @@ in
     settings = {
 
       general = {
-        hide_cursor = true;
+        hide_cursor = false;
         ignore_empty_input = true;
       };
 
@@ -25,9 +25,9 @@ in
           monitor = "${monitor}";
           text = ''cmd[update:30000] echo "$(date +"%R")"'';
           color = "rgb(${textColor})";
-          font_size = 90;
+          font_size = 128;
           font_family = "${font}";
-          position = "50, -30";
+          position = "50, -20";
           halign = "left";
           valign = "top";
         }
@@ -37,9 +37,9 @@ in
           monitor = "${monitor}";
           text = ''cmd[update:43200000] echo "$(date +"%A, %d %B %Y")"'';
           color = "rgb(${textColor})";
-          font_size = 25;
+          font_size = 36;
           font_family = "${font}";
-          position = "50, -180";
+          position = "50, -220";
           halign = "left";
           valign = "top";
         }
@@ -55,6 +55,61 @@ in
           position = "0, 70"; # -80x for left align
           halign = "center";
           valign = "center";
+        }
+
+        # Restart Button
+        {
+          monitor = "${monitor}";
+          text = "R";
+          text_align = "center";
+          color = "rgb(${textColor})";
+          font_size = 60;
+          font_family = "${font}";
+          position = "-240, 65";
+          valign = "bottom";
+          halign = "right";
+          zindex = 1;
+        }
+
+        # Shutdown Button
+        {
+          monitor = "${monitor}";
+          text = "S";
+          text_align = "center";
+          color = "rgb(${textColor})";
+          font_size = 60;
+          font_family = "${font}";
+          position = "-90, 65";
+          valign = "bottom";
+          halign = "right";
+          zindex = 1;
+        }
+      ];
+
+      shape = [
+        {
+          monitor = "${monitor}";
+          size = "120, 120";
+          color = "rgba(0, 0, 0, 0.0)"; # no fill
+          rounding = -1; # circle
+          border_size = 4;
+          border_color = "rgb(${accentColor})";
+          position = "-50, 50";
+          halign = "right";
+          valign = "bottom";
+          onclick = "poweroff";
+        }
+        {
+          monitor = "${monitor}";
+          size = "120, 120";
+          color = "rgba(0, 0, 0, 0.0)"; # no fill
+          rounding = -1; # circle
+          border_size = 4;
+          border_color = "rgb(${accentColor})";
+          position = "-200, 50";
+          halign = "right";
+          valign = "bottom";
+          onclick = "reboot";
         }
       ];
 

@@ -26,6 +26,8 @@
     zen-browser.url = "github:youwen5/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
+    amber.url = "github:amber-lang/Amber";
+
     niri.url = "github:sodiboo/niri-flake";
 
     nvf.url = "github:notashelf/nvf";

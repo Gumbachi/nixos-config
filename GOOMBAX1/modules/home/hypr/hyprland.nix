@@ -8,6 +8,7 @@ in {
     settings = let
       mainMod = "SUPER";
       terminal = "${getDefault "terminal"}";
+      terminalWithZellij = "${terminal} zellij";
       fileManager = "${terminal} ${getDefault "files"}";
       launcher = "fuzzel";
       confedit = "${terminal} $EDITOR ${configPath}";
@@ -114,8 +115,8 @@ in {
       };
 
       bind = [
-        "${mainMod}, T, exec, ${terminal}"
-        "${mainMod} SHIFT, T, exec, ${terminal} ssh jared@192.168.69.2"
+        "${mainMod}, T, exec, ${terminalWithZellij}"
+        "${mainMod} SHIFT, T, exec, ${terminal}"
         "${mainMod}, C, killactive,"
         "${mainMod} SHIFT, C, exec, hyprpicker | wl-copy"
         "${mainMod} SHIFT, M, exec, pkill Hyprland,"
