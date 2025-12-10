@@ -14,6 +14,7 @@ in
 
     radarr.port = mkOption { default = 7878; };
     sonarr.port = mkOption { default = 8989; };
+    lidarr.port = mkOption { default = 9393; };
     prowlarr.port = mkOption { default = 9696; };
     bazarr.port = mkOption { default = 6767; };
     jackett.port = mkOption { default = 9117; };

@@ -19,7 +19,7 @@ in
   };
 
   services.immich = {
-    host = "127.0.0.1";
+    host = "0.0.0.0";
     port = port;
     openFirewall = true;
     mediaLocation = "/mnt/main/media/photos-and-videos/immich";

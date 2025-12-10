@@ -10,5 +10,6 @@ for f in ./*.mkv; do
   mkvpropedit "$f" \
   -e track:a1 -s flag-default=0 \
   -e track:a2 -s flag-default=1 \
-  -e track:s1 -s flag-default=1
+  -e track:s1 -s flag-default=0 \
+  -e track:s2 -s flag-default=1
 done

@@ -174,19 +174,19 @@ in {
         };
       }
       {
-        "Qbit VPN" = {
-          icon = "qbittorrent.png";
-          description = "Bittorrent";
-          href = "https://qbit-vpn.gumbachi.com";
-          siteMonitor = "http://localhost:${toString vars.qbit-vpn.port}";
+        "Lidarr" = {
+          icon = "lidarr.png";
+          description = "Music";
+          href = "https://lidarr.gumbachi.com";
+          siteMonitor = "http://localhost:${toString vars.lidarr.port}";
         };
       }
       {
-        "Deluge" = {
-          icon = "deluge.png";
-          description = "Bittorrent";
-          href = "https://open-deluge.gumbachi.com";
-          siteMonitor = "http://localhost:${toString vars.deluge.port}";
+        "Jackett" = {
+          icon = "jackett.png";
+          description = "Indexer Management";
+          href = "https://jackett.gumbachi.com";
+          siteMonitor = "http://localhost:${toString vars.jackett.port}";
         };
       }
       {
@@ -203,6 +203,22 @@ in {
           description = "Better than Plex";
           href = "https://watch.gumbachi.com";
           siteMonitor = "http://localhost:${toString vars.jellyfin.port}";
+        };
+      }
+      {
+        "Qbit VPN" = {
+          icon = "qbittorrent.png";
+          description = "Bittorrent";
+          href = "https://qbit-vpn.gumbachi.com";
+          siteMonitor = "http://localhost:${toString vars.qbit-vpn.port}";
+        };
+      }
+      {
+        "Deluge" = {
+          icon = "deluge.png";
+          description = "Bittorrent";
+          href = "https://open-deluge.gumbachi.com";
+          siteMonitor = "http://localhost:${toString vars.deluge.port}";
         };
       }
       {
@@ -227,14 +243,6 @@ in {
           description = "DNS ad-blocking";
           href = "https://adguard.gumbachi.com";
           siteMonitor = "http://localhost:${toString vars.adguardhome.port}";
-        };
-      }
-      {
-        "Jackett" = {
-          icon = "jackett.png";
-          description = "Indexer Management";
-          href = "https://jackett.gumbachi.com";
-          siteMonitor = "http://localhost:${toString vars.jackett.port}";
         };
       }
       # {

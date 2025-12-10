@@ -6,6 +6,7 @@ let
     prowlarr = config.variables.prowlarr.port;
     radarr = config.variables.radarr.port;
     sonarr = config.variables.sonarr.port;
+    lidarr = config.variables.lidarr.port;
   };
 in
 {
@@ -20,6 +21,8 @@ in
       lib.mkIf cfg.bazarr.enable ''reverse_proxy localhost:${toString ports.bazarr}'';
     "radarr.gumbachi.com".extraConfig =
       lib.mkIf cfg.radarr.enable ''reverse_proxy localhost:${toString ports.radarr}'';
+    "lidarr.gumbachi.com".extraConfig =
+      lib.mkIf cfg.radarr.enable ''reverse_proxy localhost:${toString ports.lidarr}'';
   };
 
   # Secrets
@@ -31,7 +34,7 @@ in
 
   # Main Config
   services.prowlarr = {
-    dataDir = "/mnt/main/config/prowlarr";
+    # dataDir = "/mnt/main/config/prowlarr"; # Cant enable this
     openFirewall = true;
     settings.server.port = ports.prowlarr;
     settings.auth = {
@@ -56,6 +59,17 @@ in
     settings.server.port = ports.sonarr;
     group = "media";
     dataDir = "/mnt/main/config/sonarr";
+    settings.auth = {
+      authenticationmethod = "Forms";
+      authenticationrequired = "Enabled";
+    };
+  };
+
+  services.lidarr = {
+    openFirewall = true;
+    settings.server.port = ports.lidarr;
+    group = "media";
+    dataDir = "/mnt/main/config/lidarr";
     settings.auth = {
       authenticationmethod = "Forms";
       authenticationrequired = "Enabled";

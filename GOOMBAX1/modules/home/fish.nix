@@ -16,6 +16,7 @@
       rebuild = "nixos apply --yes";
       rebuild-boot = "nixos apply --yes --no-activate";
       sshs2 = "ssh jared@192.168.69.2";
+      mkvedit = "~/scripts/mkv-bulk-edit.sh";
     };
     shellInit = ''set fish_greeting'';
     functions = {

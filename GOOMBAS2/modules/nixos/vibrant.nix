@@ -10,10 +10,13 @@ in
 
     # Secrets
     age.secrets.vibrant.file = ../../secrets/vibrant.age;
-    virtualisation.oci-containers.containers.vibrant.environmentFiles = [ config.age.secrets.vibrant.path ];
 
     # Service
-    virtualisation.oci-containers.containers.vibrant.image = "docker.io/gumbachi/vibrant";
+    virtualisation.oci-containers.containers.vibrant = {
+      image = "docker.io/gumbachi/vibrant";
+      environmentFiles = [ config.age.secrets.vibrant.path ];
+      pull = "newer";
+    };
 
   };
 

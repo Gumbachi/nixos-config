@@ -13,7 +13,8 @@ in
     virtualisation.oci-containers.containers.gumbotchi = {
       image = "docker.io/gumbachi/gumbotchi";
       environmentFiles = [ config.age.secrets.gumbotchi.path ];
-    };    
+      pull = "newer";
+    };
 
   };
 

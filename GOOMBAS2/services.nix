@@ -22,6 +22,7 @@
     prowlarr.enable = false; # Indexer manager
     radarr.enable = true; # Movie manager
     sonarr.enable = true; # Show Manager
+    lidarr.enable = true; # Music Manager
     bazarr.enable = false; # Subtitle Manager
     jackett.enable = true; # A different indexer manager
 
