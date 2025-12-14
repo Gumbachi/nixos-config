@@ -11,3 +11,10 @@
 ## Switch Repo to SSH from HTTPS
 
 `git remote set-url origin <ssh link>`
+
+# Git remove tracked file
+
+I used this to removed a file that was already tracked by git
+but recently added to a git ignore
+
+`git rm --cached <file>`
