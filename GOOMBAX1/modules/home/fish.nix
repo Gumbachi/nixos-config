@@ -9,9 +9,9 @@
   home.shell.enableFishIntegration = true;
 
   programs.fish = {
-    shellAliases = {
-      edit = ''$EDITOR ${configPath}'';
-    };
+    # shellAliases = {
+    #   edit = ''$EDITOR'';
+    # };
     shellAbbrs = {
       rebuild = "nixos apply --yes";
       rebuild-boot = "nixos apply --yes --no-activate";
@@ -20,6 +20,7 @@
     };
     shellInit = ''set fish_greeting'';
     functions = {
+      edit = ''$EDITOR $argv'';
       upload-wallpaper = "scp $argv jared@192.168.69.2:main/config/caddy/srv/wallpapers";
     };
   };
