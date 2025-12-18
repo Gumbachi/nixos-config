@@ -56,7 +56,8 @@ in {
       resources.network = true;
     }
     {
-      search.provider = "duckduckgo";
+      search.provider = "custom";
+      search.url = "https://www.startpage.com/sp/search?query=";
       search.focus = false;
       search.showSearchSuggestions = false;
       search.target = "_self";
