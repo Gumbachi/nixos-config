@@ -126,7 +126,7 @@ in {
         "${mainMod} SHIFT, R, exec, ${launcher}"
         "${mainMod}, P, pseudo, # dwindle"
         "${mainMod}, Y, togglesplit, # dwindle"
-        "${mainMod}, N, exec, ${confedit}"
+        # "${mainMod}, N, exec, ${confedit}"
         "${mainMod} SHIFT, F, fullscreen, 1"
         "${mainMod}, F, fullscreen, 0"
         "${mainMod}, B, exec, ${browser}"
