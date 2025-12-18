@@ -40,6 +40,9 @@ in
       download_location = "/mnt/main/torrents/open";
       dont_count_slow_torrents = false;
       allow_remote = true;
+      random_port = false;
+      # listen_random_port = 52525;
+      # listen_ports = [ 6881 6889 ];
       max_active_seeding = 45;
       max_active_downloading = 5;
       max_active_limit = 50;

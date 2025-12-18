@@ -19,7 +19,7 @@
 
     deluge.enable = true; # Deluge Bittorrent Manager
     syncthing.enable = true; # Sync files across devices
-    prowlarr.enable = false; # Indexer manager
+    prowlarr.enable = true; # Indexer manager
     radarr.enable = true; # Movie manager
     sonarr.enable = true; # Show Manager
     lidarr.enable = true; # Music Manager
@@ -27,7 +27,7 @@
     jackett.enable = true; # A different indexer manager
 
     # Containerized
-    gumbotchi.enable = true; # The goat
+    gumbotchi.enable = false; # The goat
     vibrant.enable = true; # Color bot
     qbit-vpn.enable = true; # Qbit under a vpn in a container
 

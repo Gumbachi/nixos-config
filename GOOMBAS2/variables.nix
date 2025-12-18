@@ -21,6 +21,7 @@ in
 
     qbit-vpn.port = mkOption { default = 8668; };
     deluge.port = mkOption { default = 8112; };
+    slskd.port = mkOption { default = 5030; };
   };
 
 }

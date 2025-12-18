@@ -150,6 +150,13 @@ in {
           description = "";
         }];
       }
+      {
+        "Darkpeers" = [{
+          href = "https://darkpeers.org/";
+          icon = "nzbget";
+          description = "";
+        }];
+      }
     ];
   }];
 
@@ -185,7 +192,7 @@ in {
         "Jackett" = {
           icon = "jackett.png";
           description = "Indexer Management";
-          href = "https://jackett.gumbachi.com";
+          href = "http://192.168.69.2:${toString vars.jackett.port}";
           siteMonitor = "http://localhost:${toString vars.jackett.port}";
         };
       }
@@ -245,14 +252,14 @@ in {
           siteMonitor = "http://localhost:${toString vars.adguardhome.port}";
         };
       }
-      # {
-      #   "Prowlarr" = {
-      #     icon = "prowlarr.png";
-      #     description = "Indexer Management";
-      #     href = "https://prowlarr.gumbachi.com";
-      #     siteMonitor = "http://localhost:${toString vars.prowlarr.port}";
-      #   };
-      # }
+      {
+        "Prowlarr" = {
+          icon = "prowlarr.png";
+          description = "Indexer Management";
+          href = "https://prowlarr.gumbachi.com";
+          siteMonitor = "http://localhost:${toString vars.prowlarr.port}";
+        };
+      }
     ];
   }];
 }
