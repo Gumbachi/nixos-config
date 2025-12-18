@@ -152,6 +152,20 @@ in {
         }];
       }
       {
+        "DigitalCore" = [{
+          href = "https://digitalcore.club/";
+          icon = "nzbget";
+          description = "";
+        }];
+      }
+      {
+        "OnlyEncodes" = [{
+          href = "https://onlyencodes.cc/";
+          icon = "nzbget";
+          description = "";
+        }];
+      }
+      {
         "Darkpeers" = [{
           href = "https://darkpeers.org/";
           icon = "nzbget";
