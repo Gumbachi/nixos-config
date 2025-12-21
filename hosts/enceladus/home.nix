@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
-  userConfig = "/home/jared/nixos-config/GOOMBAX1/.config";
+  userConfig = "/home/jared/nixos-config/hosts/enceladus/.config";
 in
 {
 

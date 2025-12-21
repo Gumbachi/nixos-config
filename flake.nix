@@ -87,10 +87,10 @@
       ];
     };
 
-    nixosConfigurations.GOOMBAS2 = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.umbriel = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs user; };
       modules = commonModules ++ [
-        ./GOOMBAS2/configuration.nix # Main Config
+        ./hosts/umbriel/configuration.nix # Main Config
         { nixpkgs.hostPlatform = "x86_64-linux"; } # https://isabelroses.com/blog/im-not-mad-im-disappointed/
 
         # Home Manager
@@ -101,7 +101,7 @@
             backupFileExtension = "hmbak";
             extraSpecialArgs = { inherit inputs user configPath; };
           };
-          home-manager.users.${user}.imports = [ ./GOOMBAS2/home.nix ];
+          home-manager.users.${user}.imports = [ ./hosts/umbriel/home.nix ];
         }
 
         # Hardware Support
@@ -114,10 +114,10 @@
       ];
     };
 
-    nixosConfigurations.GOOMBAX2 = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.iapetus = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs user; };
       modules = commonModules ++ [
-        ./GOOMBAX2/configuration.nix # Main Config
+        ./hosts/iapetus/configuration.nix # Main Config
         { nixpkgs.hostPlatform = "x86_64-linux"; } # https://isabelroses.com/blog/im-not-mad-im-disappointed/
 
         # Home Manager
@@ -128,7 +128,7 @@
             useUserPackages = true;
             backupFileExtension = "hmbak";
             extraSpecialArgs = { inherit inputs user configPath; };
-            users.jared.imports = [ ./GOOMBAX2/home.nix ];
+            users.jared.imports = [ ./hosts/iapetus/home.nix ];
           };
         }
 

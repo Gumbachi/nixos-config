@@ -1,7 +1,7 @@
 # NixOS Config
 
 NixOS Config for all of my Nix machines. The following directions are from a
-fresh machine that wants to replicate GOOMBAX1.
+fresh machine that wants to replicate Enceladus.
 
 ## Install essential programs and clone repo
 
@@ -21,15 +21,15 @@ fresh machine that wants to replicate GOOMBAX1.
 ## Move hardware-config to cloned config
 
 1. Move hardware configuration to proper host\
-   `sudo mv /etc/nixos/hardware-configuration.nix ~/nixos-config/GOOMBAX1/hardware-configuration.nix`
+   `sudo mv /etc/nixos/hardware-configuration.nix ~/nixos-config/hosts/enceladus/hardware-configuration.nix`
 
 ## Finish installation
 
 1. Rebuild system from flake and reboot\
-   `sudo nixos-rebuild boot --flake ~/nixos-config#GOOMBAX1`
+   `sudo nixos-rebuild boot --flake ~/nixos-config#enceladus`
 2. `reboot`
 
-## Notes for GOOMBAS2
+## Notes for Umbriel
 
 1. Copy ssh keys back to /etc/ssh and ~/.ssh
 

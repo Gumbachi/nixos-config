@@ -13,14 +13,14 @@
 in {
   # Import all nixos related submodules
   imports = let
-    # generate list of modules to borrow from GOOMBAX1/modules/home
-    GOOMBAX1-modules = map (module: ../../GOOMBAX1/modules/nixos + module) [ /nixos-cli.nix ];
-  in importAll ./nixos ++ GOOMBAX1-modules;
+    # generate list of modules to borrow from /hosts/enceladus/modules/nixos
+    enceladus-modules = map (module: ../../enceladus/modules/nixos + module) [ /nixos-cli.nix ];
+  in importAll ./nixos ++ enceladus-modules;
 
   # Import all home manager related submodules
   home-manager.users.${user}.imports = let
-    # generate list of modules to borrow from GOOMBAX1/modules/home
-    GOOMBAX1-modules = map (module: ../../GOOMBAX1/modules/home + module) [
+    # generate list of modules to borrow from /hosts/enceladus/modules/home
+    enceladus-modules = map (module: ../../enceladus/modules/home + module) [
       /fish.nix
       /git.nix
       /helix.nix
@@ -28,6 +28,6 @@ in {
       /yazi.nix
       /kitty.nix
     ];
-  in importAll ./home ++ GOOMBAX1-modules;
+  in importAll ./home ++ enceladus-modules;
 
 }

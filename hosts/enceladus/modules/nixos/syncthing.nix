@@ -1,5 +1,5 @@
-{ ... }: let
-  syncDir = "~/sync";
+{ user, ... }: let
+  syncDir = "/home/${user}/sync";
 in {
 
   # Syncthing
@@ -7,7 +7,7 @@ in {
 
   services.syncthing = {
     dataDir = syncDir;
-    configDir = "~/.config/syncthing";
+    configDir = "/home/${user}/.config/syncthing";
     user = "jared";
     group = "users";
     openDefaultPorts = true;

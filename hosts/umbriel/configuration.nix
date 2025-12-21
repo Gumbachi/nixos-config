@@ -7,11 +7,11 @@
     ./programs.nix
     ./services.nix
     ./variables.nix
+    ./modules # System specific config
 
     # Config Modules
-    ../shared/modules/custom # Custom nix options. Does not install anything
-    ../shared/modules/theme # Theming options
-    ./modules # System specific config
+    ../../shared/modules/custom # Custom nix options. Does not install anything
+    ../../shared/modules/theme # Theming options
   ];
 
   # Warning: Theme must be set or the theme module import will break
@@ -21,7 +21,7 @@
   };
 
   networking = {
-    hostName = "GOOMBAS2";
+    hostName = "Umbriel";
     networkmanager.enable = true;
     firewall.enable = true;
   };

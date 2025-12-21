@@ -20,7 +20,7 @@ in {
   # Settings - https://gethomepage.dev/configs/settings/
   services.homepage-dashboard.settings = {
     title = "Home";
-    description = "GOOMBAS2";
+    description = "Umbriel";
     # theme = "dark";
     target = "_self"; # Open in place of homepage
     fullWidth = true;
@@ -252,7 +252,7 @@ in {
         };
       }
       {
-        "Syncthing - GOOMBAS2" = {
+        "Syncthing - Umbriel" = {
           icon = "syncthing.png";
           description = "File Sync";
           href = "https://sync.gumbachi.com";

@@ -5,10 +5,10 @@
 
     ./programs.nix
     ./services.nix
-
-    ../shared/modules/custom # Custom Nix Options
-    ../shared/modules/theme # Custom simple theming system
     ./modules # Modules declaring the system layout
+
+    ../../shared/modules/custom # Custom Nix Options
+    ../../shared/modules/theme # Custom simple theming system
   ];
 
   theme = {
@@ -20,7 +20,7 @@
   window-managers.hyprland.enable = true;
 
   networking = {
-    hostName = "GOOMBAX2";
+    hostName = "Iapetus";
     networkmanager.enable = true;
     firewall.enable = true;
   };

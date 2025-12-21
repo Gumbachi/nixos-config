@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  userConfig = "/home/jared/nixos-config/GOOMBAX2/.config";
+  userConfig = "/home/jared/nixos-config/hosts/iapetus/.config";
 in
 {
 

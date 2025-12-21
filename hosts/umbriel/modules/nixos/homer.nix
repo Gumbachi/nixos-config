@@ -10,7 +10,7 @@ in {
   };
 
   services.homer.settings = {
-    title = "GOOMBAS2";
+    title = "Umbriel";
     subtitle = "Dashboard";
     # logo = "assets/logo.png";
     header = false;
@@ -73,7 +73,7 @@ in {
 
 
   # services.homer.settings = {
-  #   title = "GOOMBAS2";
+  #   title = "Umbriel";
   #   subtitle = "Homepage";
   #   columns = 3;
   #   connectivityCheck = true;
