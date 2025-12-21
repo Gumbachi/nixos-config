@@ -21,8 +21,8 @@ in {
   };
 
   services.syncthing.settings.devices = {
-    "Umbriel".id = "TGECLOP-VIUGTKQ-AQ2P4H6-DOS2LPH-BKQBQQY-LIK7LZQ-5XVWPEH-Z2NL4QZ";
-    "Phobos".id = "VTVTPAN-QXGZNSD-FLSI4UR-LIJY6O2-SJOLELJ-6EBOEHV-6MYCVWE-OQEG7Q7";
+    "umbriel".id = "TGECLOP-VIUGTKQ-AQ2P4H6-DOS2LPH-BKQBQQY-LIK7LZQ-5XVWPEH-Z2NL4QZ";
+    "phobos".id = "VTVTPAN-QXGZNSD-FLSI4UR-LIJY6O2-SJOLELJ-6EBOEHV-6MYCVWE-OQEG7Q7";
   };
 
 
@@ -30,37 +30,37 @@ in {
     "${syncDir}/notes" = {
       label = "Notes";
       id = "notes";
-      devices = [ "Umbriel" "Phobos" ];
+      devices = [ "umbriel" "phobos" ];
     };
 
     "${syncDir}/misc" = {
       label = "Misc. Shared Files";
       id = "misc";
-      devices = [ "Umbriel" "Phobos" ];
+      devices = [ "umbriel" "phobos" ];
     };
 
     "${syncDir}/emulation/saves" = {
       label = "Emulation Saves";
       id = "emulation-saves";
-      devices = [ "Umbriel" "Phobos" ];
+      devices = [ "umbriel" "phobos" ];
     };
 
     "${syncDir}/pictures/avatars" = {
       label = "Avatars";
       id = "pictures-avatars";
-      devices = [ "Umbriel" "Phobos" ];
+      devices = [ "umbriel" "phobos" ];
     };
 
     "${syncDir}/pictures/emotes" = {
       label = "Emotes";
       id = "pictures-emotes";
-      devices = [ "Umbriel" "Phobos" ];
+      devices = [ "umbriel" "phobos" ];
     };
 
     "${syncDir}/pictures/wallpapers" = {
       label = "Wallpapers";
       id = "pictures-wallpapers";
-      devices = [ "Umbriel" "Phobos" ];
+      devices = [ "umbriel" "phobos" ];
     };
   };
 

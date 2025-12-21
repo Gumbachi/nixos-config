@@ -43,7 +43,7 @@
   };
 
   networking = {
-    hostName = "Enceladus";
+    hostName = "enceladus";
     firewall.enable = true;
     networkmanager.enable = true;
   };

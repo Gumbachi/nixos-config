@@ -20,7 +20,7 @@
   window-managers.hyprland.enable = true;
 
   networking = {
-    hostName = "Iapetus";
+    hostName = "iapetus";
     networkmanager.enable = true;
     firewall.enable = true;
   };

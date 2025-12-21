@@ -6,7 +6,7 @@ in {
   environment.systemPackages = mkIf cfg.enable [ pkgs.nvd pkgs.nix-output-monitor ];
 
   services.nixos-cli.config = {
-    config_location = "~/nixos-config";
+    config_location = "/home/jared/nixos-config";
     confirmation.always = false;
     use_nvd = true;
     apply.use_nom = true;

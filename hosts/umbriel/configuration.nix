@@ -21,7 +21,7 @@
   };
 
   networking = {
-    hostName = "Umbriel";
+    hostName = "umbriel";
     networkmanager.enable = true;
     firewall.enable = true;
   };

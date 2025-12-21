@@ -31,8 +31,8 @@ in
 
   # Devices
   services.syncthing.settings.devices = {
-    "Enceladus".id = "ISB6RVX-V7ZN4VK-ZB64JN4-LVGN34Y-WZHO4G2-KQOFGKX-XJWURAQ-GN2FLAO";
-    "Phobos".id = "VTVTPAN-QXGZNSD-FLSI4UR-LIJY6O2-SJOLELJ-6EBOEHV-6MYCVWE-OQEG7Q7";
+    "enceladus".id = "ISB6RVX-V7ZN4VK-ZB64JN4-LVGN34Y-WZHO4G2-KQOFGKX-XJWURAQ-GN2FLAO";
+    "phobos".id = "VTVTPAN-QXGZNSD-FLSI4UR-LIJY6O2-SJOLELJ-6EBOEHV-6MYCVWE-OQEG7Q7";
   };
 
   # Folders
@@ -41,37 +41,37 @@ in
     "${storage}/sync/notes" = {
       label = "Notes";
       id = "notes";
-      devices = [ "Enceladus" "Phobos" ];
+      devices = [ "enceladus" "phobos" ];
     };
 
     "${storage}/sync/misc" = {
       label = "Misc. Shared Files";
       id = "misc";
-      devices = [ "Enceladus" "Phobos" ];
+      devices = [ "enceladus" "phobos" ];
     };
 
     "${storage}/sync/emulation/saves" = {
       label = "Emulation Saves";
       id = "emulation-saves";
-      devices = [ "Enceladus" "Phobos" ];
+      devices = [ "enceladus" "phobos" ];
     };
 
     "${storage}/sync/pictures/avatars" = {
       label = "Avatars";
       id = "pictures-avatars";
-      devices = [ "Enceladus" "Phobos" ];
+      devices = [ "enceladus" "phobos" ];
     };
 
     "${storage}/sync/pictures/emotes" = {
       label = "Emotes";
       id = "pictures-emotes";
-      devices = [ "Enceladus" "Phobos" ];
+      devices = [ "enceladus" "phobos" ];
     };
 
     "${storage}/sync/pictures/wallpapers" = {
       label = "Wallpapers";
       id = "pictures-wallpapers";
-      devices = [ "Enceladus" "Phobos" ];
+      devices = [ "enceladus" "phobos" ];
     };
 
   };
