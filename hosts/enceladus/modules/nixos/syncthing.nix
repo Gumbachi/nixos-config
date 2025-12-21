@@ -1,5 +1,5 @@
 { ... }: let
-  syncDir = "/home/jared/sync";
+  syncDir = "~/sync";
 in {
 
   # Syncthing
@@ -7,7 +7,7 @@ in {
 
   services.syncthing = {
     dataDir = syncDir;
-    configDir = "/home/jared/.config/syncthing";
+    configDir = "~/.config/syncthing";
     user = "jared";
     group = "users";
     openDefaultPorts = true;
@@ -21,49 +21,47 @@ in {
   };
 
   services.syncthing.settings.devices = {
-    "GOOMBAS2".id = "TGECLOP-VIUGTKQ-AQ2P4H6-DOS2LPH-BKQBQQY-LIK7LZQ-5XVWPEH-Z2NL4QZ";
-    "Pixel 8".id = "VTVTPAN-QXGZNSD-FLSI4UR-LIJY6O2-SJOLELJ-6EBOEHV-6MYCVWE-OQEG7Q7";
+    "Umbriel".id = "TGECLOP-VIUGTKQ-AQ2P4H6-DOS2LPH-BKQBQQY-LIK7LZQ-5XVWPEH-Z2NL4QZ";
+    "Phobos".id = "VTVTPAN-QXGZNSD-FLSI4UR-LIJY6O2-SJOLELJ-6EBOEHV-6MYCVWE-OQEG7Q7";
   };
 
 
   services.syncthing.settings.folders = {
-
     "${syncDir}/notes" = {
       label = "Notes";
       id = "notes";
-      devices = [ "GOOMBAS2" "Pixel 8" ];
+      devices = [ "Umbriel" "Phobos" ];
     };
 
     "${syncDir}/misc" = {
       label = "Misc. Shared Files";
       id = "misc";
-      devices = [ "GOOMBAS2" "Pixel 8" ];
+      devices = [ "Umbriel" "Phobos" ];
     };
 
     "${syncDir}/emulation/saves" = {
       label = "Emulation Saves";
       id = "emulation-saves";
-      devices = [ "GOOMBAS2" "Pixel 8" ];
+      devices = [ "Umbriel" "Phobos" ];
     };
 
     "${syncDir}/pictures/avatars" = {
       label = "Avatars";
       id = "pictures-avatars";
-      devices = [ "GOOMBAS2" "Pixel 8" ];
+      devices = [ "Umbriel" "Phobos" ];
     };
 
     "${syncDir}/pictures/emotes" = {
       label = "Emotes";
       id = "pictures-emotes";
-      devices = [ "GOOMBAS2" "Pixel 8" ];
+      devices = [ "Umbriel" "Phobos" ];
     };
 
     "${syncDir}/pictures/wallpapers" = {
       label = "Wallpapers";
       id = "pictures-wallpapers";
-      devices = [ "GOOMBAS2" "Pixel 8" ];
+      devices = [ "Umbriel" "Phobos" ];
     };
-
   };
 
 }

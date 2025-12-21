@@ -1,13 +1,13 @@
 { user, pkgs, lib, config, inputs, ... }: {
 
   imports = [
+    ./hardware-configuration.nix # Mandatory hardware config
     ./programs.nix
     ./services.nix
-
-    ./hardware-configuration.nix # Mandatory hardware config
-    ../shared/modules/custom # Custom nix option definitions. Does not install anything
-    ../shared/modules/theme # Custom simple theming system
     ./modules # Modules declaring the system layout
+
+    ../../shared/modules/custom # Custom nix option definitions. Does not install anything
+    ../../shared/modules/theme # Custom simple theming system
   ];
 
   # Set the system theme with Stylix and Home Manager
@@ -43,12 +43,12 @@
   };
 
   networking = {
-    hostName = "GOOMBAX1";
+    hostName = "Enceladus";
     firewall.enable = true;
     networkmanager.enable = true;
   };
 
-  environment.sessionVariables.CONFIG = "/home/jared/nixos-config";
+  # environment.sessionVariables.CONFIG = "~/nixos-config";
 
   hardware = {
     graphics = {

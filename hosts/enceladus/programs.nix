@@ -10,8 +10,6 @@
     pavucontrol # Sound Settings
     hyprshot
     nwg-look # GTK Style GUI
-    bitwarden-desktop
-    feishin
     inlyne
   ];
 
@@ -23,7 +21,7 @@
 
     programs.nh = {
       enable = true;
-      flake = "/home/jared/nixos-config";
+      flake = "~/nixos-config";
     };
   }];
 

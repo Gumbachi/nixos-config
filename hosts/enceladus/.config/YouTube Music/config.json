@@ -1,0 +1,214 @@
+{
+	"window-size": {
+		"width": 720,
+		"height": 1280
+	},
+	"window-maximized": true,
+	"window-position": {
+		"x": 0,
+		"y": 0
+	},
+	"url": "https://music.youtube.com/watch?v=FXu3GAv1Z8c&list=LM&index=0",
+	"options": {
+		"tray": true,
+		"appVisible": true,
+		"autoUpdates": false,
+		"alwaysOnTop": false,
+		"hideMenu": true,
+		"hideMenuWarned": true,
+		"startAtLogin": false,
+		"disableHardwareAcceleration": false,
+		"removeUpgradeButton": true,
+		"restartOnConfigChanges": true,
+		"trayClickPlayPause": false,
+		"autoResetAppCache": false,
+		"resumeOnStart": true,
+		"likeButtons": "",
+		"proxy": "",
+		"startingPage": "Playlists",
+		"overrideUserAgent": false,
+		"usePodcastParticipantAsArtist": false,
+		"themes": [
+			"/home/jared/.config/YouTube Music/stylix.css"
+		]
+	},
+	"plugins": {
+		"notifications": {},
+		"video-toggle": {
+			"enabled": true,
+			"hideVideo": true,
+			"mode": "native",
+			"forceHide": false,
+			"align": "middle"
+		},
+		"precise-volume": {
+			"enabled": true,
+			"steps": 1,
+			"arrowsShortcut": true,
+			"globalShortcuts": {
+				"volumeUp": "",
+				"volumeDown": ""
+			},
+			"savedVolume": 45
+		},
+		"discord": {
+			"listenAlong": true,
+			"enabled": true
+		},
+		"ambient-mode": {
+			"enabled": true
+		},
+		"compact-sidebar": {
+			"enabled": true
+		},
+		"exponential-volume": {
+			"enabled": true
+		},
+		"adblocker": {
+			"enabled": true,
+			"cache": true,
+			"blocker": "In player",
+			"additionalBlockLists": [
+				"https://filters.adtidy.org/extension/ublock/filters/122_optimized.txt",
+				"https://ublockorigin.pages.dev/thirdparties/easylist.txt"
+			],
+			"disableDefaultLists": false
+		},
+		"visualizer": {
+			"enabled": false,
+			"type": "vudio",
+			"butterchurn": {
+				"preset": "martin [shadow harlequins shape code] - fata morgana",
+				"renderingFrequencyInMs": 500,
+				"blendTimeInSeconds": 2.7
+			},
+			"vudio": {
+				"effect": "lighting",
+				"accuracy": 128,
+				"lighting": {
+					"maxHeight": 400,
+					"maxSize": 12,
+					"lineWidth": 1,
+					"color": "#cba6f7",
+					"shadowBlur": 2,
+					"shadowColor": "rgba(244,244,244,.5)",
+					"fadeSide": true,
+					"prettify": true,
+					"horizontalAlign": "center",
+					"verticalAlign": "middle",
+					"dottify": true
+				}
+			},
+			"wave": {
+				"animations": [
+					{
+						"type": "Cubes",
+						"config": {
+							"bottom": true,
+							"count": 30,
+							"cubeHeight": 5,
+							"fillColor": {
+								"gradient": [
+									"#FFFFFF"
+								]
+							},
+							"lineColor": "rgba(0,0,0,0)",
+							"radius": 20
+						}
+					},
+					{
+						"type": "Cubes",
+						"config": {
+							"top": true,
+							"count": 12,
+							"cubeHeight": 5,
+							"fillColor": {
+								"gradient": [
+									"#FFFFFF"
+								]
+							},
+							"lineColor": "rgba(0,0,0,0)",
+							"radius": 10
+						}
+					},
+					{
+						"type": "Circles",
+						"config": {
+							"lineColor": {
+								"gradient": [
+									"#FFFFFF"
+								],
+								"rotate": 90
+							},
+							"lineWidth": 4,
+							"diameter": 20,
+							"count": 10,
+							"frequencyBand": "base"
+						}
+					}
+				]
+			}
+		},
+		"downloader": {
+			"enabled": true
+		},
+		"in-app-menu": {
+			"enabled": false,
+			"hideDOMWindowControls": true
+		},
+		"navigation": {
+			"enabled": false
+		},
+		"picture-in-picture": {
+			"enabled": false,
+			"alwaysOnTop": true,
+			"savePosition": true,
+			"saveSize": false,
+			"hotkey": "P",
+			"pip-position": [
+				10,
+				10
+			],
+			"pip-size": [
+				450,
+				275
+			],
+			"isInPiP": false,
+			"useNativePiP": true
+		},
+		"shortcuts": {
+			"enabled": true
+		},
+		"blur-nav-bar": {
+			"enabled": false
+		},
+		"no-google-login": {
+			"enabled": false
+		},
+		"synced-lyrics": {
+			"enabled": true,
+			"preciseTiming": true,
+			"showLyricsEvenIfInexact": true,
+			"showTimeCodes": false,
+			"defaultTextString": "———",
+			"lineEffect": "fancy"
+		},
+		"equalizer": {
+			"enabled": false
+		},
+		"amuse": {
+			"enabled": false
+		},
+		"unobtrusive-player": {
+			"enabled": false
+		},
+		"performance-improvement": {
+			"enabled": true
+		}
+	},
+	"__internal__": {
+		"migrations": {
+			"version": "3.11.0"
+		}
+	}
+}

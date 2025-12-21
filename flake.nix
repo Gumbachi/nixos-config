@@ -51,22 +51,18 @@
     user = "jared";
     configPath = "/home/${user}/nixos-config";
     # Nix Modules that should be on all systems. Reduces repetition
-    defaultModules = [
+    commonModules = [
       inputs.stylix.nixosModules.stylix
       inputs.nvf.nixosModules.default
       inputs.nur.modules.nixos.default
       inputs.nixos-cli.nixosModules.nixos-cli
     ];
   in {
-    # Host Name = <GOOMBA><X/S/L><Number>
-    # GOOMBA = Name
-    # X/S = Desktop/Laptop, Server
-    # Number = ID
 
-    nixosConfigurations.GOOMBAX1 = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.enceladus = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs user; };
-      modules = defaultModules ++ [
-        ./GOOMBAX1/configuration.nix # Main Config
+      modules = commonModules ++ [
+        ./hosts/enceladus/configuration.nix # Main Config
         { nixpkgs.hostPlatform = "x86_64-linux"; } # https://isabelroses.com/blog/im-not-mad-im-disappointed/
 
         # Home Manager
@@ -77,7 +73,7 @@
             backupFileExtension = "hmbak";
             extraSpecialArgs = { inherit inputs configPath; };
           };
-          home-manager.users.${user}.imports = [ ./GOOMBAX1/home.nix ];
+          home-manager.users.${user}.imports = [ ./hosts/enceladus/home.nix ];
         }
 
         # Overlays
@@ -93,7 +89,7 @@
 
     nixosConfigurations.GOOMBAS2 = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs user; };
-      modules = defaultModules ++ [
+      modules = commonModules ++ [
         ./GOOMBAS2/configuration.nix # Main Config
         { nixpkgs.hostPlatform = "x86_64-linux"; } # https://isabelroses.com/blog/im-not-mad-im-disappointed/
 
@@ -120,7 +116,7 @@
 
     nixosConfigurations.GOOMBAX2 = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs user; };
-      modules = defaultModules ++ [
+      modules = commonModules ++ [
         ./GOOMBAX2/configuration.nix # Main Config
         { nixpkgs.hostPlatform = "x86_64-linux"; } # https://isabelroses.com/blog/im-not-mad-im-disappointed/
 
