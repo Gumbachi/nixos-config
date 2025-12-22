@@ -28,7 +28,7 @@ in {
       # Greetd: Autostart Hyprland on boot
       services.greetd = let
         session = {
-          command = "Hyprland > /dev/null";
+          command = "Hyprland > /dev/null 2>&1";
           user = "jared";
         };
       in {

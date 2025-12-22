@@ -20,12 +20,10 @@
   };
 
   boot = {
-    quiet = false;
+    quiet = true;
     kernelPackages = pkgs.linuxPackages_zen;
-    # loader.systemd-boot.enable = true;
     loader.limine.enable = true;
-    loader.timeout = 5;
-    plymouth.enable = false;
+    plymouth.enable = true;
     kernelParams = [
       "video=DP-1:3840x2160@240"
       "video=DP-2:2560x1440@120"
