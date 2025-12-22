@@ -19,6 +19,20 @@
     icons.papirus.enable = true;
   };
 
+  boot = {
+    quiet = false;
+    kernelPackages = pkgs.linuxPackages_zen;
+    # loader.systemd-boot.enable = true;
+    loader.limine.enable = true;
+    loader.timeout = 5;
+    plymouth.enable = false;
+    kernelParams = [
+      "video=DP-1:3840x2160@240"
+      "video=DP-2:2560x1440@120"
+      "video=DP-3:2560x1440@120"
+    ];
+  };
+
   default-apps = with pkgs; {
     browser = [ librewolf chromium ];
     terminal = [ kitty ];
@@ -28,18 +42,6 @@
     video = [ mpv ];
     image = [ qimgv ];
     shell = fish;
-  };
-
-  boot = {
-    quiet = true;
-    kernelPackages = pkgs.linuxPackages_zen;
-    loader.systemd-boot.enable = true;
-    plymouth.enable = true;
-    kernelParams = [
-      "video=DP-1:3840x2160@240"
-      "video=DP-2:2560x1440@120"
-      "video=DP-3:2560x1440@120"
-    ];
   };
 
   networking = {
