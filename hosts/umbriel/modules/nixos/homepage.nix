@@ -57,7 +57,7 @@ in {
     }
     {
       search.provider = "custom";
-      search.url = "https://www.startpage.com/sp/search?query=";
+      search.url = "https://search.gumbachi.com/search?q=";
       search.focus = false;
       search.showSearchSuggestions = false;
       search.target = "_self";
@@ -267,12 +267,20 @@ in {
           siteMonitor = "http://localhost:${toString vars.adguardhome.port}";
         };
       }
+      # {
+      #   "Prowlarr" = {
+      #     icon = "prowlarr.png";
+      #     description = "Indexer Management";
+      #     href = "https://prowlarr.gumbachi.com";
+      #     siteMonitor = "http://localhost:${toString vars.prowlarr.port}";
+      #   };
+      # }
       {
-        "Prowlarr" = {
-          icon = "prowlarr.png";
-          description = "Indexer Management";
-          href = "https://prowlarr.gumbachi.com";
-          siteMonitor = "http://localhost:${toString vars.prowlarr.port}";
+        "Searx" = {
+          icon = "searx.png";
+          description = "Metasearch Engine";
+          href = "https://search.gumbachi.com";
+          siteMonitor = "http://localhost:${toString vars.searx.port}";
         };
       }
     ];
