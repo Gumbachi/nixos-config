@@ -49,7 +49,6 @@
   };
 
   diagnostics = {
-    lact.enable = true;
     btop.enable = true;
     systemctl-tui.enable = true;
   };

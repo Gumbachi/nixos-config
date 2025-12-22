@@ -27,6 +27,8 @@
     # Bluetooth if needed
     blueman.enable = false;
 
+    lact.enable = true;
+
   };
 
   # Home manager programs
