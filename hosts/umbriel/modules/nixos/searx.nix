@@ -8,10 +8,15 @@ in {
     extraConfig = ''reverse_proxy localhost:${toString port}'';
   };
 
+  # Secrets
+  age.secrets.searx.file = ../../secrets/searx.age;
+
   services.searx = {
+    environmentFile = config.age.secrets.searx.path;
     settings = {
       server.port = port;
       server.bind_address = "0.0.0.0";
+      server.secret_key = "$SEARX_SECRET_KEY";
     };
   };
 

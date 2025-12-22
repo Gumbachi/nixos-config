@@ -10,4 +10,6 @@ in
 
   "radarr.age".publicKeys = [ user system ];
   "sonarr.age".publicKeys = [ user system ];
+
+  "searx.age".publicKeys = [ user system ];
 }
