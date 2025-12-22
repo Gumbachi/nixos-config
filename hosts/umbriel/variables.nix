@@ -11,6 +11,7 @@ in
     jellyfin.port = mkOption { default = 8096; };
     jellyseerr.port = mkOption { default = 5055; };
     syncthing.port = mkOption { default = 8384; };
+    whoogle.port = mkOption { default = 5000; };
 
     radarr.port = mkOption { default = 7878; };
     sonarr.port = mkOption { default = 8989; };

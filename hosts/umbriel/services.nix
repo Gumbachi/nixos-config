@@ -13,6 +13,7 @@
     adguardhome.enable = true; # DNS Adblocking
     homepage-dashboard.enable = true; # Homepage for service overview
     homer.enable = false; # Homepage for services overview
+    whoogle-search.enable = true;
 
     immich.enable = true; # Photos backup and WebUI
     jellyfin.enable = true; # WebUI for serving movies and shows
