@@ -5,12 +5,17 @@ in {
 
   # Reverse Proxy
   services.caddy.virtualHosts."disks.gumbachi.com" = lib.mkIf cfg.enable {
-    extraConfig = ''reverse_proxy localhost:${toString port}'';
+    extraConfig = ''
+      basic_auth {
+        Gumbachi $2a$14$H1uMhJgDqbJW7R1wdg0xp.P/hmPE76d3ROGNOS1JwvKM3yJarBZQa
+      }
+      reverse_proxy localhost:${toString port}
+    '';
   };
 
   services.scrutiny = {
     openFirewall = true;
-    web.listen.port = port;
+    settings.web.listen.port = port;
   };
 
 }
