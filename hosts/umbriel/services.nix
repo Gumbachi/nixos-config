@@ -12,13 +12,12 @@
     caddy.enable = true; # Auto HTTPS and Reverse Proxy
     adguardhome.enable = true; # DNS Adblocking
     homepage-dashboard.enable = true; # Homepage for service overview
-    homer.enable = false; # Homepage for services overview
-    whoogle-search.enable = false;
     searx.enable = true; # Self hosted meta search engine
     scrutiny.enable = true; # Disk health monitoring
 
     immich.enable = true; # Photos backup and WebUI
     jellyfin.enable = true; # WebUI for serving movies and shows
+    mopidy.enable = true; # Music Server
 
     deluge.enable = true; # Deluge Bittorrent Manager
     syncthing.enable = true; # Sync files across devices
