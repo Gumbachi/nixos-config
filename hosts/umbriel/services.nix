@@ -18,6 +18,7 @@
     immich.enable = true; # Photos backup and WebUI
     jellyfin.enable = true; # WebUI for serving movies and shows
     mopidy.enable = true; # Music Server
+    chhoto-url.enable = false; # URL Shortener
 
     deluge.enable = true; # Deluge Bittorrent Manager
     syncthing.enable = true; # Sync files across devices
