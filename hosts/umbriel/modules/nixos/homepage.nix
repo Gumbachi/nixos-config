@@ -283,6 +283,14 @@ in {
           siteMonitor = "http://localhost:${toString vars.searx.port}";
         };
       }
+      {
+        "Scrutiny" = {
+          icon = "scrutiny.png";
+          description = "Disk Health";
+          href = "https://disks.gumbachi.com";
+          siteMonitor = "http://localhost:${toString vars.scrutiny.port}";
+        };
+      }
     ];
   }];
 }
