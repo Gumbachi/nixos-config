@@ -3,42 +3,31 @@
   port = config.variables.searx.port;
 in {
 
+    # basic_auth {
+     #  Gumbachi $2a$14$H1uMhJgDqbJW7R1wdg0xp.P/hmPE76d3ROGNOS1JwvKM3yJarBZQa
+    # }
+
   # Reverse Proxy
   services.caddy.virtualHosts."search.gumbachi.com" = lib.mkIf cfg.enable {
-    extraConfig = ''
-      basic_auth {
-	      Gumbachi $2a$14$H1uMhJgDqbJW7R1wdg0xp.P/hmPE76d3ROGNOS1JwvKM3yJarBZQa
-      }
-      reverse_proxy localhost:${toString port}
-    '';
+    extraConfig = ''reverse_proxy localhost:${toString port}'';
   };
 
   # Secrets
   age.secrets.searx.file = ../../secrets/searx.age;
   services.searx.environmentFile = config.age.secrets.searx.path;
 
-  services.searx.settings.engines = [
-    {
-      name = "brave";
-      disabled = true;
-    }
-    {
-      name = "duckduckgo";
-      disabled = true;
-    }
-    {
-      name = "wikipedia";
-      disabled = false;
-    }
-    {
-      name = "wikidata";
-      disabled = true;
-    }
-    {
-      name = "startpage";
-      disabled = false;
-    }
-  ];
+  # services.searx.limiterSettings = {
+
+  #   real_ip = {
+  #     x_for = 1;
+  #     ipv4_prefix = 32;
+  #     ipv6_prefix = 56;
+  #   }
+
+  #   botdetection.ip_lists.pass_ip = [
+  #     # "93.184.216.34" # example.org
+  #   ];
+  # };
 
   services.searx.settings.server = {
     port = port;
@@ -74,5 +63,28 @@ in {
       MAINTENANCE_PERIOD = 600;
     };
   };
+
+  services.searx.settings.engines = [
+    {
+      name = "brave";
+      disabled = true;
+    }
+    {
+      name = "duckduckgo";
+      disabled = true;
+    }
+    {
+      name = "wikipedia";
+      disabled = false;
+    }
+    {
+      name = "wikidata";
+      disabled = true;
+    }
+    {
+      name = "startpage";
+      disabled = false;
+    }
+  ];
 
 }

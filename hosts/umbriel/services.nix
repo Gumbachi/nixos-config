@@ -15,6 +15,7 @@
     homer.enable = false; # Homepage for services overview
     whoogle-search.enable = false;
     searx.enable = true; # Self hosted meta search engine
+    scrutiny.enable = true; # Disk health monitoring
 
     immich.enable = true; # Photos backup and WebUI
     jellyfin.enable = true; # WebUI for serving movies and shows
