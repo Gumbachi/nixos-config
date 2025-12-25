@@ -28,6 +28,7 @@
     lidarr.enable = true; # Music Manager
     bazarr.enable = false; # Subtitle Manager
     jackett.enable = true; # A different indexer manager
+    flaresolverr.enable = true; # Bypass cloudflare
 
     # Containerized
     gumbotchi.enable = false; # The goat

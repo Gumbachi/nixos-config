@@ -76,6 +76,9 @@ in
     };
   };
 
+  # Allow flaresolverr
+  services.flaresolverr.openFirewall = true;
+
   services.bazarr = {
     listenPort = ports.bazarr; # Bazarr option gotta be different for some reason
     group = "media";

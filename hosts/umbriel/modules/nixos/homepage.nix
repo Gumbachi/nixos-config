@@ -172,6 +172,13 @@ in {
           description = "";
         }];
       }
+      {
+        "Seedpool" = [{
+          href = "https://seedpool.org/";
+          icon = "nzbget";
+          description = "";
+        }];
+      }
     ];
   }];
 
